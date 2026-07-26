@@ -84,6 +84,54 @@ document.addEventListener('DOMContentLoaded',function(){
   // contact form - WhatsApp integration
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
+  const packageSelect = form.package;
+  const addonCheckboxes = Array.from(form.querySelectorAll('input[name="addons"]'));
+  const totalPriceEl = document.getElementById('totalPrice');
+
+  const packagePrices = {
+    'Frisch gemacht': 39.20,
+    'Wieder gepflegt': 87.20,
+    'Wie Neu': 151.20,
+    'Showroom Edition': 239.20,
+    'Kein Paket': 0,
+    'Kein Paket ausgewählt': 0
+  };
+
+  const addonPrices = {
+    'Tierhaarentfernung': 30,
+    'Ozonbehandlung': 60,
+    'Motorwäsche & Motorraumpflege': 30,
+    'Scheibenversiegelung': 30,
+    'Felgenversiegelung': 50,
+    'Insekten- & Baumharzentfernung': 30,
+    'Keramikversiegelung': 199,
+    'Lederreinigung & Lederpflege': 50,
+    'Kunststoff-Außenpflege': 30
+  };
+
+  function formatPrice(value){
+    return value.toFixed(2).replace('.', ',') + ' €';
+  }
+
+  function updateTotalPrice(){
+    const selectedPackage = packageSelect ? packageSelect.value : 'Kein Paket ausgewählt';
+    const packagePrice = packagePrices[selectedPackage] || 0;
+    const addonTotal = addonCheckboxes.reduce((sum, input) => {
+      return sum + (input.checked ? (addonPrices[input.value] || 0) : 0);
+    }, 0);
+    const total = packagePrice + addonTotal;
+    if(totalPriceEl){
+      totalPriceEl.textContent = formatPrice(total);
+    }
+    return total;
+  }
+
+  if(packageSelect){
+    packageSelect.addEventListener('change', updateTotalPrice);
+  }
+  addonCheckboxes.forEach(input => input.addEventListener('change', updateTotalPrice));
+  updateTotalPrice();
+
   form.addEventListener('submit',function(e){
     e.preventDefault();
     formMsg.textContent='';
@@ -98,9 +146,10 @@ document.addEventListener('DOMContentLoaded',function(){
     
     const selectedPackage = form.package ? form.package.value : 'Kein Paket ausgewählt';
     const selectedAddons = Array.from(form.querySelectorAll('input[name="addons"]:checked')).map(input => input.value);
+    const totalPrice = updateTotalPrice();
     
     // WhatsApp Nachricht zusammenstellen
-    const whatsappMessage = `Hallo, mein Name ist ${name}.\nE-Mail: ${email}\n\nGewünschtes Paket: ${selectedPackage}\nZusatzleistungen: ${selectedAddons.length ? selectedAddons.join(', ') : 'Keine'}\n\nNachricht:\n${message || 'Ich möchte einen Termin anfragen.'}`;
+    const whatsappMessage = `Hallo, mein Name ist ${name}.\nE-Mail: ${email}\n\nGewünschtes Paket: ${selectedPackage}\nZusatzleistungen: ${selectedAddons.length ? selectedAddons.join(', ') : 'Keine'}\nGesamtpreis: ${formatPrice(totalPrice)}\n\nNachricht:\n${message || 'Ich möchte einen Termin anfragen.'}`;
     
     // WhatsApp URL mit kodierter Nachricht
     const whatsappPhone = '4939344993858'; // deine Nummer ohne + oder 0
@@ -113,6 +162,7 @@ document.addEventListener('DOMContentLoaded',function(){
     // Direkt zu WhatsApp weiterleiten
     window.location.href = whatsappUrl;
     form.reset();
+    updateTotalPrice();
     form.querySelector('button[type="submit"]').disabled = false;
   });
 });
