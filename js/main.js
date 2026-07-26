@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   // accordion behaviour: only one main section open at a time
-  const accordionItems = document.querySelectorAll('.accordion-item');
   accordionItems.forEach(item => {
     item.addEventListener('toggle', () => {
       if (!item.open) return;

@@ -63,6 +63,13 @@ body {
 @media (max-width:780px){
   .top-banner-inner{flex-direction:column;align-items:flex-start;padding:0.9rem 1rem;}
   .top-banner p{font-size:0.92rem;}
+  .nav-toggle{display:block}
+  .site-nav{position:fixed;right:12px;top:70px;background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.9));padding:1rem;border-radius:12px;display:none;z-index:50;box-shadow:0 20px 60px rgba(16,18,20,0.12);width:calc(100% - 24px);max-width:320px;}
+  .site-nav.open{display:block}
+  .site-nav ul{flex-direction:column;gap:0.9rem;}
+  .site-nav a{padding:0.75rem 1rem;display:block;}
+  .site-nav a.nav-prices{font-weight:700;background: rgba(184,134,39,0.14);color: var(--text);border-radius:12px;}
+  .header-inner{flex-wrap:wrap;justify-content:space-between;}
 }
 
 /* Navigation buttons */
