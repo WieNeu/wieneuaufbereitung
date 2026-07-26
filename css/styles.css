@@ -272,6 +272,7 @@ input:focus,textarea:focus{
   .cards{grid-template-columns:1fr}
   .logo{width:72px;height:72px}
   .hero::before{background-position: center center}
+  .prices .price-card{display:none}
   .price-mobile-extra{display:block}
   .price-mobile-extra img{margin-top:1rem}
 }
