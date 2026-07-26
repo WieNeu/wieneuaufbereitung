@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded',function(){
   window.addEventListener('scroll', setActiveLink);
   setActiveLink();
 
-  // contact form basic handling
+  // contact form - WhatsApp integration
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
   form.addEventListener('submit',function(e){
@@ -56,17 +56,30 @@ document.addEventListener('DOMContentLoaded',function(){
     formMsg.textContent='';
     const name = form.name.value.trim();
     const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    
     if(!name || !email){
       formMsg.textContent = 'Bitte Namen und E-Mail ausfüllen.';
       return;
     }
-    // Simuliere Senden (kein Backend)
+    
+    // WhatsApp Nachricht zusammenstellen
+    const whatsappMessage = `Hallo, mein Name ist ${name}.\nE-Mail: ${email}\n\nNachricht:\n${message || 'Ich möchte einen Termin anfragen.'}`;
+    
+    // WhatsApp URL mit kodierter Nachricht
+    const whatsappPhone = '4939344993858'; // deine Nummer ohne + oder 0
+    const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Bestätigungsmeldung zeigen
     form.querySelector('button[type="submit"]').disabled = true;
-    formMsg.textContent = 'Anfrage wird gesendet...';
+    formMsg.textContent = 'Leite dich zu WhatsApp weiter...';
+    
+    // Nach kurzer Verzögerung zu WhatsApp öffnen
     setTimeout(()=>{
-      formMsg.textContent = 'Danke! Deine Anfrage wurde empfangen. Wir melden uns in Kürze.';
+      window.open(whatsappUrl, '_blank');
+      formMsg.textContent = 'WhatsApp wurde geöffnet. Bitte bestätige deine Anfrage!';
       form.reset();
       form.querySelector('button[type="submit"]').disabled = false;
-    },1200);
+    }, 500);
   });
 });
