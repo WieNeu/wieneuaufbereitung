@@ -23,6 +23,31 @@ document.addEventListener('DOMContentLoaded',function(){
     })
   });
 
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+
+  function setActiveLink(){
+    const fromTop = window.scrollY + 120;
+    let currentId = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      if(sectionTop <= fromTop && sectionBottom > fromTop){
+        currentId = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      if(link.getAttribute('href') === `#${currentId}`){
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', setActiveLink);
+  setActiveLink();
+
   // contact form basic handling
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');

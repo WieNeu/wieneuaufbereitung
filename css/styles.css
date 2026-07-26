@@ -59,6 +59,16 @@ body {
 .nav-toggle{display:none;background:none;border:0;padding:6px;color:var(--text)}
 .site-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
 .site-nav a{color:var(--text);text-decoration:none;padding:0.4rem 0.6rem;border-radius:8px}
+.site-nav a.nav-prices{
+  font-weight: 700;
+  background: rgba(184,134,39,0.12);
+  color: var(--text);
+}
+.site-nav a.active{
+  background: rgba(184,134,39,0.18);
+  color: var(--text);
+  box-shadow: 0 6px 16px rgba(184,134,39,0.12);
+}
 .btn{display:inline-block;padding:0.6rem 1rem;border-radius:10px;text-decoration:none;font-weight:600}
 .btn-primary{
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -139,19 +149,58 @@ body {
 
 /* About / prices / contact */
 .checklist{padding-left:1rem}
+.prices{
+  padding:3rem 0;
+  background: rgba(255,255,255,0.65);
+}
+.prices .container{
+  display:grid;
+  gap:1rem;
+}
+.prices h2{margin-bottom:0.4rem}
+.prices .muted{max-width:620px}
 .prices .price-card{
-  margin-top:1rem;
-  padding:1rem;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-  border-radius:18px;
-  box-shadow: 0 10px 30px rgba(16,18,20,0.08);
+  margin:1.5rem auto 0;
+  padding:1.8rem;
+  max-width:860px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,248,246,0.92));
+  border: 1px solid rgba(184,134,39,0.12);
+  border-radius:22px;
+  box-shadow: 0 18px 40px rgba(16,18,20,0.08);
 }
 .price-image{
   width:100%;
   height:auto;
   display:block;
+  border-radius:16px;
+  object-fit: cover;
+  box-shadow: 0 12px 28px rgba(16,18,20,0.08);
+}
+
+.price-mobile-extra{
+  display:none;
+}
+.price-image-mobile{
+  width:100%;
+  height:auto;
+  display:block;
   border-radius:14px;
   object-fit: cover;
+}
+
+@media (max-width:780px){
+  .prices{
+    padding:2.2rem 0;
+  }
+  .prices .price-card{
+    padding:1.2rem;
+  }
+  .price-mobile-extra{
+    display:block;
+  }
+  .price-image-mobile{
+    margin-top:1rem;
+  }
 }
 
 /* form, inputs */
@@ -212,7 +261,17 @@ input:focus,textarea:focus{
   .site-nav{position:fixed;right:12px;top:70px;background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.9));padding:1rem;border-radius:12px;display:none}
   .site-nav.open{display:block}
   .site-nav ul{flex-direction:column}
+  .site-nav a.nav-prices{
+    font-weight: 700;
+    background: rgba(184,134,39,0.14);
+    color: var(--text);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    margin: 0.2rem 0;
+  }
   .cards{grid-template-columns:1fr}
   .logo{width:72px;height:72px}
   .hero::before{background-position: center center}
+  .price-mobile-extra{display:block}
+  .price-mobile-extra img{margin-top:1rem}
 }
