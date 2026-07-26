@@ -387,20 +387,30 @@ input:focus,textarea:focus{
   .hero-grid{grid-template-columns:1fr;}
   .about-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
+  .card{min-height: auto;}
   .cards{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:1fr}
+  .package-grid{grid-template-columns:1fr;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .review-details{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .container{padding:1.2rem;}
 }
 
 /* Mobile: swap to the smaller background and increase overlay for legibility */
 @media (max-width:768px){
+  .container{padding:1rem;}
+  .site-header{padding:0.8rem 0;}
+  .header-inner{gap:0.8rem;}
   .hero{
-    min-height:60vh;
-    padding:3.5rem 0;
+    min-height:58vh;
+    padding:3rem 0 4rem;
   }
+  .hero-text{margin:0 auto;text-align:center;}
   .hero::before{
     background-image:
       linear-gradient(180deg, rgba(251,249,247,0.94) 0%, rgba(251,249,247,0.85) 35%, rgba(255,255,255,0.0) 100%),
       url('../assets/background-small.webp');
-    background-position: center center;
+    background-position: center top;
     background-size: cover;
     filter: saturate(1) contrast(1);
   }
@@ -412,10 +422,18 @@ input:focus,textarea:focus{
     background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 35%, rgba(255,255,255,0.55) 100%);
     z-index:1;
   }
-  .hero h1{font-size:2.4rem;}
-  .hero p{font-size:1rem;max-width:100%;}
-  .hero-ctas{flex-direction:column;align-items:flex-start;}
-  .hero-ctas a{width:100%;max-width:320px;}
+  .hero h1{font-size:2.35rem;}
+  .hero p{font-size:1rem;max-width:100%;margin-left:auto;margin-right:auto;}
+  .hero-ctas{flex-direction:column;align-items:center;justify-content:center;}
+  .hero-ctas a{width:100%;max-width:100%;}
+  .about-grid, .team-grid, .package-grid, .testimonials-grid, .opening-grid, .route-grid{grid-template-columns:1fr;}
+  .price-card, .package-card, .testimonial-card, .review-widget, .accordion-item{margin:0 0 1.2rem;}
+  .accordion-item summary{padding:1.1rem 1rem;font-size:1.1rem;}
+  .accordion-content{padding:0 1rem 1rem;}
+  .accordion-content .contact-grid{grid-template-columns:1fr;gap:1rem;}
+  .accordion-content .team-grid{grid-template-columns:1fr;gap:1.2rem;}
+  .site-nav a{padding:0.8rem 1rem;}
+  .site-footer{padding:1.2rem 0;}
 }
 
 @media (max-width:680px){
