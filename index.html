@@ -1,1 +1,147 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wie Neu Autoaufbereitung</title>
+  <meta name="description" content="Professionelle Fahrzeugaufbereitung — Lackreinigung, Politur, Innenreinigung und Versiegelung. Wie Neu Autoaufbereitung." />
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <img src="assets/logo.png" alt="Wie Neu Autoaufbereitung Logo" class="logo">
+        <span class="brand-text">Wie Neu<br><strong>Autoaufbereitung</strong></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="siteNav">
+        <ul>
+          <li><a href="#services">Leistungen</a></li>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><a class="btn btn-primary" href="#contact">Termin buchen</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1>Wie Neu Autoaufbereitung</h1>
+          <p>Wir bringen Ihr Fahrzeug wieder in Bestform — professionell, nachhaltig und mit Liebe zum Detail.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#contact">Jetzt Termin anfragen</a>
+            <a class="btn btn-ghost" href="#services">Unsere Leistungen</a>
+          </div>
+        </div>
+        <div class="hero-image" aria-hidden="true">
+          <div class="car-mock"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <h2>Unsere Leistungen</h2>
+        <p class="muted">Von der Innenraumreinigung bis zur Lackaufbereitung — transparent und fair.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Lackpolitur & Versiegelung</h3>
+            <p>Entfernung von Kratzern, Poliervorgänge und dauerhafte Versiegelungen für perfekten Glanz.</p>
+          </article>
+          <article class="card">
+            <h3>Innenraum-Detailing</h3>
+            <p>Tiefenreinigung, Geruchsneutralisierung und schonende Pflege für Leder und Stoff.</p>
+          </article>
+          <article class="card">
+            <h3>Aufbereitung vor Verkauf</h3>
+            <p>Optimale Aufbereitung für bessere Fotos und höheren Wiederverkaufswert.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div>
+          <h2>Über uns</h2>
+          <p>Wir sind ein regionaler Dienstleister mit Fokus auf Qualität und Kundenservice. Unsere Arbeit kombiniert moderne Techniken mit bewährten Produkten, damit Ihr Auto wieder wie neu aussieht — innen und außen.</p>
+          <ul class="checklist">
+            <li>Erfahrene Aufbereiter</li>
+            <li>Schonende Verfahren & umweltbewusste Produkte</li>
+            <li>Transparente Preise</li>
+          </ul>
+        </div>
+        <div class="about-cta">
+          <h3>So einfach geht's</h3>
+          <ol>
+            <li>Termin anfragen</li>
+            <li>Fahrzeugübergabe</li>
+            <li>Fertig — wie neu!</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <h2>Galerie</h2>
+        <p class="muted">Ein kleiner Einblick in unsere Arbeit.</p>
+        <div class="gallery-grid" aria-hidden="true">
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2>Kontakt & Termin</h2>
+          <p class="muted">Schreib uns eine Nachricht oder rufe an — wir melden uns schnellstmöglich.</p>
+          <ul class="contact-info">
+            <li><strong>Telefon:</strong> <a href="tel:+491234567890">0123 4567890</a></li>
+            <li><strong>E-Mail:</strong> <a href="mailto:info@wieneu-auto.de">info@wieneu-auto.de</a></li>
+            <li><strong>Adresse:</strong> Musterstraße 1, 12345 Musterstadt</li>
+          </ul>
+        </div>
+        <form id="contactForm" class="form" novalidate>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Dein Name">
+
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="email" required placeholder="name@beispiel.de">
+
+          <label for="message">Nachricht / Wünsche</label>
+          <textarea id="message" name="message" rows="5" placeholder="Kurz beschreiben, was du möchtest..."></textarea>
+
+          <button type="submit" class="btn btn-primary">Anfrage senden</button>
+          <p id="formMsg" class="form-msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Wie Neu Autoaufbereitung — Alle Rechte vorbehalten.</p>
+      <p class="muted">Folge uns auf: <a href="#">Instagram</a> · <a href="#">Facebook</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
