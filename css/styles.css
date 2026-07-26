@@ -137,13 +137,21 @@ body {
   color: var(--text);
 }
 
-/* About / gallery / contact */
+/* About / prices / contact */
 .checklist{padding-left:1rem}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:1rem}
-.tile{
-  height:120px;border-radius:12px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-  box-shadow: 0 6px 18px rgba(16,18,20,0.04);
+.prices .price-card{
+  margin-top:1rem;
+  padding:1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+  border-radius:18px;
+  box-shadow: 0 10px 30px rgba(16,18,20,0.08);
+}
+.price-image{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:14px;
+  object-fit: cover;
 }
 
 /* form, inputs */
