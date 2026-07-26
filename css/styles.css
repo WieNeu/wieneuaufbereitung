@@ -100,9 +100,9 @@ body {
 
 /* Hero: use the provided background image as hero background, left aligned so car shows */
 .hero{
-  padding: 4rem 0;
+  padding: 5rem 0 6rem;
   position: relative;
-  min-height: 68vh;
+  min-height: 72vh;
   display: flex;
   align-items: center;
   color: var(--text);
@@ -110,11 +110,12 @@ body {
 }
 .hero-grid{
   display:grid;
-  grid-template-columns: 1fr 480px;
+  grid-template-columns: 1fr;
   gap:2rem;
   align-items:center;
   position: relative;
   z-index: 2;
+  justify-items:start;
 }
 
 /* Background layer for hero: image on the right/left depending on composition */
@@ -123,11 +124,11 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(90deg, rgba(251,249,247,0.95) 0%, rgba(251,249,247,0.65) 45%, rgba(255,255,255,0.0) 80%),
-    url('https://raw.githubusercontent.com/gamerolixd-arch/wieneuaufbereitung/main/assets/background.webp');
-  background-position: left center; /* show car on the left */
+    linear-gradient(90deg, rgba(251,249,247,0.92) 0%, rgba(251,249,247,0.70) 50%, rgba(255,255,255,0.0) 100%),
+    url('../assets/background.webp');
+  background-position: left top;
   background-size: cover;
-  filter: saturate(1.01) contrast(1.02);
+  filter: saturate(1.02) contrast(1.04);
   z-index: 1;
 }
 
@@ -136,24 +137,17 @@ body {
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(90deg, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.0) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.6) 35%, rgba(255,255,255,0.4) 100%);
   z-index:1;
 }
 
 /* hero content sits above background */
-.hero-text{position:relative;z-index:2;max-width:640px}
-.hero h1{font-size:2.6rem;margin:0 0 0.6rem;color:var(--text)}
-.hero p{color:var(--muted);margin-bottom:1rem}
-.hero-ctas a{margin-right:0.6rem}
-
-/* If you prefer the image in a separate column (existing layout), keep hero-image but show the real image */
-.hero-image .car-mock{
-  height:320px;border-radius:18px;
-  background-image: url('https://raw.githubusercontent.com/gamerolixd-arch/wieneuaufbereitung/main/assets/background.webp');
-  background-size: cover;
-  background-position: left center;
-  box-shadow: 0 12px 36px rgba(16,18,20,0.12);
-}
+.hero-text{position:relative;z-index:2;max-width:720px;}
+.hero-text .eyebrow{margin:0 0 1rem;font-size:0.95rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(17,18,20,0.65);}
+.hero h1{font-size:clamp(2.8rem, 5vw, 4.2rem);margin:0 0 1rem;color:var(--text);line-height:1.02;}
+.hero p{color:var(--muted);margin-bottom:1.6rem;font-size:1.05rem;line-height:1.8;max-width:43rem;}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:0.9rem;}
+.hero-ctas a{min-width:180px;}
 
 /* Cards and panels — light surfaces */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem}
@@ -399,13 +393,13 @@ input:focus,textarea:focus{
 /* Mobile: swap to the smaller background and increase overlay for legibility */
 @media (max-width:768px){
   .hero{
-    min-height:56vh;
-    padding:3rem 0;
+    min-height:60vh;
+    padding:3.5rem 0;
   }
   .hero::before{
     background-image:
-      linear-gradient(90deg, rgba(251,249,247,0.98) 0%, rgba(251,249,247,0.85) 40%, rgba(255,255,255,0.0) 80%),
-      url('https://raw.githubusercontent.com/gamerolixd-arch/wieneuaufbereitung/main/assets/background-small.webp');
+      linear-gradient(180deg, rgba(251,249,247,0.94) 0%, rgba(251,249,247,0.85) 35%, rgba(255,255,255,0.0) 100%),
+      url('../assets/background-small.webp');
     background-position: center center;
     background-size: cover;
     filter: saturate(1) contrast(1);
@@ -415,11 +409,13 @@ input:focus,textarea:focus{
     content:"";
     position:absolute;
     inset:0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.45) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.72) 35%, rgba(255,255,255,0.55) 100%);
     z-index:1;
   }
-  .hero h1{font-size:1.9rem}
-  .hero p{font-size:0.98rem}
+  .hero h1{font-size:2.4rem;}
+  .hero p{font-size:1rem;max-width:100%;}
+  .hero-ctas{flex-direction:column;align-items:flex-start;}
+  .hero-ctas a{width:100%;max-width:320px;}
 }
 
 @media (max-width:680px){
