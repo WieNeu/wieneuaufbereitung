@@ -1,63 +1,168 @@
-/* Modern, responsive styles for Wie Neu Autoaufbereitung */
+/* Anpassung: helles, elegantes Theme passend zum Hintergrundbild */
 :root{
-  --bg:#0f1724;
-  --card:#0b1220;
-  --muted:#94a3b8;
-  --accent:#e11d48;
-  --accent-2:#06b6d4;
-  --surface:#0b1220;
-  --text:#e6eef8;
-  --radius:12px;
+  --bg: #fbf9f7;            /* Seitenhintergrund (Farbton passend zum Bild) */
+  --surface: #ffffff;       /* Karten / Panels */
+  --muted: #6b6b6b;         /* sekundärer Text */
+  --accent: #b88627;        /* Goldton primär */
+  --accent-2: #f0c36d;      /* Goldhell-Accent */
+  --text: #111214;          /* Haupttext dunkel für guten Kontrast */
+  --radius: 12px;
+  --glass: rgba(255,255,255,0.7);
 }
+
+/* Reset / Base */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
   font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  background:linear-gradient(180deg,#071023 0%, #0b1220 100%);
-  background-image: 
-    linear-gradient(180deg, rgba(7,16,35,0.85) 0%, rgba(11,18,32,0.85) 100%),
-    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color:var(--text);
+  /* Use the project image; place it at assets/background.jpg (see note) */
+  background-color: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
+
+/* If you want the full-viewport background on body, uncomment this block and ensure file exists:
+body {
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.35) 60%),
+    url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+*/
+
+/* Header */
 .container{max-width:1100px;padding:2rem;margin:0 auto}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .brand{display:flex;align-items:center;gap:0.8rem;text-decoration:none;color:var(--text)}
-.logo{width:90px;height:90px;object-fit:contain;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:8px}
+.logo{
+  width:90px;height:90px;object-fit:contain;border-radius:12px;
+  /* transparent background so logo sits on top of hero; add a subtle gold border */
+  background:transparent;padding:6px;
+  border:2px solid rgba(184,134,39,0.14); /* soft gold outline */
+  box-shadow: 0 6px 18px rgba(16,18,20,0.06);
+}
 .brand-text{font-weight:600;line-height:1}
-.site-header{position:sticky;top:0;background:rgba(6,10,19,0.6);backdrop-filter:blur(6px);z-index:40;border-bottom:1px solid rgba(255,255,255,0.03)}
+.site-header{
+  position:sticky;top:0;
+  background: rgba(255,255,255,0.7);   /* light glass header */
+  color:var(--text);
+  backdrop-filter: blur(6px);
+  z-index:40;
+  border-bottom: 1px solid rgba(16,18,20,0.06);
+}
+
+/* Navigation buttons */
 .nav-toggle{display:none;background:none;border:0;padding:6px;color:var(--text)}
 .site-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
 .site-nav a{color:var(--text);text-decoration:none;padding:0.4rem 0.6rem;border-radius:8px}
 .btn{display:inline-block;padding:0.6rem 1rem;border-radius:10px;text-decoration:none;font-weight:600}
-.btn-primary{background:linear-gradient(90deg,var(--accent),#ff6b6b);color:white}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
-.hero{padding:4rem 0}
-.hero-grid{display:grid;grid-template-columns:1fr 480px;gap:2rem;align-items:center}
-.hero h1{font-size:2.4rem;margin:0 0 0.5rem}
-.muted{color:var(--muted)}
-.hero-image .car-mock{height:260px;border-radius:18px;background:linear-gradient(180deg,#071c2b,#0b1220);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
-.services{padding:3rem 0}
+.btn-primary{
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #111;
+  box-shadow: 0 8px 20px rgba(176,131,40,0.12);
+}
+.btn-ghost{
+  background: transparent;
+  border: 1px solid rgba(16,18,20,0.06);
+  color: var(--text);
+}
+
+/* Hero: use the provided background image as hero background, left aligned so car shows */
+.hero{
+  padding: 4rem 0;
+  position: relative;
+  min-height: 68vh;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  overflow: hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1fr 480px;
+  gap:2rem;
+  align-items:center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Background layer for hero: image on the right/left depending on composition */
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(251,249,247,0.95) 0%, rgba(251,249,247,0.65) 45%, rgba(255,255,255,0.0) 80%),
+    url('/assets/background.jpg'); /* put the uploaded image here */
+  background-position: left center; /* show car on the left */
+  background-size: cover;
+  filter: saturate(1.01) contrast(1.02);
+  z-index: 1;
+}
+
+/* subtle overlay to ensure text contrast when image area is bright */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.0) 100%);
+  z-index:1;
+}
+
+/* hero content sits above background */
+.hero-text{position:relative;z-index:2;max-width:640px}
+.hero h1{font-size:2.6rem;margin:0 0 0.6rem;color:var(--text)}
+.hero p{color:var(--muted);margin-bottom:1rem}
+.hero-ctas a{margin-right:0.6rem}
+
+/* If you prefer the image in a separate column (existing layout), keep hero-image but show the real image */
+.hero-image .car-mock{
+  height:320px;border-radius:18px;
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: left center;
+  box-shadow: 0 12px 36px rgba(16,18,20,0.12);
+}
+
+/* Cards and panels — light surfaces */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:1.2rem;border-radius:14px}
-.about{padding:3rem 0}
-.about-grid{display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:start}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+  padding:1.2rem;border-radius:14px;
+  box-shadow: 0 8px 30px rgba(16,18,20,0.06);
+  color: var(--text);
+}
+
+/* About / gallery / contact */
 .checklist{padding-left:1rem}
-.gallery{padding:3rem 0}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:1rem}
-.tile{height:120px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:inset 0 0 30px rgba(0,0,0,0.3)}
-.contact{padding:3rem 0}
-.contact-grid{display:grid;grid-template-columns:1fr 420px;gap:2rem}
+.tile{
+  height:120px;border-radius:12px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+  box-shadow: 0 6px 18px rgba(16,18,20,0.04);
+}
+
+/* form, inputs */
 .form{display:flex;flex-direction:column;gap:0.6rem}
-input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:0.8rem;border-radius:10px}
-input:focus,textarea:focus{outline:none;box-shadow:0 0 0 4px rgba(225,29,72,0.08);border-color:rgba(225,29,72,0.9)}
-.form-msg{margin-top:0.6rem;color:var(--accent)}
-.site-footer{border-top:1px solid rgba(255,255,255,0.03);padding:1.6rem 0;margin-top:2rem}
+input,textarea{
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(16,18,20,0.06);
+  color: var(--text);
+  padding:0.8rem;border-radius:10px;
+}
+input:focus,textarea:focus{
+  outline:none;box-shadow:0 0 0 4px rgba(184,134,39,0.08);border-color:rgba(184,134,39,0.9)
+}
+
+/* footer */
+.site-footer{
+  border-top:1px solid rgba(16,18,20,0.04);
+  padding:1.6rem 0;margin-top:2rem;background:transparent;color:var(--muted)
+}
 .footer-inner{display:flex;justify-content:space-between;align-items:center}
 
 /* Responsive */
@@ -69,9 +174,10 @@ input:focus,textarea:focus{outline:none;box-shadow:0 0 0 4px rgba(225,29,72,0.08
 }
 @media (max-width:680px){
   .nav-toggle{display:block}
-  .site-nav{position:fixed;right:12px;top:70px;background:linear-gradient(180deg,#07101a,#07101f);padding:1rem;border-radius:12px;display:none}
+  .site-nav{position:fixed;right:12px;top:70px;background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.9));padding:1rem;border-radius:12px;display:none}
   .site-nav.open{display:block}
   .site-nav ul{flex-direction:column}
   .cards{grid-template-columns:1fr}
   .logo{width:72px;height:72px}
+  .hero::before{background-position: center center}
 }
