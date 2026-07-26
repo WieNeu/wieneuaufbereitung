@@ -111,12 +111,9 @@ document.addEventListener('DOMContentLoaded',function(){
     form.querySelector('button[type="submit"]').disabled = true;
     formMsg.textContent = 'Leite dich zu WhatsApp weiter...';
     
-    // Nach kurzer Verzögerung zu WhatsApp öffnen
-    setTimeout(()=>{
-      window.open(whatsappUrl, '_blank');
-      formMsg.textContent = 'WhatsApp wurde geöffnet. Bitte bestätige deine Anfrage!';
-      form.reset();
-      form.querySelector('button[type="submit"]').disabled = false;
-    }, 500);
+    // Direkt zu WhatsApp weiterleiten
+    window.location.href = whatsappUrl;
+    form.reset();
+    form.querySelector('button[type="submit"]').disabled = false;
   });
 });
