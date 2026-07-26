@@ -11,13 +11,25 @@ document.addEventListener('DOMContentLoaded',function(){
     navToggle.classList.toggle('open');
   });
 
-  // smooth scroll for anchor links
+  const accordionItems = document.querySelectorAll('.accordion-item');
+
+  // smooth scroll for anchor links and open the related accordion section
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',function(e){
       const href = this.getAttribute('href');
       if(href.length>1){
         e.preventDefault();
-        document.querySelector(href).scrollIntoView({behavior:'smooth'});
+        const targetSection = document.querySelector(href);
+        if(targetSection){
+          const detail = targetSection.querySelector('details');
+          if(detail){
+            detail.open = true;
+            accordionItems.forEach(other => {
+              if(other !== detail) other.open = false;
+            });
+          }
+          targetSection.scrollIntoView({behavior:'smooth'});
+        }
         if(siteNav.classList.contains('open')) siteNav.classList.remove('open');
       }
     })
@@ -48,6 +60,28 @@ document.addEventListener('DOMContentLoaded',function(){
   window.addEventListener('scroll', setActiveLink);
   setActiveLink();
 
+  // ensure only one legal section is opened at a time
+  const legalDetails = document.querySelectorAll('.legal-card');
+  legalDetails.forEach(detail => {
+    detail.addEventListener('toggle', () => {
+      if (!detail.open) return;
+      legalDetails.forEach(other => {
+        if (other !== detail) other.open = false;
+      });
+    });
+  });
+
+  // accordion behaviour: only one main section open at a time
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  accordionItems.forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (!item.open) return;
+      accordionItems.forEach(other => {
+        if (other !== item) other.open = false;
+      });
+    });
+  });
+
   // contact form - WhatsApp integration
   const form = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
@@ -63,8 +97,11 @@ document.addEventListener('DOMContentLoaded',function(){
       return;
     }
     
+    const selectedPackage = form.package ? form.package.value : 'Kein Paket ausgewählt';
+    const selectedAddons = Array.from(form.querySelectorAll('input[name="addons"]:checked')).map(input => input.value);
+    
     // WhatsApp Nachricht zusammenstellen
-    const whatsappMessage = `Hallo, mein Name ist ${name}.\nE-Mail: ${email}\n\nNachricht:\n${message || 'Ich möchte einen Termin anfragen.'}`;
+    const whatsappMessage = `Hallo, mein Name ist ${name}.\nE-Mail: ${email}\n\nGewünschtes Paket: ${selectedPackage}\nZusatzleistungen: ${selectedAddons.length ? selectedAddons.join(', ') : 'Keine'}\n\nNachricht:\n${message || 'Ich möchte einen Termin anfragen.'}`;
     
     // WhatsApp URL mit kodierter Nachricht
     const whatsappPhone = '4939344993858'; // deine Nummer ohne + oder 0
