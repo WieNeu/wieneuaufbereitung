@@ -992,16 +992,17 @@ img { max-width: 100%; display: block; }
   background: white;
   padding: 2rem;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
+  border: 1px solid #e0e0e0;
   line-height: 1.8;
+  color: #333333;
 }
 
 .legal-content h2 {
   font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: var(--ink);
-  border-bottom: 2px solid var(--border);
+  color: #1a1a1a;
+  border-bottom: 2px solid #e0e0e0;
   padding-bottom: 0.5rem;
 }
 
@@ -1009,12 +1010,12 @@ img { max-width: 100%; display: block; }
   font-size: 1.1rem;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  color: var(--primary);
+  color: #b8860b;
 }
 
 .legal-content p {
   margin-bottom: 1rem;
-  color: var(--text);
+  color: #333333;
 }
 
 .legal-content ul {
@@ -1024,7 +1025,7 @@ img { max-width: 100%; display: block; }
 
 .legal-content li {
   margin-bottom: 0.5rem;
-  color: var(--text-secondary);
+  color: #444444;
 }
 
 .legal-content a {
