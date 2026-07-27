@@ -1142,7 +1142,7 @@ img { max-width: 100%; display: block; }
 }
 
 .modal-close:hover {
-  color: var(--ink);
+  color: #000000;
 }
 
 /* Booking Form */
@@ -1175,7 +1175,7 @@ img { max-width: 100%; display: block; }
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  border: 2px solid var(--border);
+  border: 2px solid #d0d0d0;
   border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1191,7 +1191,7 @@ img { max-width: 100%; display: block; }
 
 .package-option:hover {
   border-color: var(--primary);
-  background: var(--bg-light);
+  background: #f9f5e7;
 }
 
 .package-option input[type="radio"]:checked + .option-label {
@@ -1324,7 +1324,7 @@ img { max-width: 100%; display: block; }
 }
 
 .option-label strong {
-  color: var(--ink);
+  color: #1a1a1a;
 }
 
 .option-label small {
@@ -1343,7 +1343,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  border: 1px solid var(--border);
+  border: 1px solid #d0d0d0;
   border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -1357,7 +1357,7 @@ img { max-width: 100%; display: block; }
 }
 
 .extra-option:hover {
-  background: var(--bg-light);
+  background: #f9f5e7;
   border-color: var(--primary);
 }
 
@@ -1368,7 +1368,7 @@ img { max-width: 100%; display: block; }
 
 .extra-option span {
   flex: 1;
-  color: var(--text);
+  color: #1a1a1a;
 }
 
 .extra-price {
@@ -1378,17 +1378,18 @@ img { max-width: 100%; display: block; }
 }
 
 .booking-summary {
-  background: var(--bg-light);
+  background: #f5f5f5;
   padding: 1.5rem;
   border-radius: var(--radius);
-  border: 2px solid var(--border);
+  border: 2px solid #d0d0d0;
 }
 
 .summary-row {
   display: flex;
   justify-content: space-between;
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #d0d0d0;
+  color: #333333;
 }
 
 .summary-row.discount {
