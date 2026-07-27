@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayReviews() {
       const reviews = loadReviews();
       
-      // Entferne alte dynamische Rezensionen (nicht die originalen 3)
+      // Entferne alte dynamische Rezensionen
       const dynamicCards = testimonialsGrid.querySelectorAll('.testimonial-card.user-review');
       dynamicCards.forEach(card => card.remove());
 
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <p class="review-date" style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.5rem;">Gerade eben</p>
         `;
         
-        testimonialsGrid.insertBefore(card, testimonialsGrid.firstChild.nextSibling.nextSibling.nextSibling);
+        testimonialsGrid.appendChild(card);
       });
     }
 
