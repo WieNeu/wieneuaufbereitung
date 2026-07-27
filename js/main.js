@@ -259,43 +259,49 @@ function initializeApp() {
     });
   });
 
-  /* ---------- Review System with Supabase REST API + Formspree ---------- */
-  const SUPABASE_URL = 'https://xdxfkoisqpankztirxcm.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_EACDElsN_V4zhr4GiMANOg_n1AvbObo';
+  /* ---------- Review System with Firebase Realtime DB + localStorage ---------- */
+  // Firebase: Kostenlos, öffentlich, persistente Speicherung auf Google-Servern
+  const FIREBASE_URL = 'https://wie-neu-reviews.firebaseio.com';
   
   const reviewForm = document.getElementById('reviewForm');
   const testimonialsGrid = document.getElementById('testimonials-grid');
 
   if (reviewForm && testimonialsGrid) {
-    // Lade Rezensionen von Supabase via REST API
+    // Lade Rezensionen von Firebase (öffentlich) oder localStorage
     async function loadReviews() {
       try {
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews?order=created_at.desc&limit=100`, {
+        const response = await fetch(`${FIREBASE_URL}/reviews.json`, {
           headers: {
-            'apikey': SUPABASE_ANON_KEY,
             'Accept': 'application/json'
           }
         });
         
         if (response.ok) {
           const data = await response.json();
-          console.log('✓ Rezensionen von Supabase geladen:', data.length);
-          if (data.length > 0) {
-            return data.map(r => ({
-              name: r.name,
-              email: r.email,
-              rating: r.rating,
-              text: r.text,
-              date: new Date(r.created_at).toLocaleDateString('de-DE'),
-              id: r.id
-            }));
+          if (data && typeof data === 'object') {
+            const reviews = Object.values(data).sort((a, b) => 
+              new Date(b.created_at) - new Date(a.created_at)
+            );
+            console.log('✓ Rezensionen von Firebase geladen:', reviews.length);
+            if (reviews.length > 0) {
+              return reviews.map(r => ({
+                name: r.name,
+                email: r.email,
+                rating: r.rating,
+                text: r.text,
+                date: typeof r.created_at === 'number' ? 
+                  new Date(r.created_at).toLocaleDateString('de-DE') : 
+                  r.created_at,
+                id: r.id
+              }));
+            }
           }
         }
       } catch (e) {
-        console.log('Supabase API Fehler:', e);
+        console.log('Firebase API Fehler:', e.message);
       }
       
-      // Fallback zu localStorage (immer, wenn Supabase leer oder fehlgeschlagen)
+      // Fallback zu localStorage
       console.log('→ Verwende localStorage als Fallback');
       const localReviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
       return localReviews.map(r => ({
@@ -347,34 +353,34 @@ function initializeApp() {
 
       let success = false;
 
-      // 1. Versuche zu Supabase via REST API zu speichern
+      // 1. Versuche zu Firebase zu speichern
       try {
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
-          method: 'POST',
+        const reviewId = 'review-' + Date.now();
+        const response = await fetch(`${FIREBASE_URL}/reviews/${reviewId}.json`, {
+          method: 'PUT',
           headers: {
-            'apikey': SUPABASE_ANON_KEY,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
           body: JSON.stringify({
+            id: reviewId,
             name: name,
             email: email,
             rating: rating,
-            text: text
+            text: text,
+            created_at: new Date().toISOString()
           })
         });
         
         if (response.ok) {
           success = true;
-          console.log('✓ Review zu Supabase gespeichert');
+          console.log('✓ Review zu Firebase gespeichert');
         } else {
-          const error = await response.json();
-          console.log('Supabase API Error:', error);
-          // Fallback zu localStorage
-          throw new Error('Supabase nicht bereit');
+          console.log('Firebase Error:', response.status);
+          throw new Error('Firebase nicht bereit');
         }
       } catch (e) {
-        console.log('Supabase speichern fehlgeschlagen, nutze localStorage:', e.message);
+        console.log('Firebase speichern fehlgeschlagen, nutze localStorage:', e.message);
         // Fallback zu localStorage
         let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
         reviews.push({
@@ -388,7 +394,7 @@ function initializeApp() {
         success = true;
       }
 
-      // 2. Sende zu Formspree (für Email)
+      // 2. Sende zu Formspree (für Email-Benachrichtigung)
       const formspreeData = new FormData();
       formspreeData.append('name', name);
       formspreeData.append('email', email);
