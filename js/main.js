@@ -207,10 +207,10 @@ function initializeApp() {
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
       // Fallback: Alert mit Info
-      alert('Vielen Dank für deine Buchungsanfrage!\n\nDeine Anfrage:\n' + message + '\n\nWir melden uns in Kürze bei dir!');
+      alert('Vielen Dank für deine Buchungsanfrage! Wir öffnen WhatsApp, damit wir deinen Termin bestätigen können.');
 
-      // Optional: WhatsApp öffnen
-      // window.open(whatsappUrl, '_blank');
+      // WhatsApp öffnen
+      window.open(whatsappUrl, '_blank');
 
       // Form zurücksetzen
       bookingForm.reset();
