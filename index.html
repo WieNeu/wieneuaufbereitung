@@ -1,367 +1,636 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wie Neu Autoaufbereitung</title>
-  <meta name="description" content="Professionelle Fahrzeugaufbereitung — Lackreinigung, Politur, Innenreinigung und Versiegelung. Wie Neu Autoaufbereitung." />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=202607272003">
+  <title>Wie Neu Autoaufbereitung – Professionelle Fahrzeugaufbereitung</title>
+  <meta name="description" content="Professionelle Fahrzeugaufbereitung mit modernen Techniken. Lackschutz, Detailing, Innenreinigung. Jetzt unverbindlich anfragen." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=202607280002">
 </head>
 <body>
-  <div class="top-banner">
-    <div class="container top-banner-inner">
-      <p>Neukunden-Rabatt: 20% auf dein erstes Paket — jetzt Termin anfragen und sparen!</p>
-      <a class="btn btn-ghost btn-small" href="#contact">Rabatt sichern</a>
-    </div>
-  </div>
-  <header class="site-header">
+  <header class="site-header" id="header">
     <div class="container header-inner">
-      <a class="brand" href="#home">
-        <img src="assets/logo.png" alt="Wie Neu Autoaufbereitung Logo" class="logo">
-        <span class="brand-text">Wie Neu<br><strong>Autoaufbereitung</strong></span>
+      <a class="brand" href="#">
+        <img src="assets/logo.png" alt="Wie Neu Autoaufbereitung" class="logo">
+        <span class="brand-text">WIE NEU AUTOAUFBEREITUNG</span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menü">☰</button>
       <nav class="site-nav" id="siteNav">
         <ul>
-          <li><a href="#services">Leistungen</a></li>
-          <li><a href="#about">Über uns</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a class="nav-prices" href="#pakete">Pakete</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-          <li><a class="btn btn-primary" href="#contact">Termin buchen</a></li>
+          <li><a href="#services">LEISTUNGEN</a></li>
+          <li><a href="#team">ÜBER UNS</a></li>
+          <li><a href="#packages">PAKETE </a></li>
+          <li><button class="btn btn-primary" data-modal="bookingModal" style="border: none; padding: 0.7rem 1.5rem;">TERMIN BUCHEN</button></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <p class="eyebrow">Premium-Aufbereitung mit Stil</p>
-          <h1>Wie Neu Autoaufbereitung</h1>
-          <p>Professionelle Fahrzeugpflege für perfekten Glanz — innen, außen und bis ins Detail.</p>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-background"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">✨ PROFESSIONELLE FAHRZEUGAUFBEREITUNG</div>
+          <h1 class="hero-title">PERFEKTION<br>BIS INS DETAIL</h1>
+          <p class="hero-subtitle">Wir bringen Ihr Fahrzeug zum Strahlen – innen wie außen. Mit Leidenschaft, hochwertigen Produkten und höchster Sorgfalt.</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#contact">Jetzt Termin anfragen</a>
-            <a class="btn btn-ghost" href="#pakete">Pakete ansehen</a>
+            <button class="btn btn-primary btn-large" data-modal="bookingModal">UNSERE LEISTUNGEN</button>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-item">⭐ <strong>Premium Qualität</strong></div>
+            <div class="trust-item">✓ <strong>Hobby zum Beruf</strong></div>
+            <div class="trust-item">💎 <strong>Premium Produkte</strong></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="services accordion-section" id="services">
-      <details class="accordion-item" open>
-        <summary>Unsere Leistungen</summary>
-        <div class="accordion-content">
-          <div class="container">
-            <p class="muted">Von der Innenraumreinigung bis zur Lackaufbereitung — transparent und fair.</p>
-            <div class="cards">
-              <article class="card">
-                <h3>Lackpolitur & Versiegelung</h3>
-                <p>Entfernung von Kratzern, Poliervorgänge und dauerhafte Versiegelungen für perfekten Glanz.</p>
-              </article>
-              <article class="card">
-                <h3>Innenraum-Detailing</h3>
-                <p>Tiefenreinigung, Geruchsneutralisierung und schonende Pflege für Leder und Stoff.</p>
-              </article>
-              <article class="card">
-                <h3>Aufbereitung vor Verkauf</h3>
-                <p>Optimale Aufbereitung für bessere Fotos und höheren Wiederverkaufswert.</p>
-              </article>
+    <!-- WHY US SECTION -->
+    <section class="why-section" id="why">
+      <div class="container">
+        <div class="section-header">
+          <h2>Warum Wie Neu Autoaufbereitung?</h2>
+          <p>Premium-Fahrzeugaufbereitung mit Leidenschaft und Handwerkskunst.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Professionelle Expertise</h3>
+            <p>Moderne Techniken und Premium-Produkte für optimale Ergebnisse. Jedes Auto erhält die volle Aufmerksamkeit.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Schnell & Zuverlässig</h3>
+            <p>Effiziente Arbeitsabläufe. Du bekommst dein Auto rechtzeitig zurück — makellos vorbereitet.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Faire Preise</h3>
+            <p>Transparente Kalkulation ohne versteckte Kosten. Premium-Qualität zu angemessenen Preisen.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Langzeitschutz</h3>
+            <p>Hochwertige Versiegelungen schützen dein Auto langfristig vor Verschmutzung und UV-Strahlung.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✨</div>
+            <h3>Perfektes Ergebnis</h3>
+            <p>Wir arbeiten gewissenhaft. Sichtbar glänzend, innen und außen — garantiert!</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3>Persönlicher Service</h3>
+            <p>Du sprichst mit unserem Team direkt. Individuelle Beratung und persönlicher Ansprechpartner.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section" id="team">
+      <div class="container">
+        <div class="section-header">
+          <h2>Unser Team</h2>
+          <p>Lerne die Profis hinter Wie Neu kennen. Mit Leidenschaft für dein Auto.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-image">
+              <img src="assets/Benni.webp" alt="Benjamin Weber">
+            </div>
+            <h3>Benjamin Weber</h3>
+            <p class="team-role">Inhaber & Gründer</p>
+            <p class="team-bio">Mit über jahrelanger Erfahrung in der Fahrzeugaufbereitung gründete Benjamin "Wie Neu" mit der Vision, Premium-Service zu fairen Preisen anzubieten. Seine Leidenschaft für perfekte Ergebnisse ist in jedem Projekt spürbar.</p>
+            <div class="team-contact">
+              <a href="tel:+4939344993858">+49 39344 993858</a>
+              <a href="mailto:benniweber2003@gmail.com">Email</a>
             </div>
           </div>
         </div>
-      </details>
+      </div>
     </section>
 
-    <section class="about accordion-section" id="about">
-      <details class="accordion-item">
-        <summary>Über uns</summary>
-        <div class="accordion-content">
-          <div class="container about-grid">
-            <div>
-              <p>Wir sind ein regionaler Dienstleister mit Fokus auf Qualität und Kundenservice. Unsere Arbeit kombiniert moderne Techniken mit bewährten Produkten, damit Ihr Auto wieder wie neu aussieht — innen und außen.</p>
-              <ul class="checklist">
-                <li>Erfahrene Aufbereiter</li>
-                <li>Schonende Verfahren & umweltbewusste Produkte</li>
-                <li>Transparente Preise</li>
-              </ul>
+    <!-- SERVICES SECTION -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Unsere Leistungen</h2>
+          <p>Komplette Fahrzeugaufbereitung für innen und außen.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-header">
+              <h3>Außenaufbereitung</h3>
+              <div class="service-icon">🚗</div>
             </div>
-            <div class="about-cta">
-              <h3>So einfach geht's</h3>
-              <ol>
-                <li>Termin anfragen</li>
-                <li>Fahrzeugübergabe</li>
-                <li>Fertig — wie neu!</li>
-              </ol>
+            <ul class="service-list">
+              <li>Tiefenreinigung & Vorwäsche</li>
+              <li>Lackaufbereitung & Politur</li>
+              <li>Kratzer- & Swirl-Mark Entfernung</li>
+              <li>Nano-Versiegelung</li>
+              <li>Reifen- & Felgenaufbereitung</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="service-header">
+              <h3>Innenreinigung</h3>
+              <div class="service-icon">🧼</div>
             </div>
+            <ul class="service-list">
+              <li>Tiefenreinigung Innenraum</li>
+              <li>Leder- & Kunstlederpflege</li>
+              <li>Textilreinigung & Imprägnierung</li>
+              <li>Geruchsneutralisierung</li>
+              <li>Detailing Fenster & Chrom</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="service-header">
+              <h3>Spezial-Aufbereitung</h3>
+              <div class="service-icon">⭐</div>
+            </div>
+            <ul class="service-list">
+              <li>Verkaufsaufbereitung</li>
+              <li>Ozonbehandlung</li>
+              <li>Motorraum-Detailing</li>
+              <li>Keramikversiegelung</li>
+              
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section class="packages-section" id="packages">
+      <div class="container">
+        <div class="section-header">
+          <h2>Transparente Pakete</h2>
+          <p>Wähle das Paket, das zu deinen Bedürfnissen passt. Alle Pakete können mit Zusatzleistungen erweitert werden.</p>
+        </div>
+        <div class="packages-grid">
+          <div class="package-card" data-package="fresh" data-price="39.20">
+            <div class="package-label">🌿 Einstieg</div>
+            <h3>Frisch gemacht</h3>
+            <div class="package-price">
+              <div class="price-original">vorher 49€</div>
+              <span class="price">39,20€</span>
+              <span class="duration">mit 20% Neukundenrabatt</span>
+            </div>
+            <ul class="package-features">
+              <li>✓ Handwäsche</li>
+              <li>✓ Felgenreinigung</li>
+              <li>✓ Scheiben behandeln</li>
+              <li>✓ Türfaben reinigen</li>
+              <li>✓ Felgenpflege</li>
+            </ul>
+            <button class="btn btn-outline" data-modal="bookingModal" data-select-package="fresh">Buchen</button>
+          </div>
+          <div class="package-card" data-package="care" data-price="87.20">
+            <div class="package-label">⭐ Beliebt</div>
+            <h3>Wieder gepflegt</h3>
+            <div class="package-price">
+              <div class="price-original">vorher 109€</div>
+              <span class="price">87,20€</span>
+              <span class="duration">mit 20% Neukundenrabatt</span>
+            </div>
+            <ul class="package-features">
+              <li>✓ Alle Leistungen aus Frisch gemacht</li>
+              <li>✓ Innenraum gründlich saugen</li>
+              <li>✓ Armatur- & Kunststoffpflege</li>
+              <li>✓ Sitze innen & außen reinigen</li>
+              <li>✓ Kofferraum aussaugen</li>
+              <li>✓ Duftfinish</li>
+            </ul>
+            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="care">Jetzt buchen</button>
+          </div>
+          <div class="package-card featured" data-package="wikeneu" data-price="151.20">
+            <div class="package-label">💎 Premium</div>
+            <h3>Wie Neu</h3>
+            <div class="package-price">
+              <div class="price-original">vorher 189€</div>
+              <span class="price">151,20€</span>
+              <span class="duration">mit 20% Neukundenrabatt</span>
+            </div>
+            <ul class="package-features">
+              <li>✓ Alle Leistungen aus Wieder gepflegt</li>
+              <li>✓ Lackversiegelung</li>
+              <li>✓ 1-stufige Maschinenpoltur</li>
+              <li>✓ Hochglanz-Politur</li>
+              <li>✓ Tiefenreinigung der Sitze & Teppiche</li>
+              <li>✓ Lederpflege (falls vorhanden)</li>
+              <li>✓ Motorraumpflege</li>
+            </ul>
+            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="wikeneu">Jetzt buchen</button>
+          </div>
+          <div class="package-card" data-package="showroom" data-price="239.20">
+            <div class="package-label">👑 Top</div>
+            <h3>Showroom Edition</h3>
+            <div class="package-price">
+              <div class="price-original">vorher 299€</div>
+              <span class="price">239,20€</span>
+              <span class="duration">mit 20% Neukundenrabatt</span>
+            </div>
+            <ul class="package-features">
+              <li>✓ Komplette Innen- & Außenaufbereitung</li>
+              <li>✓ Mehrschichtige Lackversiegelung</li>
+              <li>✓ Hochglanzpolitur</li>
+              <li>✓ Premiumversiegelung</li>
+              <li>✓ Tiefenreinigung aller Sitze</li>
+              <li>✓ Motorraumpflege</li>
+              <li>✓ Ozonbehandlung</li>
+              <li>✓ Exklusives Finish</li>
+            </ul>
+            <button class="btn btn-outline" data-modal="bookingModal" data-select-package="showroom">Buchen</button>
           </div>
         </div>
-      </details>
-    </section>
 
-    <section class="team accordion-section" id="team">
-      <details class="accordion-item">
-        <summary>Team</summary>
-        <div class="accordion-content">
-          <div class="container team-grid">
-            <div class="team-image-wrapper">
-              <img src="assets/Benni.webp" alt="Benjamin Weber" class="team-image">
-            </div>
-            <div class="team-details">
-              <p class="muted">Lerne den Inhaber kennen, der dein Auto wie neu aussehen lässt.</p>
-              <p><strong>Benjamin Weber</strong> ist der Gründer und Inhaber. Mit Leidenschaft für Fahrzeuge und jahrelanger Hingabe an der Aufbereitung sorgt er dafür, dass jedes Fahrzeug wieder glänzt — innen wie außen.</p>
-              <p>Benjamin legt Wert auf präzise Arbeit, transparente Beratung und nachhaltige Pflege.</p>
-            </div>
+        <!-- ADDITIONAL SERVICES -->
+        <div class="additional-services">
+          <h3>Zusatzleistungen</h3>
+          <p class="additional-services-note">Diese Leistungen können zu jedem Paket hinzugefügt werden:</p>
+          <div class="services-table-wrapper">
+            <table class="services-table">
+              <thead>
+                <tr>
+                  <th>Zusatzleistung</th>
+                  <th>Preis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tierhaarentfernung</td>
+                  <td>ab 30€</td>
+                </tr>
+                <tr>
+                  <td>Ozonbehandlung</td>
+                  <td>ab 60€</td>
+                </tr>
+                <tr>
+                  <td>Motorraumpflege</td>
+                  <td>ab 30€</td>
+                </tr>
+                <tr>
+                  <td>Scheibenversiegelung</td>
+                  <td>ab 30€</td>
+                </tr>
+                <tr>
+                  <td>Felgenversiegelung</td>
+                  <td>ab 50€</td>
+                </tr>
+                <tr>
+                  <td>Insekten- & Baumharzentfernung</td>
+                  <td>ab 20€</td>
+                </tr>
+                <tr>
+                  <td>Keramikversiegelung</td>
+                  <td>ab 199€</td>
+                </tr>
+                <tr>
+                  <td>Lederreinigung & Lederpflege</td>
+                  <td>ab 50€</td>
+                </tr>
+                <tr>
+                  <td>Kunststoff-Außenpflege</td>
+                  <td>ab 30€</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </details>
+      </div>
     </section>
 
-    <section class="packages accordion-section" id="pakete">
-      <details class="accordion-item">
-        <summary>Preise & Pakete</summary>
-        <div class="accordion-content">
-          <div class="container package-grid">
-            <article class="package-card">
-              <h3>Frisch gemacht</h3>
-              <p class="price">Jetzt 39,20 € <span class="before-price">(statt 49 €)</span></p>
-              <ul>
-                <li>Handwäsche</li>
-                <li>Felgenreinigung</li>
-                <li>Scheiben außen reinigen</li>
-                <li>Türfalzen reinigen</li>
-                <li>Reifenpflege</li>
-              </ul>
-            </article>
-            <article class="package-card">
-              <h3>Wieder gepflegt</h3>
-              <p class="price">Jetzt 87,20 € <span class="before-price">(statt 109 €)</span></p>
-              <p class="package-note">Alle Leistungen aus „Frisch gemacht“ plus:</p>
-              <ul>
-                <li>Innenraum gründlich saugen</li>
-                <li>Armaturen- & Kunststoffpflege</li>
-                <li>Scheiben innen & außen reinigen</li>
-                <li>Kofferraum aussaugen</li>
-                <li>Duftfinish</li>
-              </ul>
-            </article>
-            <article class="package-card">
-              <h3>Wie Neu</h3>
-              <p class="price">Jetzt 151,20 € <span class="before-price">(statt 189 €)</span></p>
-              <p class="package-note">Alle Leistungen aus „Wieder gepflegt“ plus:</p>
-              <ul>
-                <li>Lackreinigung</li>
-                <li>1-stufige Maschinenpolitur</li>
-                <li>Hochglanz-Lackversiegelung</li>
-                <li>Tiefenreinigung der Sitze & Teppiche</li>
-                <li>Lederpflege (falls vorhanden)</li>
-                <li>Motorraumpflege</li>
-              </ul>
-            </article>
-            <article class="package-card">
-              <h3>Showroom Edition</h3>
-              <p class="price">Jetzt 239,20 € <span class="before-price">(statt 299 €)</span></p>
-              <p class="package-note">Komplette Innen- & Außenaufbereitung plus:</p>
-              <ul>
-                <li>Mehrstufige Lackkorrektur</li>
-                <li>Hochglanzpolitur</li>
-                <li>Premiumversiegelung</li>
-                <li>Tiefenreinigung aller Sitze</li>
-                <li>Motorraumpflege</li>
-                <li>Ozonbehandlung</li>
-                <li>Exklusives Finish</li>
-              </ul>
-            </article>
-          </div>
-          <div class="extras">
-            <h3>Zusatzleistungen</h3>
-            <div class="extras-table-wrapper">
-              <table class="extras-table">
-                <thead>
-                  <tr><th>Leistung</th><th>Preis</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Tierhaarentfernung</td><td>ab 30 €</td></tr>
-                  <tr><td>Ozonbehandlung</td><td>ab 60 €</td></tr>
-                  <tr><td>Motorwäsche & Motorraumpflege</td><td>ab 30 €</td></tr>
-                  <tr><td>Scheibenversiegelung</td><td>ab 30 €</td></tr>
-                  <tr><td>Felgenversiegelung</td><td>ab 50 €</td></tr>
-                  <tr><td>Insekten- & Baumharzentfernung</td><td>ab 20 €</td></tr>
-                  <tr><td>Keramikversiegelung</td><td>ab 199 €</td></tr>
-                  <tr><td>Lederreinigung & Lederpflege</td><td>ab 50 €</td></tr>
-                  <tr><td>Kunststoff-Außenpflege</td><td>ab 30 €</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p class="muted">Die Preise verstehen sich als Richtwerte. Der exakte Betrag richtet sich nach Fahrzeuggröße und Verschmutzungsgrad.</p>
+    <!-- PROCESS SECTION -->
+    <section class="process-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>So einfach geht's</h2>
+          <p>Dein Weg zu einem glänzenden Auto in vier einfachen Schritten.</p>
         </div>
-      </details>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Termin vereinbaren</h3>
+            <p>Kontaktiere uns per Telefon, E-Mail oder Kontaktformular. Wir finden einen passenden Termin für dich.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Beratung</h3>
+            <p>Unser Team besichtigt dein Auto, bespricht deine Wünsche und empfiehlt das optimale Paket.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Aufbereitung</h3>
+            <p>Mit voller Konzentration und modernen Techniken machen wir dein Auto zum Glänzen.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Fertig!</h3>
+            <p>Abholen und genießen. Dein Auto sieht aus wie neu – innen und außen.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="testimonials accordion-section" id="stimmen">
-      <details class="accordion-item">
-        <summary>Google Rezensionen</summary>
-        <div class="accordion-content">
-          <div class="container review-widget-wrapper">
-            <div class="review-widget">
-              <div class="review-widget-header">
-                <span class="google-badge">Google</span>
-                <span class="review-title">Echte Google Rezensionen</span>
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Das sagen unsere Kunden</h2>
+          <p>Echte Bewertungen von zufriedenen Fahrzeugbesitzern.</p>
+        </div>
+        <div class="testimonials-grid" id="testimonials-grid">
+        </div>
+
+        <!-- REVIEW FORM -->
+        <div class="review-form-wrapper">
+          <h3>Schreibe deine Rezension</h3>
+          <p>Teile deine Erfahrung mit uns – deine Bewertung hilft anderen Kunden!</p>
+          <form id="reviewForm" class="review-form">
+            <div class="form-group">
+              <label for="review-name">Dein Name *</label>
+              <input type="text" id="review-name" name="name" required placeholder="z.B. Max M.">
+            </div>
+
+            <div class="form-group">
+              <label for="review-email">E-Mail *</label>
+              <input type="email" id="review-email" name="email" required placeholder="deine@email.de">
+            </div>
+
+            <div class="form-group">
+              <label>Bewertung *</label>
+              <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" required>
+                <label for="star5" class="star" title="5 Sterne">★</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" class="star" title="4 Sterne">★</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" class="star" title="3 Sterne">★</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" class="star" title="2 Sterne">★</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" class="star" title="1 Stern">★</label>
               </div>
-              <p class="review-description">Hier siehst du direkt eine echte Bewertung aus unseren Google Rezensionen.</p>
-              <article class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-author">DerOli &ndash; 5 von 5 Sternen</p>
-                <p class="muted">Diese Bewertung ist ein echtes Google-Review. Weitere Rezensionen findest du direkt bei Google.</p>
-              </article>
-              <a class="review-link" href="https://share.google/mzzvw2fv1Vv0RNzdl" target="_blank" rel="noopener">Google Rezensionen öffnen</a>
             </div>
-          </div>
+
+            <div class="form-group">
+              <label for="review-text">Deine Rezension *</label>
+              <textarea id="review-text" name="text" rows="4" required placeholder="Beschreibe deine Erfahrung mit Wie Neu..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Rezension absenden</button>
+            <p class="review-note">✓ Deine Rezension wird sofort veröffentlicht</p>
+          </form>
         </div>
-      </details>
+      </div>
     </section>
 
-    <section class="opening accordion-section" id="zeiten">
-      <details class="accordion-item">
-        <summary>Öffnungszeiten</summary>
-        <div class="accordion-content">
-          <div class="container opening-grid">
-            <div>
-              <p class="muted">Wir sind für dich da – flexibel und zuverlässig.</p>
-              <ul class="opening-list">
-                <li>Immer Erreichbar per WhatsApp
-                <li>Terminvergabe nach Vereinbarung</li>
-                          
-                          </div>
-          </div>
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Bereit für die Transformation?</h2>
+          <p>Dein Auto verdient Premium-Behandlung. Reserviere deinen Termin noch heute!</p>
+          <a href="#contact" class="btn btn-primary btn-large">Termin anfragen</a>
         </div>
-      </details>
+      </div>
     </section>
 
-    <section class="location accordion-section" id="anfahrt">
-      <details class="accordion-item">
-        <summary>Anfahrt</summary>
-        <div class="accordion-content">
-          <div class="container route-grid">
-            <div>
-              <p class="muted">Unsere Adresse für deine Anfahrt:</p>
-              <p><strong>Meisterstraße 10<br>39317 Elbe-Parey OT Güsen</strong></p>
-              <p><a href="https://maps.app.goo.gl/9jh4uGkL1WeYKwrT6" target="_blank">Anfahrt in Google Maps öffnen</a></p>
-            </div>
-          </div>
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Kontakt & Buchung</h2>
+          <p>Schreib uns eine Nachricht oder ruf uns direkt an – wir freuen uns!</p>
         </div>
-      </details>
-    </section>
-
-    <section class="contact accordion-section" id="contact">
-      <details class="accordion-item">
-        <summary>Kontakt & Termin</summary>
-        <div class="accordion-content">
-          <div class="container contact-grid">
-            <div>
-              <p class="muted">Schreib uns eine Nachricht oder rufe an — wir melden uns schnellstmöglich. Gerne kannst du mich auch problemlos über WhatsApp erreichen.</p>
-              <ul class="contact-info">
-                <li><strong>Telefon:</strong> <a href="tel:+4939344993858">03934 4993858</a></li>
-                <li><strong>E-Mail:</strong> <a href="mailto:benniweber2003@gmail.com">benniweber2003@gmail.com</a></li>
-                <li><strong>Adresse:</strong> Meisterstraße 10, 39317 Elbe-Parey OT Güsen</li>
-              </ul>
-            </div>
-            <form id="contactForm" class="form" novalidate>
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Dein Name">
-
-              <label for="email">E-Mail/Telefonnummer</label>
-              <input type="email" id="email" name="email" required placeholder="name@beispiel.de">
-
-              <label for="package">Gewünschtes Paket</label>
-              <select id="package" name="package">
-                <option value="Kein Paket">Kein Paket ausgewählt</option>
-                <option value="Frisch gemacht">Frisch gemacht</option>
-                <option value="Wieder gepflegt">Wieder gepflegt</option>
-                <option value="Wie Neu">Wie Neu</option>
-                <option value="Showroom Edition">Showroom Edition</option>
-              </select>
-
-              <fieldset class="addon-fieldset">
-                <legend>Zusatzleistungen</legend>
-                <label><input type="checkbox" name="addons" value="Tierhaarentfernung"> Tierhaarentfernung</label>
-                <label><input type="checkbox" name="addons" value="Ozonbehandlung"> Ozonbehandlung</label>
-                <label><input type="checkbox" name="addons" value="Motorwäsche & Motorraumpflege"> Motorwäsche & Motorraumpflege</label>
-                <label><input type="checkbox" name="addons" value="Scheibenversiegelung"> Scheibenversiegelung</label>
-                <label><input type="checkbox" name="addons" value="Felgenversiegelung"> Felgenversiegelung</label>
-                <label><input type="checkbox" name="addons" value="Insekten- & Baumharzentfernung"> Insekten- & Baumharzentfernung</label>
-                <label><input type="checkbox" name="addons" value="Keramikversiegelung"> Keramikversiegelung</label>
-                <label><input type="checkbox" name="addons" value="Lederreinigung & Lederpflege"> Lederreinigung & Lederpflege</label>
-                <label><input type="checkbox" name="addons" value="Kunststoff-Außenpflege"> Kunststoff-Außenpflege</label>
-              </fieldset>
-
-              <div class="price-summary">
-                <p>Geschätzter Gesamtpreis: <strong id="totalPrice">0,00 €</strong></p>
-                <p class="muted">Der Preis passt sich an Paket und Zusatzleistungen an. Endgültig nach Fahrzeuggröße.</p>
+        <div class="contact-grid">
+          <div class="contact-form-wrapper">
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label for="name">Dein Name *</label>
+                <input type="text" id="name" name="name" required>
               </div>
-
-              <label for="message">Nachricht / Wünsche</label>
-              <textarea id="message" name="message" rows="5" placeholder="Kurz beschreiben, was du möchtest..."></textarea>
-
-              <button type="submit" class="btn btn-primary">Anfrage senden</button>
-              <p id="formMsg" class="form-msg" aria-live="polite"></p>
+              <div class="form-group">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon *</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Nachricht / Wünsche</label>
+                <textarea id="message" name="message" rows="4" placeholder="Sag uns, wie wir dir helfen können..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Anfrage absenden</button>
             </form>
           </div>
+          <div class="contact-info">
+            <div class="contact-block">
+              <div class="contact-icon">📍</div>
+              <h3>Adresse</h3>
+              <p>Meisterstraße 10<br>39317 Elbe-Parey OT Güsen<br>Deutschland</p>
+            </div>
+            <div class="contact-block">
+              <div class="contact-icon">☎️</div>
+              <h3>Telefon</h3>
+              <p><a href="tel:+4939344993858">+49 39344 993858</a></p>
+            </div>
+            <div class="contact-block">
+              <div class="contact-icon">✉️</div>
+              <h3>E-Mail</h3>
+              <p><a href="mailto:benniweber2003@gmail.com">benniweber2003@gmail.com</a></p>
+            </div>
+            <div class="contact-block">
+              <div class="contact-icon">⏰</div>
+              <h3>Öffnungszeiten</h3>
+              <p>Mo–Fr: Terminvergabe<br>Sa: Terminvergabe<br>So: Geschlossen</p>
+            </div>
+          </div>
         </div>
-      </details>
-    </section>
-
-    <section class="legal" id="legal">
-      <div class="container legal-grid">
-        <details class="legal-card" id="impressum">
-          <summary>Impressum</summary>
-          <div class="legal-content">
-            <p><strong>Wie Neu Autoaufbereitung</strong><br>
-            Inhaber: Benjamin Weber<br>
-            Meisterstraße 10<br>
-            39317 Elbe-Parey OT Güsen</p>
-            <p><strong>Kontakt:</strong><br>
-            Telefon: <a href="tel:+4939344993858">03934 4993858</a><br>
-            E-Mail: <a href="mailto:benniweber2003@gmail.com">benniweber2003@gmail.com</a></p>
-            <p><strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong><br>
-            Benjamin Weber</p>
-          </div>
-        </details>
-        <details class="legal-card" id="agb">
-          <summary>AGB</summary>
-          <div class="legal-content">
-            <p>1. Geltungsbereich<br>
-            Diese Allgemeinen Geschäftsbedingungen gelten für alle Leistungen der Wie Neu Autoaufbereitung.</p>
-            <p>2. Leistungen<br>
-            Grundlage der Aufbereitung sind die vereinbarten Services wie Lackpolitur, Innenraumreinigung und Fahrzeugvorbereitung.</p>
-            <p>3. Terminvereinbarung<br>
-            Der Vertrag kommt mit Bestätigung eines Termins per WhatsApp, E-Mail oder Telefon zustande.</p>
-            <p>4. Preise und Zahlung<br>
-            Es gelten die vereinbarten Preise. Die Zahlung erfolgt nach Abschluss der Leistung in bar oder per Überweisung, sofern nichts anderes vereinbart wurde.</p>
-            <p>5. Haftung<br>
-            Die Haftung beschränkt sich auf Vorsatz und grobe Fahrlässigkeit. Für normale Gebrauchsspuren und vorhandene Vorschäden wird keine Haftung übernommen.</p>
-            <p>6. Datenschutz<br>
-            Personenbezogene Daten werden ausschließlich zur Abwicklung der Anfrage und der Leistungserbringung verwendet.</p>
-          </div>
-        </details>
       </div>
     </section>
   </main>
 
+  <!-- BOOKING MODAL -->
+  <div class="modal" id="bookingModal">
+    <div class="modal-overlay" data-close-modal="bookingModal"></div>
+    <div class="modal-content">
+      <button class="modal-close" data-close-modal="bookingModal">✕</button>
+      <h2>Termin buchen</h2>
+      <form class="booking-form" id="bookingForm">
+        <div class="booking-section">
+          <h3>1. Paket wählen</h3>
+          <div class="package-selection">
+            <label class="package-option">
+              <input type="radio" name="package" value="fresh" data-price="39.20" data-original-price="49">
+              <span class="option-label">
+                <strong>Frisch gemacht - 39,20€</strong>
+                <small>Handwäsche, Felgenreinigung, Scheiben behandeln</small>
+              </span>
+            </label>
+            <label class="package-option">
+              <input type="radio" name="package" value="care" data-price="87.20" data-original-price="109" checked>
+              <span class="option-label">
+                <strong>Wieder gepflegt - 87,20€</strong>
+                <small>Innenraum gründlich gesäubert, Armatur- & Kunststoffpflege</small>
+              </span>
+            </label>
+            <label class="package-option">
+              <input type="radio" name="package" value="wikeneu" data-price="151.20" data-original-price="189">
+              <span class="option-label">
+                <strong>Wie Neu - 151,20€</strong>
+                <small>Lackversiegelung, Maschinenpoltur, Motorraumpflege</small>
+              </span>
+            </label>
+            <label class="package-option">
+              <input type="radio" name="package" value="showroom" data-price="239.20" data-original-price="299">
+              <span class="option-label">
+                <strong>Showroom Edition - 239,20€</strong>
+                <small>Komplette Premium-Aufbereitung mit Ozonbehandlung</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="booking-section">
+          <h3>2. Zusatzleistungen (optional)</h3>
+          <div class="extras-selection">
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="tierhaar" data-price="30">
+              <span>Tierhaarentfernung</span>
+              <span class="extra-price">+30€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="ozon" data-price="60">
+              <span>Ozonbehandlung</span>
+              <span class="extra-price">+60€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="motor" data-price="30">
+              <span>Motorwäsche & Motorraumpflege</span>
+              <span class="extra-price">+30€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="scheibe" data-price="30">
+              <span>Scheibenversiegelung</span>
+              <span class="extra-price">+30€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="felge" data-price="50">
+              <span>Felgenversiegelung</span>
+              <span class="extra-price">+50€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="insekt" data-price="20">
+              <span>Insekten- & Baumharzentfernung</span>
+              <span class="extra-price">+20€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="keramik" data-price="199">
+              <span>Keramikversiegelung (Premium)</span>
+              <span class="extra-price">+199€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="leder" data-price="50">
+              <span>Lederreinigung & Lederpflege</span>
+              <span class="extra-price">+50€</span>
+            </label>
+            <label class="extra-option">
+              <input type="checkbox" name="extra" value="kunststoff" data-price="30">
+              <span>Kunststoff-Außenpflege</span>
+              <span class="extra-price">+30€</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="booking-section">
+          <h3>3. Ihre Daten</h3>
+          <div class="form-group">
+            <label for="booking-name">Name *</label>
+            <input type="text" id="booking-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="booking-email">E-Mail *</label>
+            <input type="email" id="booking-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="booking-phone">Telefon *</label>
+            <input type="tel" id="booking-phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="booking-date">Gewünschtes Datum *</label>
+            <input type="date" id="booking-date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="booking-notes">Zusätzliche Hinweise</label>
+            <textarea id="booking-notes" name="notes" rows="3" placeholder="z.B. Fahrzeugtyp, spezielle Anforderungen..."></textarea>
+          </div>
+        </div>
+
+        <div class="booking-summary">
+          <div class="summary-row">
+            <span>Originalpreis:</span>
+            <span id="originalPrice">109,00€</span>
+          </div>
+          <div class="summary-row discount">
+            <span>20% Neukundenrabatt:</span>
+            <span id="discountPrice">-21,80€</span>
+          </div>
+          <div class="summary-row">
+            <span>Paketpreis:</span>
+            <span id="packagePrice">87,20€</span>
+          </div>
+          <div class="summary-row" id="extrasRow" style="display: none;">
+            <span>Zusatzleistungen:</span>
+            <span id="extrasPrice">0€</span>
+          </div>
+          <div class="summary-row total">
+            <span>Gesamtpreis:</span>
+            <span id="totalPrice">87,20€</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large">Anfrage absenden</button>
+      </form>
+    </div>
+  </div>
+
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Wie Neu Autoaufbereitung — Alle Rechte vorbehalten.</p>
-      · Folge uns auf: <a href="https://www.instagram.com/autoaufbereitung_wie_neu/">Instagram</a> · <a href="https://wa.me/4939344993858" target="_blank">WhatsApp</a></p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Wie Neu</h4>
+          <p>Professionelle Fahrzeugaufbereitung für dein Auto.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="#services">Leistungen</a></li>
+            <li><a href="#packages">Pakete</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Rechtliches</h4>
+          <ul>
+            <li><a href="datenschutz.html">Datenschutz</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="agb.html">AGB</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Wie Neu Autoaufbereitung. Alle Rechte vorbehalten.</p>
+      </div>
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260727" defer></script>
+  <script src="js/main.js?v=202607280002"></script>
 </body>
 </html>
