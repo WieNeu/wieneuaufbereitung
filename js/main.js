@@ -259,27 +259,68 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* ---------- Review System with Formspree + localStorage ---------- */
+  /* ---------- Review System with Supabase + Formspree ---------- */
+  const SUPABASE_URL = 'https://xdxfkoisqpankztirxcm.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_EACDElsN_V4zhr4GiMANOg_n1AvbObo';
+  
+  // Initialize Supabase
+  let supabase = null;
+  try {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  } catch (e) {
+    console.log('Supabase nicht verfügbar, nutze localStorage fallback');
+  }
+
   const reviewForm = document.getElementById('reviewForm');
   const testimonialsGrid = document.getElementById('testimonials-grid');
 
   if (reviewForm && testimonialsGrid) {
-    // Lade Rezensionen aus localStorage
-    function loadReviews() {
-      const reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
-      return reviews;
+    // Lade Rezensionen von Supabase oder localStorage
+    async function loadReviews() {
+      if (supabase) {
+        try {
+          const { data, error } = await supabase
+            .from('reviews')
+            .select('*')
+            .order('created_at', { ascending: false });
+          
+          if (error && error.code !== 'PGRST116') {
+            throw error;
+          }
+          
+          if (data && data.length > 0) {
+            return data.map(r => ({
+              name: r.name,
+              email: r.email,
+              rating: r.rating,
+              text: r.text,
+              date: new Date(r.created_at).toLocaleDateString('de-DE'),
+              id: r.id
+            }));
+          }
+        } catch (e) {
+          console.log('Supabase Fehler:', e);
+        }
+      }
+      
+      // Fallback zu localStorage
+      const localReviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
+      return localReviews.map(r => ({
+        ...r,
+        date: typeof r.date === 'number' ? new Date(r.date).toLocaleDateString('de-DE') : r.date
+      }));
     }
 
     // Zeige alle Rezensionen an
-    function displayReviews() {
-      const reviews = loadReviews();
+    async function displayReviews() {
+      const reviews = await loadReviews();
       
       // Entferne alte dynamische Rezensionen
       const dynamicCards = testimonialsGrid.querySelectorAll('.testimonial-card.user-review');
       dynamicCards.forEach(card => card.remove());
 
       // Füge neue Rezensionen hinzu (neuste zuerst)
-      reviews.reverse().forEach(function (review) {
+      reviews.forEach(function (review) {
         const card = document.createElement('div');
         card.className = 'testimonial-card user-review';
         
@@ -289,15 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
           starsHtml += i < review.rating ? '⭐' : '☆';
         }
 
-        // Handle both date formats: timestamp (number) and string
-        let dateStr = '';
-        if (typeof review.date === 'number') {
-          dateStr = new Date(review.date).toLocaleDateString('de-DE');
-        } else if (typeof review.date === 'string') {
-          dateStr = review.date;
-        } else {
-          dateStr = new Date().toLocaleDateString('de-DE');
-        }
+        const dateStr = review.date;
 
         card.innerHTML = `
           <div class="stars">${starsHtml}</div>
@@ -311,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Form Submit Handler
-    reviewForm.addEventListener('submit', function (e) {
+    reviewForm.addEventListener('submit', async function (e) {
       e.preventDefault();
 
       const name = document.getElementById('review-name').value;
@@ -319,21 +352,68 @@ document.addEventListener('DOMContentLoaded', function () {
       const rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
       const text = document.getElementById('review-text').value;
 
-      // Neue Rezension erstellen
-      const newReview = {
-        name: name,
-        email: email,
-        rating: rating,
-        text: text,
-        date: new Date().getTime()
-      };
+      let success = false;
 
-      // 1. Speichere lokal
-      let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
-      reviews.push(newReview);
-      localStorage.setItem('wie-neu-reviews', JSON.stringify(reviews));
+      // 1. Versuche zu Supabase zu speichern
+      if (supabase) {
+        try {
+          const { error } = await supabase
+            .from('reviews')
+            .insert([{
+              name: name,
+              email: email,
+              rating: rating,
+              text: text
+            }]);
+          
+          if (!error) {
+            success = true;
+            console.log('✓ Review zu Supabase gespeichert');
+          } else if (error.code === 'PGRST116') {
+            // Tabelle existiert nicht - speichere zu localStorage als Fallback
+            let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
+            reviews.push({
+              name: name,
+              email: email,
+              rating: rating,
+              text: text,
+              date: new Date().toLocaleDateString('de-DE')
+            });
+            localStorage.setItem('wie-neu-reviews', JSON.stringify(reviews));
+            success = true;
+            console.log('✓ Review zu localStorage gespeichert (Supabase nicht bereit)');
+          } else {
+            throw error;
+          }
+        } catch (e) {
+          console.log('Supabase Fehler:', e);
+          // Fallback zu localStorage
+          let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
+          reviews.push({
+            name: name,
+            email: email,
+            rating: rating,
+            text: text,
+            date: new Date().toLocaleDateString('de-DE')
+          });
+          localStorage.setItem('wie-neu-reviews', JSON.stringify(reviews));
+          success = true;
+        }
+      } else {
+        // Supabase nicht verfügbar - nutze localStorage
+        let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
+        reviews.push({
+          name: name,
+          email: email,
+          rating: rating,
+          text: text,
+          date: new Date().toLocaleDateString('de-DE')
+        });
+        localStorage.setItem('wie-neu-reviews', JSON.stringify(reviews));
+        success = true;
+      }
 
-      // 2. Sende zu Formspree
+      // 2. Sende zu Formspree (für Email)
       const formspreeData = new FormData();
       formspreeData.append('name', name);
       formspreeData.append('email', email);
@@ -349,22 +429,27 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(response => {
         if (response.ok) {
-          alert('Vielen Dank für deine Rezension! 🌟\n\nDeine Bewertung ist jetzt öffentlich sichtbar!');
-        } else {
-          alert('Vielen Dank für deine Rezension! 🌟');
+          console.log('✓ Formspree Email gesendet');
         }
       })
       .catch(error => {
-        alert('Vielen Dank für deine Rezension! 🌟');
+        console.log('Formspree Fehler:', error);
       });
 
-      // 3. Zeige neue Rezensionen
+      // 3. Zeige Alert
+      if (success) {
+        alert('Vielen Dank für deine Rezension! 🌟\n\nDeine Bewertung ist jetzt öffentlich sichtbar!');
+      } else {
+        alert('Es gab einen Fehler beim Speichern der Rezension.');
+      }
+
+      // 4. Zeige neue Rezensionen
       displayReviews();
 
-      // 4. Form zurücksetzen
+      // 5. Form zurücksetzen
       reviewForm.reset();
 
-      // 5. Scroll zu Rezensionen
+      // 6. Scroll zu Rezensionen
       setTimeout(function () {
         testimonialsGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 300);
