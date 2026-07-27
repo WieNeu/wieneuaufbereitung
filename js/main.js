@@ -259,32 +259,32 @@ function initializeApp() {
     });
   });
 
-  /* ---------- Review System with GitHub JSON + localStorage ---------- */
-  // GitHub Raw: Kostenlos, öffentlich, keine Konfiguration!
-  // Liest public reviews.json, neue Reviews gehen zu localStorage
-  const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/gamerolixd-arch/wieneuaufbereitung/main/data/reviews.json';
+  /* ---------- Review System with GitHub Pages JSON + localStorage ---------- */
+  // GitHub Pages: Serviert Dateien unter domain/repo/path
+  // Kostenlos, öffentlich, keine Konfiguration!
+  const GITHUB_PAGES_URL = 'https://wieneu.github.io/wieneuaufbereitung/data/reviews.json';
   
   const reviewForm = document.getElementById('reviewForm');
   const testimonialsGrid = document.getElementById('testimonials-grid');
 
   if (reviewForm && testimonialsGrid) {
-    // Lade Rezensionen von GitHub JSON + localStorage
+    // Lade Rezensionen von GitHub Pages JSON + localStorage
     async function loadReviews() {
       let allReviews = [];
       
-      // 1. Lade von GitHub Raw (öffentliche Reviews)
+      // 1. Lade von GitHub Pages (öffentliche Reviews)
       try {
-        const response = await fetch(GITHUB_RAW_URL, {
+        const response = await fetch(GITHUB_PAGES_URL, {
           headers: { 'Accept': 'application/json' }
         });
         
         if (response.ok) {
           const data = await response.json();
           allReviews = data.reviews || [];
-          console.log('✓ Reviews von GitHub geladen:', allReviews.length);
+          console.log('✓ Reviews von GitHub Pages geladen:', allReviews.length);
         }
       } catch (e) {
-        console.log('GitHub API Fehler:', e.message);
+        console.log('GitHub Pages API Fehler:', e.message);
       }
       
       // 2. Lade neue Reviews von localStorage
