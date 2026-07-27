@@ -1120,11 +1120,12 @@ img { max-width: 100%; display: block; }
   padding: 2.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   width: 90%;
+  color: #1a1a1a;
 }
 
 .modal-content h2 {
   margin-bottom: 2rem;
-  color: var(--ink);
+  color: #1a1a1a;
 }
 
 .modal-close {
@@ -1135,7 +1136,7 @@ img { max-width: 100%; display: block; }
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: #333333;
   transition: color 0.3s ease;
 }
 
@@ -1158,7 +1159,7 @@ img { max-width: 100%; display: block; }
 
 .booking-section h3 {
   font-size: 1.1rem;
-  color: var(--primary);
+  color: #b8860b;
   margin-bottom: 0.5rem;
 }
 
@@ -1326,7 +1327,7 @@ img { max-width: 100%; display: block; }
 }
 
 .option-label small {
-  color: var(--text-secondary);
+  color: #555555;
   font-weight: normal;
 }
 
