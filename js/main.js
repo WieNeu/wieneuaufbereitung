@@ -1,6 +1,6 @@
 // Wie Neu Autoaufbereitung – Website-Skripte
-document.addEventListener('DOMContentLoaded', function () {
 
+function initializeApp() {
   /* ---------- Mobile Navigation ---------- */
   const navToggle = document.getElementById('navToggle');
   const siteNav = document.getElementById('siteNav');
@@ -433,6 +433,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Lade Rezensionen beim Laden
     displayReviews().catch(err => console.error('displayReviews Error:', err));
   }
+}
 
-});
+// Prüfe ob DOM bereits geladen ist
+if (document.readyState === 'loading') {
+  // DOM ist noch nicht geladen, warte auf DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  // DOM ist bereits geladen, führe direkt aus
+  initializeApp();
+}
 
