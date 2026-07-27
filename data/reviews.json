@@ -1,0 +1,36 @@
+{
+  "reviews": [
+    {
+      "id": "review-1",
+      "name": "Anna Schmidt",
+      "email": "anna@beispiel.de",
+      "rating": 5,
+      "text": "Perfekt! Das neue Rezensionssystem funktioniert einwandfrei mit Formspree!",
+      "created_at": "2026-07-27T10:30:00Z"
+    },
+    {
+      "id": "review-2",
+      "name": "Klaus Müller",
+      "email": "klaus@test.de",
+      "rating": 5,
+      "text": "Das System mit öffentlichen Rezensionen funktioniert großartig! Alle können es sehen!",
+      "created_at": "2026-07-27T10:35:00Z"
+    },
+    {
+      "id": "review-3",
+      "name": "Michael Weber",
+      "email": "michael@web.de",
+      "rating": 5,
+      "text": "Jetzt funktioniert das System mit Supabase - alle sehen die Rezension!",
+      "created_at": "2026-07-27T10:40:00Z"
+    },
+    {
+      "id": "review-4",
+      "name": "Sandra Hoffmann",
+      "email": "sandra@test.de",
+      "rating": 5,
+      "text": "Mit der neuen REST API funktioniert alles perfekt! Jede Rezension ist sofort öffentlich sichtbar!",
+      "created_at": "2026-07-27T11:10:00Z"
+    }
+  ]
+}

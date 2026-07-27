@@ -259,54 +259,58 @@ function initializeApp() {
     });
   });
 
-  /* ---------- Review System with Firebase Realtime DB + localStorage ---------- */
-  // Firebase: Kostenlos, öffentlich, persistente Speicherung auf Google-Servern
-  const FIREBASE_URL = 'https://wie-neu-reviews.firebaseio.com';
+  /* ---------- Review System with GitHub JSON + localStorage ---------- */
+  // GitHub Raw: Kostenlos, öffentlich, keine Konfiguration!
+  // Liest public reviews.json, neue Reviews gehen zu localStorage
+  const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/gamerolixd-arch/wieneuaufbereitung/main/data/reviews.json';
   
   const reviewForm = document.getElementById('reviewForm');
   const testimonialsGrid = document.getElementById('testimonials-grid');
 
   if (reviewForm && testimonialsGrid) {
-    // Lade Rezensionen von Firebase (öffentlich) oder localStorage
+    // Lade Rezensionen von GitHub JSON + localStorage
     async function loadReviews() {
+      let allReviews = [];
+      
+      // 1. Lade von GitHub Raw (öffentliche Reviews)
       try {
-        const response = await fetch(`${FIREBASE_URL}/reviews.json`, {
-          headers: {
-            'Accept': 'application/json'
-          }
+        const response = await fetch(GITHUB_RAW_URL, {
+          headers: { 'Accept': 'application/json' }
         });
         
         if (response.ok) {
           const data = await response.json();
-          if (data && typeof data === 'object') {
-            const reviews = Object.values(data).sort((a, b) => 
-              new Date(b.created_at) - new Date(a.created_at)
-            );
-            console.log('✓ Rezensionen von Firebase geladen:', reviews.length);
-            if (reviews.length > 0) {
-              return reviews.map(r => ({
-                name: r.name,
-                email: r.email,
-                rating: r.rating,
-                text: r.text,
-                date: typeof r.created_at === 'number' ? 
-                  new Date(r.created_at).toLocaleDateString('de-DE') : 
-                  r.created_at,
-                id: r.id
-              }));
-            }
-          }
+          allReviews = data.reviews || [];
+          console.log('✓ Reviews von GitHub geladen:', allReviews.length);
         }
       } catch (e) {
-        console.log('Firebase API Fehler:', e.message);
+        console.log('GitHub API Fehler:', e.message);
       }
       
-      // Fallback zu localStorage
-      console.log('→ Verwende localStorage als Fallback');
-      const localReviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
-      return localReviews.map(r => ({
+      // 2. Lade neue Reviews von localStorage
+      try {
+        const localReviews = JSON.parse(localStorage.getItem('wie-neu-reviews-new')) || [];
+        if (localReviews.length > 0) {
+          console.log('→ Füge localStorage Reviews hinzu:', localReviews.length);
+          allReviews = [...localReviews, ...allReviews];
+        }
+      } catch (e) {
+        console.log('localStorage Fehler:', e.message);
+      }
+      
+      // Sortiere nach Datum (neueste zuerst)
+      allReviews.sort((a, b) => {
+        const dateA = typeof a.created_at === 'number' ? a.created_at : new Date(a.created_at).getTime();
+        const dateB = typeof b.created_at === 'number' ? b.created_at : new Date(b.created_at).getTime();
+        return dateB - dateA;
+      });
+      
+      console.log('✓ Gesamt Rezensionen:', allReviews.length);
+      return allReviews.map(r => ({
         ...r,
-        date: typeof r.date === 'number' ? new Date(r.date).toLocaleDateString('de-DE') : r.date
+        date: typeof r.created_at === 'number' ? 
+          new Date(r.created_at).toLocaleDateString('de-DE') : 
+          new Date(r.created_at).toLocaleDateString('de-DE')
       }));
     }
 
@@ -353,45 +357,22 @@ function initializeApp() {
 
       let success = false;
 
-      // 1. Versuche zu Firebase zu speichern
+      // 1. Speichere neue Review zu localStorage
       try {
-        const reviewId = 'review-' + Date.now();
-        const response = await fetch(`${FIREBASE_URL}/reviews/${reviewId}.json`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            id: reviewId,
-            name: name,
-            email: email,
-            rating: rating,
-            text: text,
-            created_at: new Date().toISOString()
-          })
-        });
-        
-        if (response.ok) {
-          success = true;
-          console.log('✓ Review zu Firebase gespeichert');
-        } else {
-          console.log('Firebase Error:', response.status);
-          throw new Error('Firebase nicht bereit');
-        }
-      } catch (e) {
-        console.log('Firebase speichern fehlgeschlagen, nutze localStorage:', e.message);
-        // Fallback zu localStorage
-        let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
-        reviews.push({
+        let newReviews = JSON.parse(localStorage.getItem('wie-neu-reviews-new')) || [];
+        newReviews.push({
           name: name,
           email: email,
           rating: rating,
           text: text,
-          date: new Date().toLocaleDateString('de-DE')
+          created_at: new Date().toISOString(),
+          id: 'review-' + Date.now()
         });
-        localStorage.setItem('wie-neu-reviews', JSON.stringify(reviews));
+        localStorage.setItem('wie-neu-reviews-new', JSON.stringify(newReviews));
         success = true;
+        console.log('✓ Neue Review zu localStorage gespeichert');
+      } catch (e) {
+        console.log('localStorage Fehler:', e.message);
       }
 
       // 2. Sende zu Formspree (für Email-Benachrichtigung)
