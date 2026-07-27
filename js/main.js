@@ -280,20 +280,23 @@ document.addEventListener('DOMContentLoaded', function () {
         if (response.ok) {
           const data = await response.json();
           console.log('✓ Rezensionen von Supabase geladen:', data.length);
-          return data.map(r => ({
-            name: r.name,
-            email: r.email,
-            rating: r.rating,
-            text: r.text,
-            date: new Date(r.created_at).toLocaleDateString('de-DE'),
-            id: r.id
-          }));
+          if (data.length > 0) {
+            return data.map(r => ({
+              name: r.name,
+              email: r.email,
+              rating: r.rating,
+              text: r.text,
+              date: new Date(r.created_at).toLocaleDateString('de-DE'),
+              id: r.id
+            }));
+          }
         }
       } catch (e) {
         console.log('Supabase API Fehler:', e);
       }
       
-      // Fallback zu localStorage
+      // Fallback zu localStorage (immer, wenn Supabase leer oder fehlgeschlagen)
+      console.log('→ Verwende localStorage als Fallback');
       const localReviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
       return localReviews.map(r => ({
         ...r,
@@ -416,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       // 4. Zeige neue Rezensionen
-      displayReviews();
+      displayReviews().catch(err => console.error('displayReviews Error:', err));
 
       // 5. Form zurücksetzen
       reviewForm.reset();
@@ -428,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Lade Rezensionen beim Laden
-    displayReviews();
+    displayReviews().catch(err => console.error('displayReviews Error:', err));
   }
 
 });
