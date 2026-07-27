@@ -289,13 +289,21 @@ document.addEventListener('DOMContentLoaded', function () {
           starsHtml += i < review.rating ? '⭐' : '☆';
         }
 
-        const date = new Date(review.date).toLocaleDateString('de-DE');
+        // Handle both date formats: timestamp (number) and string
+        let dateStr = '';
+        if (typeof review.date === 'number') {
+          dateStr = new Date(review.date).toLocaleDateString('de-DE');
+        } else if (typeof review.date === 'string') {
+          dateStr = review.date;
+        } else {
+          dateStr = new Date().toLocaleDateString('de-DE');
+        }
 
         card.innerHTML = `
           <div class="stars">${starsHtml}</div>
           <p>"${review.text}"</p>
           <p class="testimonial-author">– ${review.name}</p>
-          <p class="review-date" style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.5rem;">${date}</p>
+          <p class="review-date" style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.5rem;">${dateStr}</p>
         `;
         
         testimonialsGrid.appendChild(card);
