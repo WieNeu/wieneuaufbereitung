@@ -259,172 +259,111 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* ---------- Review System with Firebase ---------- */
-  
-  // Firebase Konfiguration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCOy2uRru6nsEdr8cg-N5NbdvUVAvrjdf4",
-    authDomain: "wie-neu-reviews.firebaseapp.com",
-    databaseURL: "https://wie-neu-reviews-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "wie-neu-reviews",
-    storageBucket: "wie-neu-reviews.firebasestorage.app",
-    messagingSenderId: "1034875872384",
-    appId: "1:1034875872384:web:01762061530718ccfc3265",
-    measurementId: "G-CBGFVV99QZ"
-  };
+  /* ---------- Review System with Formspree + localStorage ---------- */
+  const reviewForm = document.getElementById('reviewForm');
+  const testimonialsGrid = document.getElementById('testimonials-grid');
 
-  // Firebase initialisieren
-  try {
-    firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
-    var reviewsRef = database.ref('reviews');
-    var reviewForm = document.getElementById('reviewForm');
-    var testimonialsGrid = document.getElementById('testimonials-grid');
+  if (reviewForm && testimonialsGrid) {
+    // Lade Rezensionen aus localStorage
+    function loadReviews() {
+      const reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
+      return reviews;
+    }
 
-    if (reviewForm && testimonialsGrid) {
-      // Lade Rezensionen aus Firebase in Echtzeit
-      function displayReviews() {
-        reviewsRef.orderByChild('timestamp').on('value', function(snapshot) {
-          // Entferne alle bisherigen Rezensionen
-          const oldCards = testimonialsGrid.querySelectorAll('.testimonial-card.user-review');
-          oldCards.forEach(card => card.remove());
+    // Zeige alle Rezensionen an
+    function displayReviews() {
+      const reviews = loadReviews();
+      
+      // Entferne alte dynamische Rezensionen
+      const dynamicCards = testimonialsGrid.querySelectorAll('.testimonial-card.user-review');
+      dynamicCards.forEach(card => card.remove());
 
-          // Zeige neue Rezensionen (neuste zuerst)
-          const reviews = [];
-          snapshot.forEach(function(childSnapshot) {
-            reviews.push(childSnapshot.val());
-          });
+      // Füge neue Rezensionen hinzu (neuste zuerst)
+      reviews.reverse().forEach(function (review) {
+        const card = document.createElement('div');
+        card.className = 'testimonial-card user-review';
+        
+        // Generiere Sterne basierend auf Rating
+        let starsHtml = '';
+        for (let i = 0; i < 5; i++) {
+          starsHtml += i < review.rating ? '⭐' : '☆';
+        }
 
-          // Reverse für neuste zuerst
-          reviews.reverse().forEach(function(review) {
-            const card = document.createElement('div');
-            card.className = 'testimonial-card user-review';
-            
-            // Generiere Sterne basierend auf Rating
-            let starsHtml = '';
-            for (let i = 0; i < 5; i++) {
-              starsHtml += i < review.rating ? '⭐' : '☆';
-            }
+        const date = new Date(review.date).toLocaleDateString('de-DE');
 
-            const date = new Date(review.timestamp);
-            const dateString = date.toLocaleDateString('de-DE');
+        card.innerHTML = `
+          <div class="stars">${starsHtml}</div>
+          <p>"${review.text}"</p>
+          <p class="testimonial-author">– ${review.name}</p>
+          <p class="review-date" style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.5rem;">${date}</p>
+        `;
+        
+        testimonialsGrid.appendChild(card);
+      });
+    }
 
-            card.innerHTML = `
-              <div class="stars">${starsHtml}</div>
-              <p>"${review.text}"</p>
-              <p class="testimonial-author">– ${review.name}</p>
-              <p class="review-date" style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.5rem;">${dateString}</p>
-            `;
-            
-            testimonialsGrid.appendChild(card);
-          });
-        });
-      }
+    // Form Submit Handler
+    reviewForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-      // Form Submit Handler
-      reviewForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+      const name = document.getElementById('review-name').value;
+      const email = document.getElementById('review-email').value;
+      const rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
+      const text = document.getElementById('review-text').value;
 
-        const name = document.getElementById('review-name').value;
-        const email = document.getElementById('review-email').value;
-        const rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
-        const text = document.getElementById('review-text').value;
+      // Neue Rezension erstellen
+      const newReview = {
+        name: name,
+        email: email,
+        rating: rating,
+        text: text,
+        date: new Date().getTime()
+      };
 
-        // Neue Rezension erstellen
-        const newReview = {
-          name: name,
-          email: email,
-          rating: rating,
-          text: text,
-          timestamp: new Date().getTime()
-        };
+      // 1. Speichere lokal
+      let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
+      reviews.push(newReview);
+      localStorage.setItem('wie-neu-reviews', JSON.stringify(reviews));
 
-        // Speichere in Firebase
-        reviewsRef.push(newReview, function(error) {
-          if (error) {
-            alert('Fehler beim Speichern: ' + error.message);
-          } else {
-            alert('Vielen Dank für deine Rezension! 🌟\n\nDeine Bewertung ist jetzt öffentlich sichtbar!');
-            
-            // Form zurücksetzen
-            reviewForm.reset();
+      // 2. Sende zu Formspree
+      const formspreeData = new FormData();
+      formspreeData.append('name', name);
+      formspreeData.append('email', email);
+      formspreeData.append('rating', rating + ' Sterne');
+      formspreeData.append('message', text);
 
-            // Scroll zu Rezensionen
-            setTimeout(function () {
-              testimonialsGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
-          }
-        });
+      fetch('https://formspree.io/f/mpqvkozy', {
+        method: 'POST',
+        body: formspreeData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Vielen Dank für deine Rezension! 🌟\n\nDeine Bewertung ist jetzt öffentlich sichtbar!');
+        } else {
+          alert('Vielen Dank für deine Rezension! 🌟');
+        }
+      })
+      .catch(error => {
+        alert('Vielen Dank für deine Rezension! 🌟');
       });
 
-      // Lade Rezensionen beim Seitenladen
+      // 3. Zeige neue Rezensionen
       displayReviews();
-    }
-  } catch (error) {
-    console.log('Firebase nicht verfügbar, localStorage wird verwendet');
-    
-    // Fallback zu localStorage wenn Firebase nicht verfügbar
-    const reviewForm = document.getElementById('reviewForm');
-    const testimonialsGrid = document.getElementById('testimonials-grid');
 
-    if (reviewForm && testimonialsGrid) {
-      function loadReviews() {
-        const reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
-        return reviews;
-      }
+      // 4. Form zurücksetzen
+      reviewForm.reset();
 
-      function displayReviews() {
-        const reviews = loadReviews();
-        const dynamicCards = testimonialsGrid.querySelectorAll('.testimonial-card.user-review');
-        dynamicCards.forEach(card => card.remove());
+      // 5. Scroll zu Rezensionen
+      setTimeout(function () {
+        testimonialsGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    });
 
-        reviews.reverse().forEach(function (review) {
-          const card = document.createElement('div');
-          card.className = 'testimonial-card user-review';
-          
-          let starsHtml = '';
-          for (let i = 0; i < 5; i++) {
-            starsHtml += i < review.rating ? '⭐' : '☆';
-          }
-
-          card.innerHTML = `
-            <div class="stars">${starsHtml}</div>
-            <p>"${review.text}"</p>
-            <p class="testimonial-author">– ${review.name}</p>
-            <p class="review-date" style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.5rem;">Lokal gespeichert</p>
-          `;
-          
-          testimonialsGrid.appendChild(card);
-        });
-      }
-
-      reviewForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById('review-name').value;
-        const email = document.getElementById('review-email').value;
-        const rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
-        const text = document.getElementById('review-text').value;
-
-        const newReview = {
-          name: name,
-          email: email,
-          rating: rating,
-          text: text,
-          date: new Date().toLocaleDateString('de-DE')
-        };
-
-        let reviews = JSON.parse(localStorage.getItem('wie-neu-reviews')) || [];
-        reviews.push(newReview);
-        localStorage.setItem('wie-neu-reviews', JSON.stringify(reviews));
-
-        alert('Rezension gespeichert (Lokale Speicherung)');
-        displayReviews();
-        reviewForm.reset();
-      });
-
-      displayReviews();
-    }
+    // Lade Rezensionen beim Laden
+    displayReviews();
   }
 
 });
