@@ -263,12 +263,14 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Firebase Konfiguration
   const firebaseConfig = {
-    apiKey: "AIzaSyBwT1fLOGJ-5n2K8ypqKgR8QzJnG1vQ9vU",
+    apiKey: "AIzaSyCOy2uRru6nsEdr8cg-N5NbdvUVAvrjdf4",
     authDomain: "wie-neu-reviews.firebaseapp.com",
+    databaseURL: "https://wie-neu-reviews-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "wie-neu-reviews",
-    storageBucket: "wie-neu-reviews.appspot.com",
-    messagingSenderId: "123456789012",
-    databaseURL: "https://wie-neu-reviews-default-rtdb.europe-west1.firebasedatabase.app"
+    storageBucket: "wie-neu-reviews.firebasestorage.app",
+    messagingSenderId: "1034875872384",
+    appId: "1:1034875872384:web:01762061530718ccfc3265",
+    measurementId: "G-CBGFVV99QZ"
   };
 
   // Firebase initialisieren
