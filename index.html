@@ -156,7 +156,6 @@
             <ul class="service-list">
               <li>Verkaufsaufbereitung</li>
               <li>Ozonbehandlung</li>
-              <li>Motorraum-Detailing</li>
               <li>Keramikversiegelung</li>
               
             </ul>
@@ -223,7 +222,6 @@
               <li>✓ Hochglanz-Politur</li>
               <li>✓ Tiefenreinigung der Sitze & Teppiche</li>
               <li>✓ Lederpflege (falls vorhanden)</li>
-              <li>✓ Motorraumpflege</li>
             </ul>
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="wikeneu">Jetzt buchen</button>
           </div>
@@ -241,7 +239,6 @@
               <li>✓ Hochglanzpolitur</li>
               <li>✓ Premiumversiegelung</li>
               <li>✓ Tiefenreinigung aller Sitze</li>
-              <li>✓ Motorraumpflege</li>
               <li>✓ Ozonbehandlung</li>
               <li>✓ Exklusives Finish</li>
             </ul>
@@ -269,10 +266,6 @@
                 <tr>
                   <td>Ozonbehandlung</td>
                   <td>ab 60€</td>
-                </tr>
-                <tr>
-                  <td>Motorraumpflege</td>
-                  <td>ab 30€</td>
                 </tr>
                 <tr>
                   <td>Scheibenversiegelung</td>
@@ -485,7 +478,7 @@
               <input type="radio" name="package" value="wikeneu" data-price="151.20" data-original-price="189">
               <span class="option-label">
                 <strong>Wie Neu - 151,20€</strong>
-                <small>Lackversiegelung, Maschinenpoltur, Motorraumpflege</small>
+                <small>Lackversiegelung, Maschinenpoltur</small>
               </span>
             </label>
             <label class="package-option">
@@ -510,11 +503,6 @@
               <input type="checkbox" name="extra" value="ozon" data-price="60">
               <span>Ozonbehandlung</span>
               <span class="extra-price">+60€</span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="motor" data-price="30">
-              <span>Motorwäsche & Motorraumpflege</span>
-              <span class="extra-price">+30€</span>
             </label>
             <label class="extra-option">
               <input type="checkbox" name="extra" value="scheibe" data-price="30">
@@ -571,6 +559,21 @@
             <label for="booking-notes">Zusätzliche Hinweise</label>
             <textarea id="booking-notes" name="notes" rows="3" placeholder="z.B. Fahrzeugtyp, spezielle Anforderungen..."></textarea>
           </div>
+        </div>
+
+        <div class="booking-section">
+          <h3>4. Einwilligungen</h3>
+          <div class="consent-group">
+            <label class="consent-option">
+              <input type="checkbox" id="accept-agb" name="acceptAgb" required>
+              <span>Ich akzeptiere die <a href="agb.html" target="_blank" rel="noopener noreferrer">AGB</a>.</span>
+            </label>
+            <label class="consent-option">
+              <input type="checkbox" id="accept-datenschutz" name="acceptDatenschutz" required>
+              <span>Ich akzeptiere die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.</span>
+            </label>
+          </div>
+          <p class="consent-hint">Beide Zustimmungen sind erforderlich, bevor deine Anfrage gesendet werden kann.</p>
         </div>
 
         <div class="booking-summary">

@@ -167,6 +167,15 @@ function initializeApp() {
 
     // Booking Form Submit
     bookingForm.addEventListener('submit', function (e) {
+      const agbCheckbox = document.getElementById('accept-agb');
+      const privacyCheckbox = document.getElementById('accept-datenschutz');
+
+      if (!bookingForm.checkValidity() || !agbCheckbox.checked || !privacyCheckbox.checked) {
+        e.preventDefault();
+        alert('Bitte bestätige beide Einwilligungen (AGB und Datenschutz), bevor du deine Anfrage absenden kannst.');
+        return;
+      }
+
       e.preventDefault();
 
       const name = document.getElementById('booking-name').value;
@@ -198,6 +207,7 @@ function initializeApp() {
         message += `Zusatzleistungen: ${selectedExtras.join(', ')}\n`;
       }
       message += `Gesamtpreis: ${totalPrice}\n`;
+      message += `AGB und Datenschutz bestätigt: Ja\n`;
       if (notes) {
         message += `Notizen: ${notes}\n`;
       }

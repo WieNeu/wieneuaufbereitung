@@ -917,7 +917,7 @@ img { max-width: 100%; display: block; }
 .form-group label {
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #f3eeee;
+  color: #050000;
 }
 
 .form-group input,
@@ -1162,7 +1162,7 @@ img { max-width: 100%; display: block; }
 
 .booking-section h3 {
   font-size: 1.1rem;
-  color: #b8860b;
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
 }
 
@@ -1377,6 +1377,46 @@ img { max-width: 100%; display: block; }
   color: var(--accent);
   font-weight: 600;
   white-space: nowrap;
+}
+
+.consent-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.consent-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: var(--radius);
+  background: #fafafa;
+}
+
+.consent-option input[type="checkbox"] {
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 18px;
+  height: 18px;
+}
+
+.consent-option span {
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.consent-option a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.consent-hint {
+  margin-top: -0.25rem;
+  font-size: 0.9rem;
+  color: #666666;
 }
 
 .booking-summary {
