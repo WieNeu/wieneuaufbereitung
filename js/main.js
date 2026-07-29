@@ -269,6 +269,29 @@ function initializeApp() {
     });
   });
 
+  const reviewWrapper = document.querySelector('.review-form-wrapper');
+  const reviewToggle = document.querySelector('.review-form-wrapper .review-toggle');
+  const servicesWrapper = document.querySelector('.additional-services');
+  const servicesToggle = document.querySelector('.additional-services .review-toggle');
+
+  if (reviewWrapper && reviewToggle) {
+    reviewToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      reviewWrapper.classList.toggle('open');
+      const isOpen = reviewWrapper.classList.contains('open');
+      reviewToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  if (servicesWrapper && servicesToggle) {
+    servicesToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      servicesWrapper.classList.toggle('open');
+      const isOpen = servicesWrapper.classList.contains('open');
+      servicesToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
   /* ---------- Review System with GitHub Pages JSON + localStorage ---------- */
   // GitHub Pages: Serviert Dateien unter domain/repo/path
   // Kostenlos, öffentlich, keine Konfiguration!

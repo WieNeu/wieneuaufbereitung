@@ -254,51 +254,56 @@
 
         <!-- ADDITIONAL SERVICES -->
         <div class="additional-services">
-          <h3>Zusatzleistungen</h3>
-          <p class="additional-services-note">Diese Leistungen können zu jedem Paket hinzugefügt werden:</p>
-          <div class="services-table-wrapper">
-            <table class="services-table">
-              <thead>
-                <tr>
-                  <th>Zusatzleistung</th>
-                  <th>Preis</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Tierhaarentfernung</td>
-                  <td>ab 30€</td>
-                </tr>
-                <tr>
-                  <td>Ozonbehandlung</td>
-                  <td>ab 60€</td>
-                </tr>
-                <tr>
-                  <td>Scheibenversiegelung</td>
-                  <td>ab 30€</td>
-                </tr>
-                <tr>
-                  <td>Felgenversiegelung</td>
-                  <td>ab 50€</td>
-                </tr>
-                <tr>
-                  <td>Insekten- & Baumharzentfernung</td>
-                  <td>ab 20€</td>
-                </tr>
-                <tr>
-                  <td>Keramikversiegelung</td>
-                  <td>ab 199€</td>
-                </tr>
-                <tr>
-                  <td>Lederreinigung & Lederpflege</td>
-                  <td>ab 50€</td>
-                </tr>
-                <tr>
-                  <td>Kunststoff-Außenpflege</td>
-                  <td>ab 30€</td>
-                </tr>
-              </tbody>
-            </table>
+          <button class="review-toggle services-toggle" type="button" aria-expanded="false" aria-controls="servicesPanel">
+            <span>Zusatzleistungen</span>
+            <span class="review-toggle-icon">＋</span>
+          </button>
+          <div class="review-form-panel services-panel" id="servicesPanel">
+            <p class="additional-services-note">Diese Leistungen können zu jedem Paket hinzugefügt werden:</p>
+            <div class="services-table-wrapper">
+              <table class="services-table">
+                <thead>
+                  <tr>
+                    <th>Zusatzleistung</th>
+                    <th>Preis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Tierhaarentfernung</td>
+                    <td>ab 30€</td>
+                  </tr>
+                  <tr>
+                    <td>Ozonbehandlung</td>
+                    <td>ab 60€</td>
+                  </tr>
+                  <tr>
+                    <td>Scheibenversiegelung</td>
+                    <td>ab 30€</td>
+                  </tr>
+                  <tr>
+                    <td>Felgenversiegelung</td>
+                    <td>ab 50€</td>
+                  </tr>
+                  <tr>
+                    <td>Insekten- & Baumharzentfernung</td>
+                    <td>ab 20€</td>
+                  </tr>
+                  <tr>
+                    <td>Keramikversiegelung</td>
+                    <td>ab 199€</td>
+                  </tr>
+                  <tr>
+                    <td>Lederreinigung & Lederpflege</td>
+                    <td>ab 50€</td>
+                  </tr>
+                  <tr>
+                    <td>Kunststoff-Außenpflege</td>
+                    <td>ab 30€</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -348,43 +353,87 @@
 
         <!-- REVIEW FORM -->
         <div class="review-form-wrapper">
-          <h3>Schreibe deine Rezension</h3>
-          <p>Teile deine Erfahrung mit uns – deine Bewertung hilft anderen Kunden!</p>
-          <form id="reviewForm" class="review-form">
-            <div class="form-group">
-              <label for="review-name">Dein Name *</label>
-              <input type="text" id="review-name" name="name" required placeholder="z.B. Max M.">
-            </div>
-
-            <div class="form-group">
-              <label for="review-email">E-Mail *</label>
-              <input type="email" id="review-email" name="email" required placeholder="deine@email.de">
-            </div>
-
-            <div class="form-group">
-              <label>Bewertung *</label>
-              <div class="star-rating">
-                <input type="radio" id="star5" name="rating" value="5" required>
-                <label for="star5" class="star" title="5 Sterne">★</label>
-                <input type="radio" id="star4" name="rating" value="4">
-                <label for="star4" class="star" title="4 Sterne">★</label>
-                <input type="radio" id="star3" name="rating" value="3">
-                <label for="star3" class="star" title="3 Sterne">★</label>
-                <input type="radio" id="star2" name="rating" value="2">
-                <label for="star2" class="star" title="2 Sterne">★</label>
-                <input type="radio" id="star1" name="rating" value="1">
-                <label for="star1" class="star" title="1 Stern">★</label>
+          <button class="review-toggle" type="button" aria-expanded="false" aria-controls="reviewFormPanel">
+            <span>Schreibe deine Rezension</span>
+            <span class="review-toggle-icon">＋</span>
+          </button>
+          <div class="review-form-panel" id="reviewFormPanel">
+            <p>Teile deine Erfahrung mit uns – deine Bewertung hilft anderen Kunden!</p>
+            <form id="reviewForm" class="review-form">
+              <div class="form-group">
+                <label for="review-name">Dein Name *</label>
+                <input type="text" id="review-name" name="name" required placeholder="z.B. Max M.">
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="review-text">Deine Rezension *</label>
-              <textarea id="review-text" name="text" rows="4" required placeholder="Beschreibe deine Erfahrung mit Wie Neu..."></textarea>
-            </div>
+              <div class="form-group">
+                <label for="review-email">E-Mail *</label>
+                <input type="email" id="review-email" name="email" required placeholder="deine@email.de">
+              </div>
 
-            <button type="submit" class="btn btn-primary">Rezension absenden</button>
-            <p class="review-note">✓ Deine Rezension wird sofort veröffentlicht</p>
-          </form>
+              <div class="form-group">
+                <label>Bewertung *</label>
+                <div class="star-rating">
+                  <input type="radio" id="star5" name="rating" value="5" required>
+                  <label for="star5" class="star" title="5 Sterne">★</label>
+                  <input type="radio" id="star4" name="rating" value="4">
+                  <label for="star4" class="star" title="4 Sterne">★</label>
+                  <input type="radio" id="star3" name="rating" value="3">
+                  <label for="star3" class="star" title="3 Sterne">★</label>
+                  <input type="radio" id="star2" name="rating" value="2">
+                  <label for="star2" class="star" title="2 Sterne">★</label>
+                  <input type="radio" id="star1" name="rating" value="1">
+                  <label for="star1" class="star" title="1 Stern">★</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="review-text">Deine Rezension *</label>
+                <textarea id="review-text" name="text" rows="4" required placeholder="Beschreibe deine Erfahrung mit Wie Neu..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Rezension absenden</button>
+              <p class="review-note">✓ Deine Rezension wird sofort veröffentlicht</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2>Vorher & Nachher</h2>
+          <p>Ein Blick auf unsere Transformationsarbeiten – bald mit weiteren echten Vergleichsbildern.</p>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <div class="gallery-image gallery-placeholder">
+              <span>Vorher</span>
+            </div>
+            <div class="gallery-content">
+              <h3>Komplette Innen- & Außenaufbereitung</h3>
+              <p>Professionelle Vorbereitung für einen makellosen Gesamteindruck.</p>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-image gallery-placeholder alt">
+              <span>Nachher</span>
+            </div>
+            <div class="gallery-content">
+              <h3>Glanz & Schutz</h3>
+              <p>Hochwertige Pflege für einen langanhaltenden Premium-Effekt.</p>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-image gallery-placeholder">
+              <span>Bald verfügbar</span>
+            </div>
+            <div class="gallery-content">
+              <h3>Weitere Beispiele folgen</h3>
+              <p>Diese Galerie wird in Zukunft mit echten Vorher-Nachher-Fotos erweitert.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
