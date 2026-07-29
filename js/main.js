@@ -207,7 +207,7 @@ function initializeApp() {
         message += `Zusatzleistungen: ${selectedExtras.join(', ')}\n`;
       }
       message += `Gesamtpreis: ${totalPrice}\n`;
-      message += `AGB und Datenschutz bestätigt: Ja\n`;
+      message += `Ich habe die AGB und die Datenschutzbestimmungen gelesen und akzeptiere sie.\n`;
       if (notes) {
         message += `Notizen: ${notes}\n`;
       }
