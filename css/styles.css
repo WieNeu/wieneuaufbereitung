@@ -917,7 +917,11 @@ img { max-width: 100%; display: block; }
 .form-group label {
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #050000;
+  color: #1a1a1a;
+}
+
+.contact-form .form-group label {
+  color: #ffffff;
 }
 
 .form-group input,
