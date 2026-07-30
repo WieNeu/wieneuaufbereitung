@@ -1,6 +1,20 @@
 // Wie Neu Autoaufbereitung – Website-Skripte
 
 function initializeApp() {
+  const header = document.getElementById('header');
+
+  function updateHeaderState() {
+    if (!header) return;
+    if (window.scrollY > 14) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  updateHeaderState();
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+
   /* ---------- Mobile Navigation ---------- */
   const navToggle = document.getElementById('navToggle');
   const siteNav = document.getElementById('siteNav');
@@ -268,6 +282,46 @@ function initializeApp() {
       }
     });
   });
+
+  // Reveal cards and sections once they enter the viewport.
+  const revealSelectors = [
+    '.section-header',
+    '.feature-card',
+    '.service-card',
+    '.package-card',
+    '.team-card',
+    '.testimonial-card',
+    '.gallery-card',
+    '.contact-block',
+    '.step'
+  ];
+
+  const revealElements = document.querySelectorAll(revealSelectors.join(','));
+  revealElements.forEach(function (element) {
+    element.classList.add('reveal');
+  });
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.15
+    });
+
+    revealElements.forEach(function (element) {
+      revealObserver.observe(element);
+    });
+  } else {
+    revealElements.forEach(function (element) {
+      element.classList.add('is-visible');
+    });
+  }
 
   const reviewWrapper = document.querySelector('.review-form-wrapper');
   const reviewToggle = document.querySelector('.review-form-wrapper .review-toggle');
