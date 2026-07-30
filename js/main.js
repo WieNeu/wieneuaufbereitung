@@ -2,6 +2,18 @@
 
 function initializeApp() {
   const header = document.getElementById('header');
+  const businessPhone = '4939344993858';
+  const packageLabels = {
+    fresh: 'Frisch gemacht',
+    care: 'Wieder gepflegt',
+    wikeneu: 'Wie Neu',
+    showroom: 'Showroom Edition'
+  };
+
+  function openWhatsApp(text) {
+    const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  }
 
   function updateHeaderState() {
     if (!header) return;
@@ -118,6 +130,25 @@ function initializeApp() {
     });
   });
 
+  // Direkte WhatsApp-Anfrage je Paketkarte
+  document.querySelectorAll('[data-whatsapp-package]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const packageId = this.dataset.whatsappPackage;
+      const packageName = packageLabels[packageId] || packageId;
+      const message = [
+        'Hallo Wie Neu Team,',
+        '',
+        `ich interessiere mich fuer das Paket "${packageName}".`,
+        'Ist in den naechsten Tagen ein Termin frei?',
+        '',
+        'Mein Wunschzeitraum:'
+      ].join('\n');
+
+      openWhatsApp(message);
+    });
+  });
+
   /* ---------- Booking Form - Preisberechnung ---------- */
   const bookingForm = document.getElementById('bookingForm');
   if (bookingForm) {
@@ -226,15 +257,11 @@ function initializeApp() {
         message += `Notizen: ${notes}\n`;
       }
 
-      // WhatsApp oder E-Mail
-      const phoneNumber = '+4939344993858';
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
       // Fallback: Alert mit Info
       alert('Vielen Dank für deine Buchungsanfrage! Wir öffnen WhatsApp, damit wir deinen Termin bestätigen können.');
 
       // WhatsApp öffnen
-      window.open(whatsappUrl, '_blank');
+      openWhatsApp(message);
 
       // Form zurücksetzen
       bookingForm.reset();
@@ -259,7 +286,17 @@ function initializeApp() {
       const phone = document.getElementById('phone').value;
       const message = document.getElementById('message').value;
 
-      alert(`Vielen Dank für deine Nachricht, ${name}!\n\nWir melden uns in Kürze bei dir.`);
+      const contactMessage = [
+        'Kontaktanfrage ueber Website',
+        '',
+        `Name: ${name}`,
+        `E-Mail: ${email}`,
+        `Telefon: ${phone}`,
+        `Nachricht: ${message || 'Keine Zusatznachricht'}`
+      ].join('\n');
+
+      alert(`Vielen Dank fuer deine Nachricht, ${name}!\n\nWir oeffnen jetzt WhatsApp fuer die direkte Terminabstimmung.`);
+      openWhatsApp(contactMessage);
 
       contactForm.reset();
     });
@@ -344,6 +381,63 @@ function initializeApp() {
       const isOpen = servicesWrapper.classList.contains('open');
       servicesToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
+  }
+
+  // Gallery slider controls with autoplay.
+  const gallerySlider = document.getElementById('gallerySlider');
+  if (gallerySlider) {
+    const slides = Array.from(gallerySlider.querySelectorAll('.gallery-slide'));
+    const dots = Array.from(gallerySlider.querySelectorAll('.dot'));
+    const prev = gallerySlider.querySelector('.gallery-nav.prev');
+    const next = gallerySlider.querySelector('.gallery-nav.next');
+    let currentSlide = 0;
+    let autoplayId;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, idx) {
+        slide.classList.toggle('active', idx === currentSlide);
+      });
+      dots.forEach(function (dot, idx) {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function startAutoplay() {
+      autoplayId = setInterval(nextSlide, 4800);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayId);
+    }
+
+    if (prev) {
+      prev.addEventListener('click', function () {
+        showSlide(currentSlide - 1);
+      });
+    }
+
+    if (next) {
+      next.addEventListener('click', function () {
+        nextSlide();
+      });
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        showSlide(parseInt(dot.dataset.slide, 10) || 0);
+      });
+    });
+
+    gallerySlider.addEventListener('mouseenter', stopAutoplay);
+    gallerySlider.addEventListener('mouseleave', startAutoplay);
+
+    showSlide(0);
+    startAutoplay();
   }
 
   /* ---------- Review System with GitHub Pages JSON + localStorage ---------- */

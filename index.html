@@ -6,7 +6,7 @@
   <title>Wie Neu Autoaufbereitung – Professionelle Fahrzeugaufbereitung</title>
   <meta name="description" content="Professionelle Fahrzeugaufbereitung mit modernen Techniken. Lackschutz, Detailing, Innenreinigung. Jetzt unverbindlich anfragen." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=202607300101">
+  <link rel="stylesheet" href="css/styles.css?v=202607300132">
 </head>
 <body>
   <div class="promo-banner" aria-label="Werbe-Banner">
@@ -27,7 +27,7 @@
           <li><a href="#services">LEISTUNGEN</a></li>
           <li><a href="#team">ÜBER UNS</a></li>
           <li><a href="#packages">PAKETE </a></li>
-          <li><button class="btn btn-primary nav-cta" data-modal="bookingModal">TERMIN BUCHEN</button></li>
+          <li><button class="btn btn-primary nav-cta" data-modal="bookingModal">TERMIN + 20% RABATT</button></li>
         </ul>
       </nav>
     </div>
@@ -210,6 +210,7 @@
               <li>✓ Felgenpflege</li>
             </ul>
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="fresh">Jetzt buchen</button>
+            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="fresh">Per WhatsApp anfragen</a>
           </div>
           <div class="package-card" data-package="care" data-price="87.20">
             <div class="package-label">⭐ Beliebt</div>
@@ -228,6 +229,7 @@
               <li>✓ Duftfinish</li>
             </ul>
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="care">Jetzt buchen</button>
+            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="care">Per WhatsApp anfragen</a>
           </div>
           <div class="package-card featured" data-package="wikeneu" data-price="151.20">
             <div class="package-label">💎 Premium</div>
@@ -246,6 +248,7 @@
               <li>✓ Lederpflege (falls vorhanden)</li>
             </ul>
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="wikeneu">Jetzt buchen</button>
+            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="wikeneu">Per WhatsApp anfragen</a>
           </div>
           <div class="package-card" data-package="showroom" data-price="239.20">
             <div class="package-label">👑 Top</div>
@@ -265,6 +268,7 @@
               <li>✓ Exklusives Finish</li>
             </ul>
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="showroom">Jetzt buchen</button>
+            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="showroom">Per WhatsApp anfragen</a>
           </div>
         </div>
 
@@ -420,36 +424,39 @@
       <div class="container">
         <div class="section-header">
           <h2>Vorher & Nachher</h2>
-          <p>Ein Blick auf unsere Transformationsarbeiten – bald mit weiteren echten Vergleichsbildern.</p>
+          <p>Ein Blick auf unsere Arbeiten mit echten Bildern aus unserem Bestand.</p>
         </div>
-        <div class="gallery-grid">
-          <article class="gallery-card">
-            <div class="gallery-image gallery-placeholder">
-              <span>Vorher</span>
-            </div>
-            <div class="gallery-content">
-              <h3>Komplette Innen- & Außenaufbereitung</h3>
-              <p>Professionelle Vorbereitung für einen makellosen Gesamteindruck.</p>
-            </div>
-          </article>
-          <article class="gallery-card">
-            <div class="gallery-image gallery-placeholder alt">
-              <span>Nachher</span>
-            </div>
-            <div class="gallery-content">
-              <h3>Glanz & Schutz</h3>
-              <p>Hochwertige Pflege für einen langanhaltenden Premium-Effekt.</p>
-            </div>
-          </article>
-          <article class="gallery-card">
-            <div class="gallery-image gallery-placeholder">
-              <span>Bald verfügbar</span>
-            </div>
-            <div class="gallery-content">
-              <h3>Weitere Beispiele folgen</h3>
-              <p>Diese Galerie wird in Zukunft mit echten Vorher-Nachher-Fotos erweitert.</p>
-            </div>
-          </article>
+        <div class="gallery-slider" id="gallerySlider" aria-label="Bildergalerie">
+          <button class="gallery-nav prev" type="button" aria-label="Vorheriges Bild">&#10094;</button>
+          <div class="gallery-track" id="galleryTrack">
+            <article class="gallery-slide active" data-index="0">
+              <img src="assets/hero-bg.jpg" alt="Fahrzeug in professioneller Aufbereitung" loading="lazy">
+              <div class="gallery-caption">
+                <h3>Detailarbeit am Fahrzeuglack</h3>
+                <p>Praezise Aufbereitung fuer tiefen Glanz und saubere Linien.</p>
+              </div>
+            </article>
+            <article class="gallery-slide" data-index="1">
+              <img src="assets/Preis.webp" alt="Preis- und Angebotsuebersicht Wie Neu" loading="lazy">
+              <div class="gallery-caption">
+                <h3>Klare Paketpreise</h3>
+                <p>Transparente Leistungen mit Neukundenrabatt ohne versteckte Kosten.</p>
+              </div>
+            </article>
+            <article class="gallery-slide" data-index="2">
+              <img src="assets/background.webp" alt="Sauberes Fahrzeug nach Aufbereitung" loading="lazy">
+              <div class="gallery-caption">
+                <h3>Finish mit Langzeitschutz</h3>
+                <p>Innen- und Aussenpflege mit hochwertigen Produkten und Versiegelung.</p>
+              </div>
+            </article>
+          </div>
+          <button class="gallery-nav next" type="button" aria-label="Naechstes Bild">&#10095;</button>
+          <div class="gallery-dots" id="galleryDots" aria-label="Bildauswahl">
+            <button type="button" class="dot active" data-slide="0" aria-label="Bild 1"></button>
+            <button type="button" class="dot" data-slide="1" aria-label="Bild 2"></button>
+            <button type="button" class="dot" data-slide="2" aria-label="Bild 3"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -718,6 +725,6 @@
     <span>WhatsApp</span>
   </a>
 
-  <script src="js/main.js?v=202607300101"></script>
+  <script src="js/main.js?v=202607300132"></script>
 </body>
 </html>
