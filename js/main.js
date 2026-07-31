@@ -329,6 +329,8 @@ function initializeApp() {
     '.team-card',
     '.testimonial-card',
     '.gallery-card',
+    '.car-showcase',
+    '.car-shot',
     '.contact-block',
     '.step'
   ];
@@ -383,62 +385,21 @@ function initializeApp() {
     });
   }
 
-  // Gallery slider controls with autoplay.
-  const gallerySlider = document.getElementById('gallerySlider');
-  if (gallerySlider) {
-    const slides = Array.from(gallerySlider.querySelectorAll('.gallery-slide'));
-    const dots = Array.from(gallerySlider.querySelectorAll('.dot'));
-    const prev = gallerySlider.querySelector('.gallery-nav.prev');
-    const next = gallerySlider.querySelector('.gallery-nav.next');
-    let currentSlide = 0;
-    let autoplayId;
+  // Collapsible per-vehicle showcase blocks.
+  document.querySelectorAll('.car-showcase').forEach(function (showcase) {
+    const toggle = showcase.querySelector('.car-showcase-toggle');
+    const icon = showcase.querySelector('.car-showcase-toggle-icon');
+    if (!toggle) return;
 
-    function showSlide(index) {
-      currentSlide = (index + slides.length) % slides.length;
-      slides.forEach(function (slide, idx) {
-        slide.classList.toggle('active', idx === currentSlide);
-      });
-      dots.forEach(function (dot, idx) {
-        dot.classList.toggle('active', idx === currentSlide);
-      });
-    }
-
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
-
-    function startAutoplay() {
-      autoplayId = setInterval(nextSlide, 4800);
-    }
-
-    function stopAutoplay() {
-      clearInterval(autoplayId);
-    }
-
-    if (prev) {
-      prev.addEventListener('click', function () {
-        showSlide(currentSlide - 1);
-      });
-    }
-
-    if (next) {
-      next.addEventListener('click', function () {
-        nextSlide();
-      });
-    }
-
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
-        showSlide(parseInt(dot.dataset.slide, 10) || 0);
-      });
+    toggle.addEventListener('click', function () {
+      showcase.classList.toggle('open');
+      const isOpen = showcase.classList.contains('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (icon) {
+        icon.textContent = isOpen ? '−' : '+';
+      }
     });
-
-    gallerySlider.addEventListener('mouseenter', stopAutoplay);
-    gallerySlider.addEventListener('mouseleave', startAutoplay);
-
-    showSlide(0);
-    startAutoplay();
-  }
+  });
 
   /* ---------- Review System with GitHub Pages JSON + localStorage ---------- */
   // GitHub Pages: Serviert Dateien unter domain/repo/path
