@@ -362,19 +362,8 @@ function initializeApp() {
     });
   }
 
-  const reviewWrapper = document.querySelector('.review-form-wrapper');
-  const reviewToggle = document.querySelector('.review-form-wrapper .review-toggle');
   const servicesWrapper = document.querySelector('.additional-services');
   const servicesToggle = document.querySelector('.additional-services .review-toggle');
-
-  if (reviewWrapper && reviewToggle) {
-    reviewToggle.addEventListener('click', function (e) {
-      e.preventDefault();
-      reviewWrapper.classList.toggle('open');
-      const isOpen = reviewWrapper.classList.contains('open');
-      reviewToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-  }
 
   if (servicesWrapper && servicesToggle) {
     servicesToggle.addEventListener('click', function (e) {
@@ -401,166 +390,24 @@ function initializeApp() {
     });
   });
 
-  /* ---------- Review System with GitHub Pages JSON + localStorage ---------- */
-  // GitHub Pages: Serviert Dateien unter domain/repo/path
-  // Kostenlos, öffentlich, keine Konfiguration!
-  const GITHUB_PAGES_URL = 'https://wieneu.github.io/wieneuaufbereitung/data/reviews.json';
-  
-  const reviewForm = document.getElementById('reviewForm');
+  /* ---------- Google Reviews Widget Loader ---------- */
+  // Lade Google Reviews Widget asynchron
   const testimonialsGrid = document.getElementById('testimonials-grid');
+  
+  if (testimonialsGrid) {
+    // Lade Google Review Badge mit Verzögerung
+    setTimeout(function() {
+      // Google Review Badge Script laden
+      const script = document.createElement('script');
+      script.src = 'https://static.elfsight.com/platform/platform.js';
+      script.setAttribute('data-use-service-core', 'true');
+      script.async = true;
+      document.head.appendChild(script);
 
-  if (reviewForm && testimonialsGrid) {
-    // Lade Rezensionen von GitHub Pages JSON + localStorage
-    async function loadReviews() {
-      let allReviews = [];
-      
-      // 1. Lade von GitHub Pages (öffentliche Reviews)
-      try {
-        const response = await fetch(GITHUB_PAGES_URL, {
-          headers: { 'Accept': 'application/json' }
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          allReviews = data.reviews || [];
-          console.log('✓ Reviews von GitHub Pages geladen:', allReviews.length);
-        }
-      } catch (e) {
-        console.log('GitHub Pages API Fehler:', e.message);
-      }
-      
-      // 2. Lade neue Reviews von localStorage
-      try {
-        const localReviews = JSON.parse(localStorage.getItem('wie-neu-reviews-new')) || [];
-        if (localReviews.length > 0) {
-          console.log('→ Füge localStorage Reviews hinzu:', localReviews.length);
-          allReviews = [...localReviews, ...allReviews];
-        }
-      } catch (e) {
-        console.log('localStorage Fehler:', e.message);
-      }
-      
-      // Sortiere nach Datum (neueste zuerst)
-      allReviews.sort((a, b) => {
-        const dateA = typeof a.created_at === 'number' ? a.created_at : new Date(a.created_at).getTime();
-        const dateB = typeof b.created_at === 'number' ? b.created_at : new Date(b.created_at).getTime();
-        return dateB - dateA;
-      });
-      
-      console.log('✓ Gesamt Rezensionen:', allReviews.length);
-      return allReviews.map(r => ({
-        ...r,
-        date: typeof r.created_at === 'number' ? 
-          new Date(r.created_at).toLocaleDateString('de-DE') : 
-          new Date(r.created_at).toLocaleDateString('de-DE')
-      }));
-    }
-
-    // Zeige alle Rezensionen an
-    async function displayReviews() {
-      const reviews = await loadReviews();
-      
-      // Entferne alte dynamische Rezensionen
-      const dynamicCards = testimonialsGrid.querySelectorAll('.testimonial-card.user-review');
-      dynamicCards.forEach(card => card.remove());
-
-      // Füge neue Rezensionen hinzu (neuste zuerst)
-      reviews.forEach(function (review) {
-        const card = document.createElement('div');
-        card.className = 'testimonial-card user-review';
-        
-        // Generiere Sterne basierend auf Rating
-        let starsHtml = '';
-        for (let i = 0; i < 5; i++) {
-          starsHtml += i < review.rating ? '⭐' : '☆';
-        }
-
-        const dateStr = review.date;
-
-        card.innerHTML = `
-          <div class="stars">${starsHtml}</div>
-          <p>"${review.text}"</p>
-          <p class="testimonial-author">– ${review.name}</p>
-          <p class="review-date" style="font-size: 0.8rem; color: var(--text-tertiary); margin-top: 0.5rem;">${dateStr}</p>
-        `;
-        
-        testimonialsGrid.appendChild(card);
-      });
-    }
-
-    // Form Submit Handler
-    reviewForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      const name = document.getElementById('review-name').value;
-      const email = document.getElementById('review-email').value;
-      const rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
-      const text = document.getElementById('review-text').value;
-
-      let success = false;
-
-      // 1. Speichere neue Review zu localStorage
-      try {
-        let newReviews = JSON.parse(localStorage.getItem('wie-neu-reviews-new')) || [];
-        newReviews.push({
-          name: name,
-          email: email,
-          rating: rating,
-          text: text,
-          created_at: new Date().toISOString(),
-          id: 'review-' + Date.now()
-        });
-        localStorage.setItem('wie-neu-reviews-new', JSON.stringify(newReviews));
-        success = true;
-        console.log('✓ Neue Review zu localStorage gespeichert');
-      } catch (e) {
-        console.log('localStorage Fehler:', e.message);
-      }
-
-      // 2. Sende zu Formspree (für Email-Benachrichtigung)
-      const formspreeData = new FormData();
-      formspreeData.append('name', name);
-      formspreeData.append('email', email);
-      formspreeData.append('rating', rating + ' Sterne');
-      formspreeData.append('message', text);
-
-      fetch('https://formspree.io/f/mpqvkozy', {
-        method: 'POST',
-        body: formspreeData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          console.log('✓ Formspree Email gesendet');
-        }
-      })
-      .catch(error => {
-        console.log('Formspree Fehler:', error);
-      });
-
-      // 3. Zeige Alert
-      if (success) {
-        alert('Vielen Dank für deine Rezension! 🌟\n\nDeine Bewertung ist jetzt öffentlich sichtbar!');
-      } else {
-        alert('Es gab einen Fehler beim Speichern der Rezension.');
-      }
-
-      // 4. Zeige neue Rezensionen
-      displayReviews().catch(err => console.error('displayReviews Error:', err));
-
-      // 5. Form zurücksetzen
-      reviewForm.reset();
-
-      // 6. Scroll zu Rezensionen
-      setTimeout(function () {
-        testimonialsGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
-    });
-
-    // Lade Rezensionen beim Laden
-    displayReviews().catch(err => console.error('displayReviews Error:', err));
+      // Alternative: Google Business Profile Reviews Widget
+      // Nutze Google Maps Embed oder direkten Link
+      console.log('✓ Google Reviews Widget initialisiert');
+    }, 500);
   }
 }
 
@@ -572,4 +419,3 @@ if (document.readyState === 'loading') {
   // DOM ist bereits geladen, führe direkt aus
   initializeApp();
 }
-
