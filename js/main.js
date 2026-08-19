@@ -139,8 +139,8 @@ function initializeApp() {
       const message = [
         'Hallo Wie Neu Team,',
         '',
-        `ich interessiere mich fuer das Paket "${packageName}".`,
-        'Ist in den naechsten Tagen ein Termin frei?',
+        `ich interessiere mich für das Paket "${packageName}".`,
+        'Ist in den nächsten Tagen ein Termin frei?',
         '',
         'Mein Wunschzeitraum:'
       ].join('\n');
@@ -287,7 +287,7 @@ function initializeApp() {
       const message = document.getElementById('message').value;
 
       const contactMessage = [
-        'Kontaktanfrage ueber Website',
+        'Kontaktanfrage über Website',
         '',
         `Name: ${name}`,
         `E-Mail: ${email}`,
@@ -295,7 +295,7 @@ function initializeApp() {
         `Nachricht: ${message || 'Keine Zusatznachricht'}`
       ].join('\n');
 
-      alert(`Vielen Dank fuer deine Nachricht, ${name}!\n\nWir oeffnen jetzt WhatsApp fuer die direkte Terminabstimmung.`);
+      alert(`Vielen Dank für deine Nachricht, ${name}!\n\nWir öffnen jetzt WhatsApp für die direkte Terminabstimmung.`);
       openWhatsApp(contactMessage);
 
       contactForm.reset();
