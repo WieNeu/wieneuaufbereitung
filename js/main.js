@@ -390,6 +390,26 @@ function initializeApp() {
     });
   });
 
+  // Autoplay-Sicherstellung für Hintergrund- & Galerie-Videos
+  const autoPlayVideos = document.querySelectorAll('video[autoplay]');
+  autoPlayVideos.forEach(function (video) {
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function () {
+        const startPlay = function () {
+          video.play().catch(function () {});
+          document.removeEventListener('click', startPlay);
+          document.removeEventListener('touchstart', startPlay);
+          document.removeEventListener('scroll', startPlay);
+        };
+        document.addEventListener('click', startPlay, { once: true });
+        document.addEventListener('touchstart', startPlay, { once: true });
+        document.addEventListener('scroll', startPlay, { once: true });
+      });
+    }
+  });
+
   /* ---------- Google Reviews Widget Loader ---------- */
   // Lade Google Reviews Widget asynchron
   const testimonialsGrid = document.getElementById('testimonials-grid');

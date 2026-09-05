@@ -577,8 +577,88 @@ img { max-width: 100%; display: block; }
    ======================================== */
 
 .why-section {
-  padding: 4rem 0;
-  background: var(--bg-light);
+  position: relative;
+  padding: 6.5rem 0 6rem;
+  background: #080808;
+  overflow: hidden;
+}
+
+.why-video-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.why-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.02);
+  filter: contrast(1.1) saturate(1.2) brightness(1.02);
+}
+
+.why-video-overlay {
+  position: absolute;
+  inset: 0;
+  /* Sehr dezent, um maximale Sichtbarkeit und Brillanz des Videos zu gewährleisten */
+  background:
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, rgba(5, 5, 5, 0.4) 60%, rgba(8, 8, 8, 0.75) 100%),
+    linear-gradient(180deg, rgba(8, 8, 8, 0.55) 0%, rgba(8, 8, 8, 0.08) 25%, rgba(8, 8, 8, 0.08) 75%, rgba(8, 8, 8, 0.65) 100%);
+}
+
+.why-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.why-section .section-header h2 {
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.why-section .section-header p {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
+  font-weight: 500;
+}
+
+.why-section .features-grid {
+  margin-top: 3.5rem;
+}
+
+.why-section .feature-card {
+  /* Sehr transparente, leichte Glassmorphism-Karten für optimalen Durchblick auf das Video */
+  background: rgba(8, 8, 8, 0.32);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.35s ease;
+}
+
+.why-section .feature-card:hover {
+  background: rgba(14, 14, 14, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(212, 175, 55, 0.9);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 24px rgba(212, 175, 55, 0.4);
+  transform: translateY(-6px);
+}
+
+.why-section .feature-card h3 {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.why-section .feature-card p {
+  color: #f3f3f3;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
 .why-grid {
@@ -1192,7 +1272,8 @@ img { max-width: 100%; display: block; }
   pointer-events: none;
 }
 
-.gallery-photo {
+.gallery-photo,
+.gallery-video {
   width: 100%;
   height: auto;
   max-height: 72vh;
@@ -1202,6 +1283,16 @@ img { max-width: 100%; display: block; }
   position: relative;
   z-index: 1;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-video {
+  background: #000;
+}
+
+.car-showcase-grid-video {
+  grid-template-columns: 1fr;
+  max-width: 860px;
+  margin: 1rem auto 0;
 }
 
 .gallery-caption {
@@ -2120,7 +2211,8 @@ img { max-width: 100%; display: block; }
     padding: 0.55rem;
   }
 
-  .gallery-photo {
+  .gallery-photo,
+  .gallery-video {
     max-height: 60vh;
   }
 
@@ -2134,6 +2226,22 @@ img { max-width: 100%; display: block; }
     bottom: 14px;
     padding: 0.72rem 0.9rem;
     font-size: 0.9rem;
+  }
+
+  .why-section {
+    padding: 4.5rem 0 4rem;
+  }
+
+  .why-section .features-grid {
+    margin-top: 2rem;
+    gap: 1.25rem;
+  }
+
+  .why-section .feature-card {
+    padding: 1.4rem 1.2rem;
+    background: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
   .booking-section h3 {
@@ -2178,7 +2286,8 @@ img { max-width: 100%; display: block; }
     padding: 0.45rem;
   }
 
-  .gallery-photo {
+  .gallery-photo,
+  .gallery-video {
     max-height: 52vh;
   }
 
@@ -2214,6 +2323,20 @@ img { max-width: 100%; display: block; }
   .packages-section,
   .features-section {
     padding: 2rem 0;
+  }
+
+  .why-section {
+    padding: 3.5rem 0 3rem;
+  }
+
+  .why-section .feature-card {
+    padding: 1.2rem 1rem;
+    background: rgba(10, 10, 10, 0.52);
+  }
+
+  .why-section .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
   }
 
   .contact-grid {
