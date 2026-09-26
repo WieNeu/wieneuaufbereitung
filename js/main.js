@@ -2,7 +2,7 @@
 
 function initializeApp() {
   const header = document.getElementById('header');
-  const businessPhone = '4939344993858';
+  const businessPhone = '4915233938332';
   const packageLabels = {
     fresh: 'Frisch gemacht',
     care: 'Wieder gepflegt',
