@@ -2858,8 +2858,8 @@ main > section { width: 100%; }
   .hero-title { font-size: 3.8rem; }
   .hero-subtitle { max-width: 500px; font-size: 1rem; }
   .hero-ctas { align-items: stretch; }
-  .hero-ctas .btn { flex: 1 1 210px; }
-  .hero-ctas .btn-large { min-height: 48px; padding: 0.85rem 1rem; font-size: 0.94rem; }
+  .hero-ctas .btn { flex: 0 0 auto; }
+  .hero-ctas .btn-large { min-height: 44px; padding: 0.65rem 0.85rem; font-size: 0.86rem; }
   .trust-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem 1.15rem; }
   .trust-intro { grid-column: 1 / -1; margin-bottom: 0.2rem; }
   .trust-item { font-size: 0.78rem; }
@@ -2899,9 +2899,8 @@ main > section { width: 100%; }
   .hero-title { font-size: 3.15rem; }
   .hero-kicker { font-size: 0.67rem; }
   .hero-subtitle { font-size: 0.96rem; }
-  .hero-ctas { flex-direction: column; }
-  .hero-ctas .btn { width: 100%; }
-  .hero-ctas .btn-large { min-height: 46px; padding: 0.72rem 0.9rem; font-size: 0.88rem; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+  .hero-ctas .btn { width: auto; }
   .packages-grid { grid-template-columns: 1fr; }
   .package-card { padding: 1.2rem; }
   .package-features li { font-size: 0.84rem; }
