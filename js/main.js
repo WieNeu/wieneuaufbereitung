@@ -1,6 +1,124 @@
 // Wie Neu Autoaufbereitung – Website-Skripte
 
 function initializeApp() {
+  function initializeAnalyticsConsent() {
+    const measurementId = 'G-28W3N190Q4';
+    const consentCookieName = 'wieneu_analytics_consent';
+    const savedConsent = document.cookie.split(';').map(function (cookie) {
+      return cookie.trim();
+    }).find(function (cookie) {
+      return cookie.indexOf(consentCookieName + '=') === 0;
+    });
+    const consent = savedConsent ? savedConsent.split('=').slice(1).join('=') : '';
+
+    function saveConsent(value) {
+      const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+      document.cookie = consentCookieName + '=' + value + '; Max-Age=15552000; Path=/; SameSite=Lax' + secure;
+    }
+
+    function enableAnalytics() {
+      if (window.gtag) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag('consent', 'default', { analytics_storage: 'denied' });
+      window.gtag('consent', 'update', { analytics_storage: 'granted' });
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId);
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+      document.head.appendChild(script);
+    }
+
+    function disableAnalytics() {
+      if (window.gtag) {
+        window.gtag('consent', 'update', { analytics_storage: 'denied' });
+      }
+
+      const analyticsCookies = document.cookie.split(';').map(function (cookie) {
+        return cookie.trim().split('=')[0];
+      }).filter(function (name) {
+        return /^_ga(?:_|$)/.test(name);
+      });
+      const hostnameParts = window.location.hostname.split('.');
+      const domainAttributes = [''];
+
+      for (let index = 0; index < hostnameParts.length - 1; index += 1) {
+        const domain = hostnameParts.slice(index).join('.');
+        domainAttributes.push('; Domain=' + domain, '; Domain=.' + domain);
+      }
+
+      const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+      analyticsCookies.forEach(function (name) {
+        domainAttributes.forEach(function (domainAttribute) {
+          document.cookie = name + '=; Max-Age=0; Path=/' + domainAttribute + '; SameSite=Lax' + secure;
+        });
+      });
+    }
+
+    document.body.insertAdjacentHTML('beforeend',
+      '<section class="cookie-consent" id="cookieConsent" role="dialog" aria-labelledby="cookieConsentTitle" aria-describedby="cookieConsentDescription" hidden>' +
+        '<div class="cookie-consent-copy">' +
+          '<h2 id="cookieConsentTitle">Datenschutz-Einstellungen</h2>' +
+          '<p id="cookieConsentDescription">Mit Ihrer Zustimmung verwenden wir Google Analytics, um die Nutzung unserer Website auszuwerten. Ohne Zustimmung wird Analytics nicht geladen. Ihre Auswahl können Sie jederzeit ändern.</p>' +
+          '<a href="datenschutz.html">Datenschutzerklärung</a>' +
+        '</div>' +
+        '<div class="cookie-consent-actions">' +
+          '<button type="button" class="cookie-consent-button cookie-consent-reject" data-analytics-consent="denied">Ablehnen</button>' +
+          '<button type="button" class="cookie-consent-button cookie-consent-accept" data-analytics-consent="granted">Akzeptieren</button>' +
+        '</div>' +
+      '</section>'
+    );
+
+    const panel = document.getElementById('cookieConsent');
+    const footerBottom = document.querySelector('.footer-bottom');
+    let settingsButton = null;
+    let openedFromSettings = false;
+
+    if (footerBottom) {
+      settingsButton = document.createElement('button');
+      settingsButton.type = 'button';
+      settingsButton.className = 'cookie-settings-trigger';
+      settingsButton.textContent = 'Cookie-Einstellungen';
+      footerBottom.appendChild(settingsButton);
+      settingsButton.addEventListener('click', function () {
+        openedFromSettings = true;
+        panel.hidden = false;
+        panel.querySelector('[data-analytics-consent="denied"]').focus();
+      });
+    }
+
+    panel.addEventListener('click', function (event) {
+      const button = event.target.closest('[data-analytics-consent]');
+      if (!button) return;
+
+      const selectedConsent = button.getAttribute('data-analytics-consent');
+      saveConsent(selectedConsent);
+      if (selectedConsent === 'granted') {
+        enableAnalytics();
+      } else {
+        disableAnalytics();
+      }
+
+      panel.hidden = true;
+  if (openedFromSettings && settingsButton) settingsButton.focus();
+  openedFromSettings = false;
+    });
+
+    if (consent === 'granted') {
+      enableAnalytics();
+    } else {
+      disableAnalytics();
+      if (consent !== 'denied') panel.hidden = false;
+    }
+  }
+
+  initializeAnalyticsConsent();
+
   const header = document.getElementById('header');
   const businessPhone = '4915233938332';
   const packageLabels = {
