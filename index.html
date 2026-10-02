@@ -49,11 +49,11 @@
       <nav class="site-nav" id="siteNav">
         <ul>
           <li><a href="#services">Leistungen</a></li>
-          <li><a href="#gallery">Ergebnisse</a></li>
+          <li><a href="#gallery">Vorher/Nachher</a></li>
           <li><a href="#packages">Pakete & Preise</a></li>
           <li><a href="#team">Über uns</a></li>
           <li><a href="#contact">Kontakt</a></li>
-          <li><button class="btn btn-primary nav-cta" data-modal="bookingModal">Termin anfragen</button></li>
+          <li><button class="btn btn-primary nav-cta" data-modal="bookingModal">Termin buchen</button></li>
         </ul>
       </nav>
     </div>
@@ -66,12 +66,12 @@
         <div class="hero-content">
           <p class="hero-kicker"><span></span> Fahrzeugaufbereitung in Elbe-Parey / Güsen</p>
           <h1 class="hero-title">Dein Fahrzeug.<br><em>Wie neu.</em></h1>
-          <p class="hero-subtitle">Professionelle Aufbereitung für gepflegte Fahrzeuge, sichtbaren Glanz und langfristigen Werterhalt.</p>
+          <p class="hero-subtitle">Professionelle Fahrzeugaufbereitung mit Liebe zum Detail.</p>
           <div class="hero-ctas">
-            <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin anfragen <span aria-hidden="true">↗</span></button>
-            <a class="btn btn-outline btn-large" href="#services">Leistungen entdecken</a>
+            <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin buchen <span aria-hidden="true">↗</span></button>
+            <a class="btn btn-outline btn-large" href="#services">Leistungen ansehen</a>
           </div>
-          <p class="hero-offer"><strong>20 %</strong> Neukundenrabatt auf die Paketpreise</p>
+          <p class="hero-offer"><strong>20 % Neukundenrabatt</strong> Nur für deinen ersten Termin. Gilt für Pakete; Zusatzleistungen sind ausgenommen.</p>
           <a class="hero-location" href="https://maps.google.com/?q=Meisterstra%C3%9Fe+10%2C+39317+Elbe-Parey+OT+G%C3%BCsen" target="_blank" rel="noopener noreferrer">Meisterstraße 10, Elbe-Parey OT Güsen <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -80,10 +80,10 @@
     <section class="why-section" id="why">
       <div class="container trust-strip">
         <p class="trust-intro">Sorgfalt, die man sieht.</p>
-        <div class="trust-item"><span>01</span><strong>Persönliche Beratung</strong></div>
-        <div class="trust-item"><span>02</span><strong>Transparente Paketpreise</strong></div>
-        <div class="trust-item"><span>03</span><strong>Handarbeit im Detail</strong></div>
-        <div class="trust-item"><span>04</span><strong>Regional in Güsen</strong></div>
+        <div class="trust-item"><span>01</span><strong>Premium-Qualität</strong></div>
+        <div class="trust-item"><span>02</span><strong>Persönliche Beratung</strong></div>
+        <div class="trust-item"><span>03</span><strong>Transparente Preise</strong></div>
+        <div class="trust-item"><span>04</span><strong>Sorgfältige Handarbeit</strong></div>
       </div>
     </section>
 
@@ -177,13 +177,12 @@
           <p>Wähle das Paket, das zu deinen Bedürfnissen passt. Alle Pakete können mit Zusatzleistungen erweitert werden.</p>
         </div>
         <div class="packages-grid">
-          <div class="package-card" data-package="fresh" data-price="31.20">
+          <div class="package-card" data-package="fresh">
             <div class="package-label">Einstieg</div>
             <h3>Frisch gemacht</h3>
             <div class="package-price">
-              <div class="price-original">Regulär 39€</div>
-              <span class="price">31,20€</span>
-              <span class="duration">mit 20% Neukundenrabatt</span>
+              <div class="price-original">Regulär <span data-original-package-price="fresh"></span></div>
+              <span class="price" data-package-price="fresh"></span>
             </div>
             <ul class="package-features">
               <li>✓ Handwäsche</li>
@@ -195,13 +194,12 @@
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="fresh">Jetzt buchen</button>
             <a class="btn btn-whatsapp" href="#" data-whatsapp-package="fresh">Per WhatsApp anfragen</a>
           </div>
-          <div class="package-card" data-package="care" data-price="79.20">
+          <div class="package-card" data-package="care">
             <div class="package-label">Komplettpflege</div>
             <h3>Wieder gepflegt</h3>
             <div class="package-price">
-              <div class="price-original">Regulär 99€</div>
-              <span class="price">79,20€</span>
-              <span class="duration">mit 20% Neukundenrabatt</span>
+              <div class="price-original">Regulär <span data-original-package-price="care"></span></div>
+              <span class="price" data-package-price="care"></span>
             </div>
             <ul class="package-features">
               <li>✓ Alle Leistungen aus Frisch gemacht</li>
@@ -214,13 +212,12 @@
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="care">Jetzt buchen</button>
             <a class="btn btn-whatsapp" href="#" data-whatsapp-package="care">Per WhatsApp anfragen</a>
           </div>
-          <div class="package-card featured" data-package="wikeneu" data-price="151.20">
+          <div class="package-card featured" data-package="wikeneu">
             <div class="package-label">Premium</div>
             <h3>Wie Neu</h3>
             <div class="package-price">
-              <div class="price-original">Regulär 189€</div>
-              <span class="price">151,20€</span>
-              <span class="duration">mit 20% Neukundenrabatt</span>
+              <div class="price-original">Regulär <span data-original-package-price="wikeneu"></span></div>
+              <span class="price" data-package-price="wikeneu"></span>
             </div>
             <ul class="package-features">
               <li>✓ Alle Leistungen aus Wieder gepflegt</li>
@@ -233,13 +230,12 @@
             <button class="btn btn-primary" data-modal="bookingModal" data-select-package="wikeneu">Jetzt buchen</button>
             <a class="btn btn-whatsapp" href="#" data-whatsapp-package="wikeneu">Per WhatsApp anfragen</a>
           </div>
-          <div class="package-card" data-package="showroom" data-price="239.20">
+          <div class="package-card" data-package="showroom">
             <div class="package-label">Showroom</div>
             <h3>Showroom Edition</h3>
             <div class="package-price">
-              <div class="price-original">Regulär 299€</div>
-              <span class="price">239,20€</span>
-              <span class="duration">mit 20% Neukundenrabatt</span>
+              <div class="price-original">Regulär <span data-original-package-price="showroom"></span></div>
+              <span class="price" data-package-price="showroom"></span>
             </div>
             <ul class="package-features">
               <li>✓ Komplette Innen- & Außenaufbereitung</li>
@@ -273,35 +269,35 @@
                 <tbody>
                   <tr>
                     <td>Tierhaarentfernung</td>
-                    <td>ab 29€</td>
+                    <td>ab <span data-extra-price="tierhaar"></span></td>
                   </tr>
                     <tr>
                       <td>Ozonbehandlung</td>
-                      <td>ab 49€</td>
+                      <td>ab <span data-extra-price="ozon"></span></td>
                   </tr>
                   <tr>
                     <td>Scheibenversiegelung</td>
-                    <td>ab 19€</td>
+                    <td>ab <span data-extra-price="scheibe"></span></td>
                   </tr>
                   <tr>
                     <td>Felgenversiegelung</td>
-                    <td>ab 49€</td>
+                    <td>ab <span data-extra-price="felge"></span></td>
                   </tr>
                   <tr>
                     <td>Insekten- & Baumharzentfernung</td>
-                    <td>ab 19€</td>
+                    <td>ab <span data-extra-price="insekt"></span></td>
                   </tr>
                   <tr>
                     <td>Keramikversiegelung</td>
-                    <td>ab 149€</td>
+                    <td>ab <span data-extra-price="keramik"></span></td>
                   </tr>
                   <tr>
                     <td>Lederreinigung & Lederpflege</td>
-                    <td>ab 49€</td>
+                    <td>ab <span data-extra-price="leder"></span></td>
                   </tr>
                   <tr>
                     <td>Kunststoff-Außenpflege</td>
-                    <td>ab 29€</td>
+                    <td>ab <span data-extra-price="kunststoff"></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -645,7 +641,7 @@
         <div class="cta-content">
           <h2>Bereit für die Transformation?</h2>
           <p>Dein Auto verdient Premium-Behandlung. Reserviere deinen Termin noch heute!</p>
-          <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin anfragen</button>
+          <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin buchen</button>
         </div>
       </div>
     </section>
@@ -715,7 +711,7 @@
   </main>
 
   <div class="mobile-action-bar" aria-label="Schnellkontakt">
-    <button class="btn btn-primary" type="button" data-modal="bookingModal">Termin anfragen</button>
+    <button class="btn btn-primary" type="button" data-modal="bookingModal">Termin buchen</button>
     <a class="btn btn-outline" href="tel:+4915233938332">Anrufen</a>
   </div>
 
@@ -740,30 +736,30 @@
           <h3>Paket auswählen</h3>
           <div class="package-selection">
             <label class="package-option">
-              <input type="radio" name="package" value="fresh" data-price="31.20" data-original-price="39">
+              <input type="radio" name="package" value="fresh">
               <span class="option-label">
-                <strong>Frisch gemacht - 31,20€</strong>
+                <strong>Frisch gemacht - <span data-package-price="fresh"></span></strong>
                 <small>Handwäsche, Felgenreinigung, Scheiben behandeln</small>
               </span>
             </label>
             <label class="package-option">
-              <input type="radio" name="package" value="care" data-price="79.20" data-original-price="99" checked>
+              <input type="radio" name="package" value="care" checked>
               <span class="option-label">
-                <strong>Wieder gepflegt - 79,20€</strong>
+                <strong>Wieder gepflegt - <span data-package-price="care"></span></strong>
                 <small>Innenraum gründlich gesäubert, Armatur- & Kunststoffpflege</small>
               </span>
             </label>
             <label class="package-option">
-              <input type="radio" name="package" value="wikeneu" data-price="151.20" data-original-price="189">
+              <input type="radio" name="package" value="wikeneu">
               <span class="option-label">
-                <strong>Wie Neu - 151,20€</strong>
+                <strong>Wie Neu - <span data-package-price="wikeneu"></span></strong>
                 <small>Lackversiegelung, Maschinenpolitur</small>
               </span>
             </label>
             <label class="package-option">
-              <input type="radio" name="package" value="showroom" data-price="239.20" data-original-price="299">
+              <input type="radio" name="package" value="showroom">
               <span class="option-label">
-                <strong>Showroom Edition - 239,20€</strong>
+                <strong>Showroom Edition - <span data-package-price="showroom"></span></strong>
                 <small>Komplette Premium-Aufbereitung mit Ozonbehandlung</small>
               </span>
             </label>
@@ -774,44 +770,44 @@
           <h3>Zusatzleistungen <span>(optional)</span></h3>
           <div class="extras-selection">
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="tierhaar" data-price="29">
+              <input type="checkbox" name="extra" value="tierhaar">
               <span>Tierhaarentfernung</span>
-              <span class="extra-price">ab 29€</span>
+              <span class="extra-price">ab <span data-extra-price="tierhaar"></span></span>
             </label>
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="ozon" data-price="49">
+              <input type="checkbox" name="extra" value="ozon">
               <span>Ozonbehandlung</span>
-              <span class="extra-price">ab 49€</span>
+              <span class="extra-price">ab <span data-extra-price="ozon"></span></span>
             </label>
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="scheibe" data-price="19">
+              <input type="checkbox" name="extra" value="scheibe">
               <span>Scheibenversiegelung</span>
-              <span class="extra-price">ab 19€</span>
+              <span class="extra-price">ab <span data-extra-price="scheibe"></span></span>
             </label>
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="felge" data-price="49">
+              <input type="checkbox" name="extra" value="felge">
               <span>Felgenversiegelung</span>
-              <span class="extra-price">ab 49€</span>
+              <span class="extra-price">ab <span data-extra-price="felge"></span></span>
             </label>
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="insekt" data-price="19">
+              <input type="checkbox" name="extra" value="insekt">
               <span>Insekten- & Baumharzentfernung</span>
-              <span class="extra-price">ab 19€</span>
+              <span class="extra-price">ab <span data-extra-price="insekt"></span></span>
             </label>
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="keramik" data-price="149">
+              <input type="checkbox" name="extra" value="keramik">
               <span>Keramikversiegelung</span>
-              <span class="extra-price">ab 149€</span>
+              <span class="extra-price">ab <span data-extra-price="keramik"></span></span>
             </label>
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="leder" data-price="49">
+              <input type="checkbox" name="extra" value="leder">
               <span>Lederreinigung & Lederpflege</span>
-              <span class="extra-price">ab 49€</span>
+              <span class="extra-price">ab <span data-extra-price="leder"></span></span>
             </label>
             <label class="extra-option">
-              <input type="checkbox" name="extra" value="kunststoff" data-price="29">
+              <input type="checkbox" name="extra" value="kunststoff">
               <span>Kunststoff-Außenpflege</span>
-              <span class="extra-price">ab 29€</span>
+              <span class="extra-price">ab <span data-extra-price="kunststoff"></span></span>
             </label>
           </div>
         </div>
@@ -897,23 +893,23 @@
           </div>
           <div class="summary-row">
             <span>Paketpreis regulär:</span>
-            <span id="originalPrice">99,00€</span>
+            <span id="originalPrice"></span>
           </div>
           <div class="summary-row discount">
             <span>20% Neukundenrabatt:</span>
-            <span id="discountPrice">-19,80€</span>
+            <span id="discountPrice"></span>
           </div>
           <div class="summary-row">
             <span>Paketpreis:</span>
-            <span id="packagePrice">79,20€</span>
+            <span id="packagePrice"></span>
           </div>
           <div class="summary-row" id="extrasRow" style="display: none;">
             <span>Zusatzleistungen:</span>
-            <span id="extrasPrice">0€</span>
+            <span id="extrasPrice"></span>
           </div>
           <div class="summary-row total">
             <span>Voraussichtlicher Gesamtpreis:</span>
-            <span id="totalPrice">79,20€</span>
+            <span id="totalPrice"></span>
           </div>
         </div>
         <p class="booking-price-note">Zusatzleistungen sind ab-Preise. Den endgültigen Umfang und Preis stimmen wir nach der Fahrzeugbesichtigung mit dir ab.</p>
@@ -938,6 +934,7 @@
           <ul>
             <li><a href="#services">Leistungen</a></li>
             <li><a href="#packages">Pakete</a></li>
+            <li><a href="#gallery">Vorher/Nachher</a></li>
             <li><a href="#contact">Kontakt</a></li>
             <li><a href="https://www.instagram.com/autoaufbereitung_wie_neu/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           </ul>

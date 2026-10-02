@@ -1,5 +1,34 @@
 // Wie Neu Autoaufbereitung – Website-Skripte
 
+const pricingConfig = {
+  discountRate: 0.2,
+  packages: {
+    fresh: { regular: 39 },
+    care: { regular: 99 },
+    wikeneu: { regular: 189 },
+    showroom: { regular: 299 }
+  },
+  extras: {
+    tierhaar: 29,
+    ozon: 49,
+    scheibe: 19,
+    felge: 49,
+    insekt: 19,
+    keramik: 149,
+    leder: 49,
+    kunststoff: 29
+  }
+};
+
+function formatCurrency(value, fractionDigits = 2) {
+  return new Intl.NumberFormat('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits
+  }).format(value);
+}
+
 function initializeApp() {
   function initializeAnalyticsConsent() {
     const measurementId = 'G-28W3N190Q4';
@@ -128,6 +157,26 @@ function initializeApp() {
     wikeneu: 'Wie Neu',
     showroom: 'Showroom Edition'
   };
+
+  Object.entries(pricingConfig.packages).forEach(function (entry) {
+    const packageId = entry[0];
+    const regularPrice = entry[1].regular;
+    const discountedPrice = Math.round(regularPrice * (1 - pricingConfig.discountRate) * 100) / 100;
+    document.querySelectorAll(`[data-package-price="${packageId}"]`).forEach(function (element) {
+      element.textContent = formatCurrency(discountedPrice);
+    });
+    document.querySelectorAll(`[data-original-package-price="${packageId}"]`).forEach(function (element) {
+      element.textContent = formatCurrency(regularPrice, 0);
+    });
+  });
+
+  Object.entries(pricingConfig.extras).forEach(function (entry) {
+    const extraId = entry[0];
+    const price = entry[1];
+    document.querySelectorAll(`[data-extra-price="${extraId}"]`).forEach(function (element) {
+      element.textContent = formatCurrency(price, 0);
+    });
+  });
 
   function openWhatsApp(text) {
     const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
@@ -358,31 +407,30 @@ function initializeApp() {
       // Paket-Preis
       packageRadios.forEach(function (radio) {
         if (radio.checked) {
-          packagePrice = parseFloat(radio.dataset.price) || 0;
-          originalPackagePrice = parseFloat(radio.dataset.originalPrice) || 0;
+          const packagePricing = pricingConfig.packages[radio.value];
+          if (packagePricing) {
+            originalPackagePrice = packagePricing.regular;
+            packagePrice = Math.round(originalPackagePrice * (1 - pricingConfig.discountRate) * 100) / 100;
+          }
         }
       });
 
       // Zusatzleistungen-Preis
       extraCheckboxes.forEach(function (checkbox) {
         if (checkbox.checked) {
-          extrasPrice += parseFloat(checkbox.dataset.price) || 0;
+          extrasPrice += pricingConfig.extras[checkbox.value] || 0;
         }
       });
 
-      // Rabatt berechnen (20%)
-      const discount = (originalPackagePrice * 0.20);
+      const discount = Math.round(originalPackagePrice * pricingConfig.discountRate * 100) / 100;
       const totalOriginal = originalPackagePrice;
       const totalPrice = packagePrice + extrasPrice;
 
-      // Update HTML mit Komma-Formatierung
-      const formatPrice = (price) => price.toFixed(2).replace('.', ',') + '€';
-      
-      document.getElementById('originalPrice').textContent = formatPrice(totalOriginal);
-      document.getElementById('discountPrice').textContent = '-' + formatPrice(discount);
-      document.getElementById('packagePrice').textContent = formatPrice(packagePrice);
-      document.getElementById('extrasPrice').textContent = formatPrice(extrasPrice);
-      document.getElementById('totalPrice').textContent = formatPrice(totalPrice);
+      document.getElementById('originalPrice').textContent = formatCurrency(totalOriginal);
+      document.getElementById('discountPrice').textContent = '-' + formatCurrency(discount);
+      document.getElementById('packagePrice').textContent = formatCurrency(packagePrice);
+      document.getElementById('extrasPrice').textContent = formatCurrency(extrasPrice);
+      document.getElementById('totalPrice').textContent = formatCurrency(totalPrice);
 
       const selectedPackage = Array.from(packageRadios).find(function (radio) { return radio.checked; });
       const packageSummary = document.getElementById('bookingPackageSummary');
