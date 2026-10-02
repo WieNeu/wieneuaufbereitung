@@ -120,6 +120,7 @@ function initializeApp() {
   initializeAnalyticsConsent();
 
   const header = document.getElementById('header');
+  let resetBookingFlow = null;
   const businessPhone = '4915233938332';
   const packageLabels = {
     fresh: 'Frisch gemacht',
@@ -153,11 +154,13 @@ function initializeApp() {
   function openMenu() {
     siteNav.classList.add('open');
     navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Menü schließen');
   }
 
   function closeMenu() {
     siteNav.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Menü öffnen');
   }
 
   if (navToggle && siteNav) {
@@ -188,6 +191,7 @@ function initializeApp() {
   function openModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
+      if (modalId === 'bookingModal' && resetBookingFlow) resetBookingFlow();
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -203,13 +207,15 @@ function initializeApp() {
 
   // Modal-Buttons: data-modal & data-close-modal
   document.addEventListener('click', function (e) {
+    const modalTrigger = e.target.closest('[data-modal]');
+    const closeTrigger = e.target.closest('[data-close-modal]');
     // Open Modal
-    if (e.target.dataset.modal) {
-      openModal(e.target.dataset.modal);
+    if (modalTrigger) {
+      openModal(modalTrigger.dataset.modal);
     }
     // Close Modal
-    if (e.target.dataset.closeModal) {
-      closeModal(e.target.dataset.closeModal);
+    if (closeTrigger) {
+      closeModal(closeTrigger.dataset.closeModal);
     }
   });
 
@@ -272,10 +278,77 @@ function initializeApp() {
   if (bookingForm) {
     const packageRadios = bookingForm.querySelectorAll('input[name="package"]');
     const extraCheckboxes = bookingForm.querySelectorAll('input[name="extra"]');
+    const bookingSteps = Array.from(bookingForm.querySelectorAll('[data-booking-step]'));
+    const progressItems = Array.from(bookingForm.querySelectorAll('[data-progress-step]'));
+    const stepStatus = document.getElementById('bookingStepStatus');
     const packagePriceEl = document.getElementById('packagePrice');
     const extrasPriceEl = document.getElementById('extrasPrice');
     const totalPriceEl = document.getElementById('totalPrice');
     const extrasRow = document.getElementById('extrasRow');
+    let activeBookingStep = 0;
+
+    function showBookingStep(stepIndex) {
+      activeBookingStep = Math.max(0, Math.min(stepIndex, bookingSteps.length - 1));
+      bookingSteps.forEach(function (step, index) {
+        const isActive = index === activeBookingStep;
+        step.hidden = !isActive;
+        step.classList.toggle('is-active', isActive);
+      });
+      progressItems.forEach(function (item, index) {
+        item.classList.toggle('is-current', index === activeBookingStep);
+        item.classList.toggle('is-complete', index < activeBookingStep);
+        if (index === activeBookingStep) item.setAttribute('aria-current', 'step');
+        else item.removeAttribute('aria-current');
+      });
+      if (stepStatus) {
+        const heading = bookingSteps[activeBookingStep].querySelector('h3');
+        stepStatus.textContent = `Schritt ${activeBookingStep + 1} von ${bookingSteps.length} · ${heading.textContent.trim()}`;
+      }
+      const firstField = bookingSteps[activeBookingStep].querySelector('input:checked, input:not([type="hidden"]), textarea, select, button');
+      if (firstField) firstField.focus({ preventScroll: true });
+    }
+
+    bookingSteps.forEach(function (step, index) {
+      const controls = document.createElement('div');
+      controls.className = 'booking-step-controls';
+
+      if (index > 0) {
+        const backButton = document.createElement('button');
+        backButton.type = 'button';
+        backButton.className = 'btn btn-outline';
+        backButton.textContent = 'Zurück';
+        backButton.addEventListener('click', function () {
+          showBookingStep(index - 1);
+        });
+        controls.appendChild(backButton);
+      }
+
+      if (index < bookingSteps.length - 1) {
+        const nextButton = document.createElement('button');
+        nextButton.type = 'button';
+        nextButton.className = 'btn btn-primary';
+        nextButton.textContent = 'Weiter';
+        nextButton.addEventListener('click', function () {
+          const requiredFields = Array.from(step.querySelectorAll('input, textarea, select')).filter(function (field) {
+            return field.required;
+          });
+          if (!requiredFields.every(function (field) { return field.reportValidity(); })) return;
+          showBookingStep(index + 1);
+        });
+        controls.appendChild(nextButton);
+      }
+
+      const submitButton = step.querySelector('button[type="submit"]');
+      if (submitButton) step.insertBefore(controls, submitButton);
+      else step.appendChild(controls);
+    });
+
+    resetBookingFlow = function () {
+      showBookingStep(0);
+    };
+    bookingForm.addEventListener('reset', function () {
+      showBookingStep(0);
+    });
 
     function updatePrice() {
       let packagePrice = 0;
@@ -299,7 +372,7 @@ function initializeApp() {
 
       // Rabatt berechnen (20%)
       const discount = (originalPackagePrice * 0.20);
-      const totalOriginal = originalPackagePrice + extrasPrice;
+      const totalOriginal = originalPackagePrice;
       const totalPrice = packagePrice + extrasPrice;
 
       // Update HTML mit Komma-Formatierung
@@ -310,6 +383,35 @@ function initializeApp() {
       document.getElementById('packagePrice').textContent = formatPrice(packagePrice);
       document.getElementById('extrasPrice').textContent = formatPrice(extrasPrice);
       document.getElementById('totalPrice').textContent = formatPrice(totalPrice);
+
+      const selectedPackage = Array.from(packageRadios).find(function (radio) { return radio.checked; });
+      const packageSummary = document.getElementById('bookingPackageSummary');
+      const vehicleSummary = document.getElementById('bookingVehicleSummary');
+      const extrasSummary = document.getElementById('bookingExtrasSummary');
+      const dateSummary = document.getElementById('bookingDateSummary');
+      const vehicleInput = document.getElementById('booking-vehicle');
+      if (packageSummary && selectedPackage) packageSummary.textContent = packageLabels[selectedPackage.value] || selectedPackage.value;
+      if (vehicleSummary) vehicleSummary.textContent = vehicleInput && vehicleInput.value.trim() ? vehicleInput.value.trim() : 'Noch nicht angegeben';
+      if (dateSummary) {
+        dateSummary.textContent = dateInput && dateInput.value
+          ? new Intl.DateTimeFormat('de-DE').format(new Date(dateInput.value + 'T00:00:00'))
+          : 'Noch nicht ausgewählt';
+      }
+      [
+        ['booking-name', 'bookingNameSummary'],
+        ['booking-email', 'bookingEmailSummary'],
+        ['booking-phone', 'bookingPhoneSummary']
+      ].forEach(function (fieldPair) {
+        const input = document.getElementById(fieldPair[0]);
+        const summary = document.getElementById(fieldPair[1]);
+        if (summary) summary.textContent = input && input.value.trim() ? input.value.trim() : 'Noch nicht angegeben';
+      });
+      if (extrasSummary) {
+        extrasSummary.textContent = Array.from(extraCheckboxes).filter(function (checkbox) { return checkbox.checked; }).map(function (checkbox) {
+          const label = checkbox.parentElement.querySelector('span');
+          return label ? label.textContent.trim() : checkbox.value;
+        }).join(', ') || 'Keine';
+      }
 
       // Show/Hide Extras-Zeile
       if (extrasPrice > 0) {
@@ -326,6 +428,18 @@ function initializeApp() {
 
     extraCheckboxes.forEach(function (checkbox) {
       checkbox.addEventListener('change', updatePrice);
+    });
+    const vehicleInput = document.getElementById('booking-vehicle');
+    if (vehicleInput) vehicleInput.addEventListener('input', updatePrice);
+    const dateInput = document.getElementById('booking-date');
+    if (dateInput) {
+      const today = new Date();
+      dateInput.min = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
+      dateInput.addEventListener('change', updatePrice);
+    }
+    ['booking-name', 'booking-email', 'booking-phone'].forEach(function (id) {
+      const input = document.getElementById(id);
+      if (input) input.addEventListener('input', updatePrice);
     });
 
     // Booking Form Submit
@@ -346,15 +460,19 @@ function initializeApp() {
       const phone = document.getElementById('booking-phone').value;
       const date = document.getElementById('booking-date').value;
       const notes = document.getElementById('booking-notes').value;
+      const vehicle = document.getElementById('booking-vehicle').value;
 
       let selectedPackage = '';
       packageRadios.forEach(function (radio) {
-        if (radio.checked) selectedPackage = radio.value;
+        if (radio.checked) selectedPackage = packageLabels[radio.value] || radio.value;
       });
 
       let selectedExtras = [];
       extraCheckboxes.forEach(function (checkbox) {
-        if (checkbox.checked) selectedExtras.push(checkbox.value);
+        if (checkbox.checked) {
+          const label = checkbox.parentElement.querySelector('span');
+          selectedExtras.push(label ? label.textContent.trim() : checkbox.value);
+        }
       });
 
       const totalPrice = totalPriceEl.textContent;
@@ -365,6 +483,7 @@ function initializeApp() {
       message += `Email: ${email}\n`;
       message += `Telefon: ${phone}\n`;
       message += `Wunschdatum: ${date}\n`;
+      if (vehicle) message += `Fahrzeug: ${vehicle}\n`;
       message += `Paket: ${selectedPackage}\n`;
       if (selectedExtras.length > 0) {
         message += `Zusatzleistungen: ${selectedExtras.join(', ')}\n`;
@@ -508,45 +627,6 @@ function initializeApp() {
     });
   });
 
-  // Autoplay-Sicherstellung für Hintergrund- & Galerie-Videos
-  const autoPlayVideos = document.querySelectorAll('video[autoplay]');
-  autoPlayVideos.forEach(function (video) {
-    video.muted = true;
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(function () {
-        const startPlay = function () {
-          video.play().catch(function () {});
-          document.removeEventListener('click', startPlay);
-          document.removeEventListener('touchstart', startPlay);
-          document.removeEventListener('scroll', startPlay);
-        };
-        document.addEventListener('click', startPlay, { once: true });
-        document.addEventListener('touchstart', startPlay, { once: true });
-        document.addEventListener('scroll', startPlay, { once: true });
-      });
-    }
-  });
-
-  /* ---------- Google Reviews Widget Loader ---------- */
-  // Lade Google Reviews Widget asynchron
-  const testimonialsGrid = document.getElementById('testimonials-grid');
-  
-  if (testimonialsGrid) {
-    // Lade Google Review Badge mit Verzögerung
-    setTimeout(function() {
-      // Google Review Badge Script laden
-      const script = document.createElement('script');
-      script.src = 'https://static.elfsight.com/platform/platform.js';
-      script.setAttribute('data-use-service-core', 'true');
-      script.async = true;
-      document.head.appendChild(script);
-
-      // Alternative: Google Business Profile Reviews Widget
-      // Nutze Google Maps Embed oder direkten Link
-      console.log('✓ Google Reviews Widget initialisiert');
-    }, 500);
-  }
 }
 
 // Prüfe ob DOM bereits geladen ist
