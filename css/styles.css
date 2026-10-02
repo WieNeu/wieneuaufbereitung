@@ -2933,3 +2933,16 @@ main > section { width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+#bookingModal .modal-content { color: #e3e4e0; }
+#bookingModal .modal-content > h2,
+#bookingModal .booking-section h3,
+#bookingModal .option-label strong,
+#bookingModal .form-group label { color: #f0f1ed; }
+#bookingModal .booking-progress li { color: #aeb1ab; }
+#bookingModal .booking-progress li.is-current { color: #f0f1ed; }
+#bookingModal .option-label small,
+#bookingModal .consent-hint { color: #bfc1bb; }
+#bookingModal .extra-option span { color: #e3e4e0; }
+#bookingModal .extra-option .extra-price { color: #c3c5c0; }
+#bookingModal .consent-option a { color: #334238; }
