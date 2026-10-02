@@ -2760,6 +2760,14 @@ main > section { width: 100%; }
 .modal-content { position: relative; width: min(720px, 100%); max-height: calc(100dvh - 2rem); padding: 2rem; overflow-y: auto; background: #151614; border: 1px solid #444741; border-radius: 5px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55); }
 .modal-content > h2 { margin-bottom: 1.4rem; font-size: 1.9rem; }
 .modal-close { top: 1rem; right: 1rem; color: #d3d5cf; background: transparent; font-size: 1.2rem; }
+#bookingModal .booking-step h3,
+#bookingModal .form-group label,
+#bookingModal .option-label strong { color: #f0f1ed; }
+#bookingModal .option-label small,
+#bookingModal .consent-hint { color: #bfc1bb; }
+#bookingModal .extra-option span { color: #e3e4e0; }
+#bookingModal .extra-option .extra-price { color: #c3c5c0; }
+#bookingModal .consent-option a { color: #334238; }
 .booking-progress { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.3rem; margin: 0 0 0.75rem; list-style: none; }
 .booking-progress li { display: grid; gap: 0.22rem; padding: 0.45rem 0.2rem; color: #777b74; border-top: 2px solid #3a3c37; }
 .booking-progress li span { font-size: 0.7rem; font-weight: 700; }
@@ -2851,6 +2859,7 @@ main > section { width: 100%; }
   .hero-subtitle { max-width: 500px; font-size: 1rem; }
   .hero-ctas { align-items: stretch; }
   .hero-ctas .btn { flex: 1 1 210px; }
+  .hero-ctas .btn-large { min-height: 48px; padding: 0.85rem 1rem; font-size: 0.94rem; }
   .trust-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem 1.15rem; }
   .trust-intro { grid-column: 1 / -1; margin-bottom: 0.2rem; }
   .trust-item { font-size: 0.78rem; }
@@ -2892,6 +2901,7 @@ main > section { width: 100%; }
   .hero-subtitle { font-size: 0.96rem; }
   .hero-ctas { flex-direction: column; }
   .hero-ctas .btn { width: 100%; }
+  .hero-ctas .btn-large { min-height: 46px; padding: 0.72rem 0.9rem; font-size: 0.88rem; }
   .packages-grid { grid-template-columns: 1fr; }
   .package-card { padding: 1.2rem; }
   .package-features li { font-size: 0.84rem; }
@@ -2912,7 +2922,7 @@ main > section { width: 100%; }
   .modal-content { max-height: calc(100dvh - 1rem); padding: 1.3rem 1rem; }
   .modal-content > h2 { padding-right: 2rem; font-size: 1.55rem; }
   .booking-progress { gap: 0.18rem; }
-  .booking-progress li small { font-size: 0.58rem; }
+  .booking-progress li small { font-size: 0.66rem; }
   .booking-step-controls .btn { min-width: 100px; }
   #bookingModal .booking-summary { padding: 0.75rem; }
   #bookingModal .booking-summary .summary-row { gap: 0.6rem; font-size: 0.82rem; }
