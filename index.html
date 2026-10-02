@@ -53,7 +53,7 @@
           <li><a href="#packages">Pakete & Preise</a></li>
           <li><a href="#team">Über uns</a></li>
           <li><a href="#contact">Kontakt</a></li>
-          <li><button class="btn btn-primary nav-cta" data-modal="bookingModal">Termin buchen</button></li>
+          <li><button class="btn btn-primary nav-cta" data-modal="bookingModal">Termin anfragen</button></li>
         </ul>
       </nav>
     </div>
@@ -68,7 +68,7 @@
           <h1 class="hero-title">Dein Fahrzeug.<br><em>Wie neu.</em></h1>
           <p class="hero-subtitle">Vom privaten Pkw bis zum Firmenfahrzeug: professionelle Aufbereitung mit Liebe zum Detail.</p>
           <div class="hero-ctas">
-            <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin buchen <span aria-hidden="true">↗</span></button>
+            <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin anfragen <span aria-hidden="true">↗</span></button>
             <a class="btn btn-outline btn-large" href="#services">Leistungen ansehen</a>
           </div>
           <p class="hero-offer"><strong>20 % Neukundenrabatt</strong> Nur für deinen ersten Termin. Gilt für Pakete; Zusatzleistungen sind ausgenommen.</p>
@@ -191,7 +191,7 @@
               <li>✓ Türflächen reinigen</li>
               <li>✓ Reifenpflege</li>
             </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="fresh">Jetzt buchen</button>
+            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="fresh">Termin anfragen</button>
             <a class="btn btn-whatsapp" href="#" data-whatsapp-package="fresh">Per WhatsApp anfragen</a>
           </div>
           <div class="package-card" data-package="care">
@@ -209,7 +209,7 @@
               <li>✓ Kofferraum aussaugen</li>
               <li>✓ Duftfinish</li>
             </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="care">Jetzt buchen</button>
+            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="care">Termin anfragen</button>
             <a class="btn btn-whatsapp" href="#" data-whatsapp-package="care">Per WhatsApp anfragen</a>
           </div>
           <div class="package-card featured" data-package="wikeneu">
@@ -227,7 +227,7 @@
               <li>✓ Reinigung von Sitze und Teppiche</li>
               <li>✓ Lederpflege (falls vorhanden)</li>
             </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="wikeneu">Jetzt buchen</button>
+            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="wikeneu">Termin anfragen</button>
             <a class="btn btn-whatsapp" href="#" data-whatsapp-package="wikeneu">Per WhatsApp anfragen</a>
           </div>
           <div class="package-card" data-package="showroom">
@@ -245,7 +245,7 @@
               <li>✓ Ozonbehandlung</li>
               <li>✓ Exklusives Finish</li>
             </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="showroom">Jetzt buchen</button>
+            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="showroom">Termin anfragen</button>
             <a class="btn btn-whatsapp" href="#" data-whatsapp-package="showroom">Per WhatsApp anfragen</a>
           </div>
         </div>
@@ -309,45 +309,50 @@
 
     <section class="commercial-section" id="commercial">
       <div class="container">
-        <div class="commercial-feature">
-          <div class="commercial-copy">
-            <p class="eyebrow">Nutzfahrzeug-Aufbereitung</p>
-            <h2>Nicht nur für Pkw.</h2>
-            <p>Ob Privatfahrzeug, Firmenwagen, Transporter oder Nutzfahrzeug: Wir bringen Fahrzeuge wieder in einen gepflegten und professionellen Zustand.</p>
-            <p>Das Video zeigt eine Aufbereitung an einem größeren Fahrzeug. Für Lkw und weitere Nutzfahrzeuge stimmen wir Umfang und Preis individuell nach Fahrzeugtyp, Zustand und Aufwand ab.</p>
-            <span class="commercial-price">Größere Fahrzeuge: Preis auf Anfrage</span>
-          </div>
-          <figure class="commercial-video-frame">
-            <video class="commercial-video" controls playsinline preload="metadata" width="720" height="1280" aria-label="Video einer Nutzfahrzeug-Aufbereitung">
-              <source src="assets/Betrieb.mp4" type="video/mp4">
-              Dein Browser unterstützt dieses Video nicht.
-            </video>
-            <figcaption>Nutzfahrzeug-Aufbereitung · Einblicke in die Arbeit</figcaption>
-          </figure>
+        <div class="commercial-copy">
+          <p class="eyebrow">Nutzfahrzeug-Aufbereitung</p>
+          <h2>Auch für Gewerbe.</h2>
+          <p class="commercial-lede">Vom Firmenwagen bis zum Nutzfahrzeug.</p>
+          <p>Nicht nur Privatfahrzeuge verdienen eine professionelle Aufbereitung. Auf Anfrage kümmern wir uns auch um Firmenfahrzeuge, Betriebsfahrzeuge, Transporter und größere Nutzfahrzeuge.</p>
+          <p>Ob einzelnes Betriebsfahrzeug oder mehrere Fahrzeuge: Wir besprechen den Umfang persönlich. Größere Fahrzeuge prüfen wir individuell.</p>
         </div>
-        <div class="commercial-services" aria-label="Aufbereitung für Pkw, Nutzfahrzeuge und Gewerbe">
+        <figure class="commercial-video-frame">
+          <video class="commercial-video" id="businessVideo" playsinline muted preload="metadata" width="720" height="1280" disablepictureinpicture disableremoteplayback>
+            <source src="assets/Betrieb.mp4" type="video/mp4">
+            Dein Browser unterstützt dieses Video nicht.
+          </video>
+          <button class="commercial-video-toggle" id="businessVideoToggle" type="button" aria-controls="businessVideo" aria-label="Video abspielen">Video abspielen</button>
+          <figcaption>Nutzfahrzeug-Aufbereitung · Einblicke in die Arbeit</figcaption>
+        </figure>
+        <p class="commercial-price">Auch größere Fahrzeuge sind möglich. Umfang und Preis stimmen wir individuell ab.</p>
+        <div class="commercial-services" aria-label="Angebot für Firmen- und Betriebsfahrzeuge">
           <article>
-            <p class="eyebrow">01 · Privat</p>
-            <h3>PKW</h3>
-            <p>Innen- und Außenaufbereitung zu den ausgewiesenen Paketpreisen.</p>
+            <p class="eyebrow">01</p>
+            <h3>Firmenfahrzeuge</h3>
+            <p>Für Dienstwagen und Fahrzeuge im täglichen Einsatz.</p>
           </article>
           <article>
-            <p class="eyebrow">02 · Größere Fahrzeuge</p>
-            <h3>Nutzfahrzeuge</h3>
-            <p>Transporter, Betriebsfahrzeuge und größere Fahrzeuge auf Anfrage.</p>
+            <p class="eyebrow">02</p>
+            <h3>Betriebsfahrzeuge</h3>
+            <p>Für Fahrzeuge von Handwerks-, Dienstleistungs- und Gewerbebetrieben.</p>
           </article>
           <article>
-            <p class="eyebrow">03 · Unternehmen</p>
+            <p class="eyebrow">03</p>
+            <h3>Transporter & Nutzfahrzeuge</h3>
+            <p>Aufbereitung nach Fahrzeuggröße, Zustand und gewünschtem Umfang.</p>
+          </article>
+          <article>
+            <p class="eyebrow">04</p>
             <h3>Fuhrpark</h3>
-            <p>Individuelle Angebote für Firmenfahrzeuge und mehrere Fahrzeuge.</p>
+            <p>Mehrere Fahrzeuge? Wir stimmen eine individuelle Anfrage persönlich ab.</p>
           </article>
         </div>
         <div class="commercial-contact">
           <div>
-            <h3>Fahrzeugpflege für Unternehmen</h3>
-            <p>Gepflegte Fahrzeuge sind die Visitenkarte eines Unternehmens. Für Handwerk, Lieferdienste, Bau- und Transportunternehmen sowie Betriebe mit Fuhrpark erstellen wir auf Anfrage ein passendes Angebot.</p>
+            <h3>Sie haben ein Firmen- oder Betriebsfahrzeug?</h3>
+            <p>Schicken Sie uns kurz die Fahrzeugdaten und den gewünschten Umfang. Wir melden uns persönlich mit den nächsten Schritten.</p>
           </div>
-          <a class="btn btn-primary" href="#contact" data-business-inquiry>Gewerbe-Anfrage stellen</a>
+          <button class="btn btn-primary" type="button" data-modal="bookingModal" data-request-type="business">Gewerbe-Anfrage stellen</button>
         </div>
       </div>
     </section>
@@ -686,7 +691,7 @@
         <div class="cta-content">
           <h2>Bereit für die Transformation?</h2>
           <p>Dein Auto verdient Premium-Behandlung. Reserviere deinen Termin noch heute!</p>
-          <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin buchen</button>
+          <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin anfragen</button>
         </div>
       </div>
     </section>
@@ -756,7 +761,7 @@
   </main>
 
   <div class="mobile-action-bar" aria-label="Schnellkontakt">
-    <button class="btn btn-primary" type="button" data-modal="bookingModal">Termin buchen</button>
+    <button class="btn btn-primary" type="button" data-modal="bookingModal">Termin anfragen</button>
     <a class="btn btn-outline" href="tel:+4915233938332">Anrufen</a>
   </div>
 
@@ -766,8 +771,26 @@
     <div class="modal-content">
       <button class="modal-close" data-close-modal="bookingModal">✕</button>
       <p class="eyebrow">Unverbindliche Anfrage</p>
-      <h2>Deinen Termin planen.</h2>
+      <h2>Deine Anfrage vorbereiten.</h2>
       <form class="booking-form" id="bookingForm">
+        <section class="booking-section request-type-step" id="bookingTypeStep">
+          <h3>Wofür möchtest du eine Anfrage stellen?</h3>
+          <div class="request-type-options">
+            <label class="request-type-option">
+              <input type="radio" name="requestType" value="private" required>
+              <span><strong>Privat</strong><small>Ich möchte mein eigenes Fahrzeug aufbereiten lassen.</small></span>
+            </label>
+            <label class="request-type-option">
+              <input type="radio" name="requestType" value="business" required>
+              <span><strong>Gewerbe</strong><small>Ich möchte ein Firmen-, Betriebs- oder Nutzfahrzeug aufbereiten lassen.</small></span>
+            </label>
+          </div>
+          <div class="booking-step-controls">
+            <button class="btn btn-primary" id="startBookingFlow" type="button">Weiter</button>
+          </div>
+        </section>
+
+        <div class="booking-flow" data-booking-flow="private" hidden>
         <ol class="booking-progress" aria-label="Buchungsschritte">
           <li class="is-current" data-progress-step="1"><span>01</span><small>Paket</small></li>
           <li data-progress-step="2"><span>02</span><small>Extras</small></li>
@@ -959,9 +982,190 @@
         </div>
         <p class="booking-price-note">Zusatzleistungen sind ab-Preise. Den endgültigen Umfang und Preis stimmen wir nach der Fahrzeugbesichtigung mit dir ab.</p>
 
-        <button type="submit" class="btn btn-primary btn-large">Anfrage absenden</button>
+        <button type="submit" class="btn btn-primary btn-large">Termin anfragen</button>
+        </div>
+        </div>
+
+        <div class="booking-flow" data-booking-flow="business" hidden>
+          <ol class="booking-progress" aria-label="Gewerbe-Anfrageschritte">
+            <li class="is-current" data-progress-step="1"><span>01</span><small>Fahrzeug</small></li>
+            <li data-progress-step="2"><span>02</span><small>Anzahl</small></li>
+            <li data-progress-step="3"><span>03</span><small>Leistung</small></li>
+            <li data-progress-step="4"><span>04</span><small>Daten</small></li>
+            <li data-progress-step="5"><span>05</span><small>Zeitraum</small></li>
+            <li data-progress-step="6"><span>06</span><small>Kontakt</small></li>
+            <li data-progress-step="7"><span>07</span><small>Prüfen</small></li>
+          </ol>
+          <p class="booking-step-status" id="businessStepStatus" aria-live="polite">Schritt 1 von 7 · Fahrzeugart</p>
+
+          <div class="booking-section booking-step" data-booking-step="1" hidden>
+            <h3>Um welches Fahrzeug geht es?</h3>
+            <div class="business-choice-grid">
+              <label class="business-choice"><input type="radio" name="businessVehicleType" value="Firmenwagen / Pkw" required><span>Firmenwagen / Pkw</span></label>
+              <label class="business-choice"><input type="radio" name="businessVehicleType" value="Transporter"><span>Transporter</span></label>
+              <label class="business-choice"><input type="radio" name="businessVehicleType" value="Betriebsfahrzeug"><span>Betriebsfahrzeug</span></label>
+              <label class="business-choice"><input type="radio" name="businessVehicleType" value="Nutzfahrzeug"><span>Nutzfahrzeug</span></label>
+              <label class="business-choice"><input type="radio" name="businessVehicleType" value="LKW"><span>LKW</span></label>
+              <label class="business-choice"><input type="radio" name="businessVehicleType" value="Sonstiges"><span>Sonstiges</span></label>
+            </div>
+            <div class="form-group" id="businessVehicleOtherGroup" hidden>
+              <label for="businessVehicleOther">Fahrzeugart</label>
+              <input type="text" id="businessVehicleOther" name="businessVehicleOther" placeholder="Fahrzeugart beschreiben">
+            </div>
+          </div>
+
+          <div class="booking-section booking-step" data-booking-step="2" hidden>
+            <h3>Wie viele Fahrzeuge möchtest du aufbereiten lassen?</h3>
+            <div class="business-choice-grid business-choice-grid-compact">
+              <label class="business-choice"><input type="radio" name="businessQuantity" value="1 Fahrzeug" required><span>1 Fahrzeug</span></label>
+              <label class="business-choice"><input type="radio" name="businessQuantity" value="2–5 Fahrzeuge" required><span>2–5 Fahrzeuge</span></label>
+              <label class="business-choice"><input type="radio" name="businessQuantity" value="6–10 Fahrzeuge" required><span>6–10 Fahrzeuge</span></label>
+              <label class="business-choice"><input type="radio" name="businessQuantity" value="11 oder mehr Fahrzeuge" required><span>11+ Fahrzeuge</span></label>
+              <label class="business-choice"><input type="radio" name="businessQuantity" value="Noch nicht sicher" required><span>Noch nicht sicher</span></label>
+            </div>
+          </div>
+
+          <div class="booking-section booking-step" data-booking-step="3" hidden>
+            <h3>Was soll gemacht werden?</h3>
+            <div class="business-services-grid">
+              <label class="business-choice"><input type="checkbox" name="businessService" value="Innenraumaufbereitung"><span>Innenraumaufbereitung</span></label>
+              <label class="business-choice"><input type="checkbox" name="businessService" value="Außenaufbereitung"><span>Außenaufbereitung</span></label>
+              <label class="business-choice"><input type="checkbox" name="businessService" value="Komplettaufbereitung"><span>Komplettaufbereitung</span></label>
+              <label class="business-choice"><input type="checkbox" name="businessService" value="Politur / Lackaufbereitung"><span>Politur / Lackaufbereitung</span></label>
+              <label class="business-choice"><input type="checkbox" name="businessService" value="Versiegelung"><span>Versiegelung</span></label>
+              <label class="business-choice"><input type="checkbox" name="businessService" value="Grundreinigung"><span>Grundreinigung</span></label>
+              <label class="business-choice"><input type="checkbox" id="businessServiceOther" name="businessService" value="Sonstiges"><span>Sonstiges</span></label>
+            </div>
+            <div class="form-group" id="businessServiceOtherGroup" hidden>
+              <label for="businessServiceNotes">Was soll an den Fahrzeugen gemacht werden?</label>
+              <textarea id="businessServiceNotes" name="businessServiceNotes" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="booking-section booking-step" data-booking-step="4" hidden>
+            <h3>Fahrzeugdaten</h3>
+            <div id="businessSingleVehicle">
+              <div class="form-group">
+                <label for="businessMake">Marke *</label>
+                <input type="text" id="businessMake" name="businessMake" required>
+              </div>
+              <div class="form-group">
+                <label for="businessModel">Modell *</label>
+                <input type="text" id="businessModel" name="businessModel" required>
+              </div>
+              <div class="form-group">
+                <label for="businessYear">Baujahr (optional)</label>
+                <input type="number" id="businessYear" name="businessYear" min="1950" max="2099">
+              </div>
+              <div class="form-group">
+                <label for="businessSize">Fahrzeuggröße</label>
+                <select id="businessSize" name="businessSize">
+                  <option value="">Bitte wählen</option>
+                  <option>Klein / Kompakt</option>
+                  <option>Mittelklasse</option>
+                  <option>Groß / Hochdach</option>
+                  <option>Individuell / Sondermaß</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="businessVehicleNotes">Besonderheiten</label>
+                <textarea id="businessVehicleNotes" name="businessVehicleNotes" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="form-group" id="businessFleetDetails" hidden>
+              <label for="businessFleetDescription">Welche Fahrzeuge gehören zum Fuhrpark? *</label>
+              <textarea id="businessFleetDescription" name="businessFleetDescription" rows="4" placeholder="Fahrzeugarten, Modelle und Besonderheiten"></textarea>
+            </div>
+          </div>
+
+          <div class="booking-section booking-step" data-booking-step="5" hidden>
+            <h3>Wann soll die Aufbereitung stattfinden?</h3>
+            <div class="business-choice-grid">
+              <label class="business-choice"><input type="radio" name="businessTimeframe" value="Möglichst kurzfristig" required><span>Möglichst kurzfristig</span></label>
+              <label class="business-choice"><input type="radio" name="businessTimeframe" value="In den nächsten 2 Wochen" required><span>In den nächsten 2 Wochen</span></label>
+              <label class="business-choice"><input type="radio" name="businessTimeframe" value="In den nächsten 4 Wochen" required><span>In den nächsten 4 Wochen</span></label>
+              <label class="business-choice"><input type="radio" name="businessTimeframe" value="Nach Absprache" required><span>Nach Absprache</span></label>
+            </div>
+            <div class="form-group">
+              <label for="businessDate">Wunschdatum (optional)</label>
+              <input type="date" id="businessDate" name="businessDate">
+            </div>
+          </div>
+
+          <div class="booking-section booking-step" data-booking-step="6" hidden>
+            <h3>Unternehmen und Kontakt</h3>
+            <div class="form-group">
+              <label for="businessContact">Ansprechpartner *</label>
+              <input type="text" id="businessContact" name="businessContact" required>
+            </div>
+            <div class="form-group">
+              <label for="businessCompany">Unternehmen *</label>
+              <input type="text" id="businessCompany" name="businessCompany" required>
+            </div>
+            <div class="form-group">
+              <label for="businessEmail">E-Mail *</label>
+              <input type="email" id="businessEmail" name="businessEmail" required>
+            </div>
+            <div class="form-group">
+              <label for="businessPhone">Telefon *</label>
+              <input type="tel" id="businessPhone" name="businessPhone" required>
+            </div>
+            <fieldset class="booking-section">
+              <legend>Wie können wir dich am besten erreichen? *</legend>
+              <label class="business-choice"><input type="radio" name="businessPreferredContact" value="Telefon" required><span>Telefon</span></label>
+              <label class="business-choice"><input type="radio" name="businessPreferredContact" value="E-Mail" required><span>E-Mail</span></label>
+            </fieldset>
+            <div class="form-group">
+              <label for="businessStreet">Straße (optional)</label>
+              <input type="text" id="businessStreet" name="businessStreet" autocomplete="street-address">
+            </div>
+            <div class="form-group">
+              <label for="businessPostalCode">PLZ (optional)</label>
+              <input type="text" id="businessPostalCode" name="businessPostalCode" autocomplete="postal-code">
+            </div>
+            <div class="form-group">
+              <label for="businessCity">Ort (optional)</label>
+              <input type="text" id="businessCity" name="businessCity" autocomplete="address-level2">
+            </div>
+          </div>
+
+          <div class="booking-section booking-step" data-booking-step="7" hidden>
+            <h3>Gewerbe-Anfrage prüfen</h3>
+            <div class="booking-summary business-summary">
+              <div class="summary-row"><span>Fahrzeugart:</span><span id="businessSummaryVehicle">Noch nicht ausgewählt</span></div>
+              <div class="summary-row"><span>Anzahl:</span><span id="businessSummaryQuantity">Noch nicht ausgewählt</span></div>
+              <div class="summary-row"><span>Leistungen:</span><span id="businessSummaryServices">Noch nicht ausgewählt</span></div>
+              <div class="summary-row"><span>Fahrzeugdaten:</span><span id="businessSummaryDetails">Noch nicht angegeben</span></div>
+              <div class="summary-row"><span>Wunschzeitraum:</span><span id="businessSummaryTime">Noch nicht ausgewählt</span></div>
+              <div class="summary-row"><span>Unternehmen:</span><span id="businessSummaryCompany">Noch nicht angegeben</span></div>
+              <div class="summary-row"><span>Ansprechpartner:</span><span id="businessSummaryContact">Noch nicht angegeben</span></div>
+              <div class="summary-row"><span>E-Mail:</span><span id="businessSummaryEmail">Noch nicht angegeben</span></div>
+              <div class="summary-row"><span>Telefon:</span><span id="businessSummaryPhone">Noch nicht angegeben</span></div>
+              <div class="summary-row"><span>Preis:</span><span>Individuelles Angebot</span></div>
+            </div>
+            <p class="booking-price-note">Bei Gewerbe- und Nutzfahrzeugen richtet sich der Preis nach Fahrzeuggröße, Zustand, Anzahl und Leistungsumfang. Wir stimmen die Details persönlich ab.</p>
+            <div class="consent-group">
+              <label class="consent-option">
+                <input type="checkbox" id="businessAcceptAgb" name="businessAcceptAgb" required>
+                <span>Ich akzeptiere die <a href="agb.html" target="_blank" rel="noopener noreferrer">AGB</a>.</span>
+              </label>
+              <label class="consent-option">
+                <input type="checkbox" id="businessAcceptDatenschutz" name="businessAcceptDatenschutz" required>
+                <span>Ich akzeptiere die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.</span>
+              </label>
+            </div>
+            <p class="consent-hint">Die Anfrage wird in WhatsApp vorbereitet. Erst wenn du die Nachricht dort sendest, ist sie übermittelt.</p>
+            <button type="submit" class="btn btn-primary btn-large">Gewerbe-Anfrage senden</button>
+          </div>
         </div>
       </form>
+      <div class="booking-confirmation" id="businessBookingConfirmation" role="status" hidden>
+        <p class="eyebrow">Gewerbe-Anfrage vorbereitet</p>
+        <h3>WhatsApp wurde geöffnet.</h3>
+        <p>Bitte sende dort die vorausgefüllte Nachricht, damit deine Anfrage bei uns eingeht. Wir melden uns persönlich, um Fahrzeug, Umfang und Zeitraum abzustimmen.</p>
+        <a class="btn btn-outline" href="tel:+4915233938332">Direkt anrufen</a>
+        <button class="btn btn-primary" type="button" data-close-modal="bookingModal">Zur Website</button>
+      </div>
     </div>
   </div>
 

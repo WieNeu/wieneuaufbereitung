@@ -148,6 +148,41 @@ function initializeApp() {
 
   initializeAnalyticsConsent();
 
+  const businessVideo = document.getElementById('businessVideo');
+  const businessVideoToggle = document.getElementById('businessVideoToggle');
+  if (businessVideo && businessVideoToggle) {
+    function keepBusinessVideoSilent() {
+      if (!businessVideo.muted) businessVideo.muted = true;
+      if (businessVideo.volume !== 0) businessVideo.volume = 0;
+    }
+
+    function updateBusinessVideoToggle() {
+      const isPlaying = !businessVideo.paused && !businessVideo.ended;
+      businessVideoToggle.textContent = isPlaying ? 'Video pausieren' : 'Video abspielen';
+      businessVideoToggle.setAttribute('aria-label', businessVideoToggle.textContent);
+    }
+
+    businessVideo.addEventListener('volumechange', keepBusinessVideoSilent);
+    businessVideo.addEventListener('play', function () {
+      keepBusinessVideoSilent();
+      updateBusinessVideoToggle();
+    });
+    businessVideo.addEventListener('pause', updateBusinessVideoToggle);
+    businessVideo.addEventListener('ended', updateBusinessVideoToggle);
+    businessVideoToggle.addEventListener('click', function () {
+      keepBusinessVideoSilent();
+      if (businessVideo.paused || businessVideo.ended) {
+        const playAttempt = businessVideo.play();
+        if (playAttempt && typeof playAttempt.catch === 'function') {
+          playAttempt.catch(updateBusinessVideoToggle);
+        }
+      } else {
+        businessVideo.pause();
+      }
+    });
+    keepBusinessVideoSilent();
+  }
+
   const header = document.getElementById('header');
   let resetBookingFlow = null;
   const businessPhone = '4915233938332';
@@ -180,7 +215,9 @@ function initializeApp() {
 
   function openWhatsApp(text) {
     const url = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    const whatsappWindow = window.open(url, '_blank');
+    if (whatsappWindow) whatsappWindow.opener = null;
+    return Boolean(whatsappWindow);
   }
 
   function updateHeaderState() {
@@ -237,10 +274,14 @@ function initializeApp() {
   /* ---------- Modal Funktionalität ---------- */
   const modals = document.querySelectorAll('.modal');
 
-  function openModal(modalId) {
+  function openModal(modalId, requestType) {
     const modal = document.getElementById(modalId);
     if (modal) {
       if (modalId === 'bookingModal' && resetBookingFlow) resetBookingFlow();
+      if (modalId === 'bookingModal' && requestType) {
+        const requestTypeOption = document.querySelector(`#bookingForm input[name="requestType"][value="${requestType}"]`);
+        if (requestTypeOption) requestTypeOption.checked = true;
+      }
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -260,7 +301,7 @@ function initializeApp() {
     const closeTrigger = e.target.closest('[data-close-modal]');
     // Open Modal
     if (modalTrigger) {
-      openModal(modalTrigger.dataset.modal);
+      openModal(modalTrigger.dataset.modal, modalTrigger.dataset.requestType);
     }
     // Close Modal
     if (closeTrigger) {
@@ -327,76 +368,209 @@ function initializeApp() {
   if (bookingForm) {
     const packageRadios = bookingForm.querySelectorAll('input[name="package"]');
     const extraCheckboxes = bookingForm.querySelectorAll('input[name="extra"]');
-    const bookingSteps = Array.from(bookingForm.querySelectorAll('[data-booking-step]'));
-    const progressItems = Array.from(bookingForm.querySelectorAll('[data-progress-step]'));
-    const stepStatus = document.getElementById('bookingStepStatus');
+    const requestTypeStep = document.getElementById('bookingTypeStep');
+    const requestTypeRadios = bookingForm.querySelectorAll('input[name="requestType"]');
+    const startBookingFlow = document.getElementById('startBookingFlow');
+    const businessConfirmation = document.getElementById('businessBookingConfirmation');
+    const bookingFlows = {};
+    bookingForm.querySelectorAll('[data-booking-flow]').forEach(function (container) {
+      const flowName = container.dataset.bookingFlow;
+      bookingFlows[flowName] = {
+        container: container,
+        steps: Array.from(container.querySelectorAll('[data-booking-step]')),
+        progressItems: Array.from(container.querySelectorAll('[data-progress-step]')),
+        status: container.querySelector('.booking-step-status')
+      };
+    });
     const packagePriceEl = document.getElementById('packagePrice');
     const extrasPriceEl = document.getElementById('extrasPrice');
     const totalPriceEl = document.getElementById('totalPrice');
     const extrasRow = document.getElementById('extrasRow');
-    let activeBookingStep = 0;
+    let activeFlowName = null;
 
-    function showBookingStep(stepIndex) {
-      activeBookingStep = Math.max(0, Math.min(stepIndex, bookingSteps.length - 1));
-      bookingSteps.forEach(function (step, index) {
+    function setFlowDisabled(flow, isDisabled) {
+      flow.container.querySelectorAll('input, textarea, select').forEach(function (field) {
+        field.disabled = isDisabled;
+      });
+    }
+
+    function showRequestTypeStep() {
+      activeFlowName = null;
+      requestTypeStep.hidden = false;
+      Object.values(bookingFlows).forEach(function (flow) {
+        flow.container.hidden = true;
+        setFlowDisabled(flow, true);
+      });
+      if (businessConfirmation) businessConfirmation.hidden = true;
+      bookingForm.hidden = false;
+    }
+
+    function showBookingStep(flowName, stepIndex) {
+      const flow = bookingFlows[flowName];
+      activeFlowName = flowName;
+      requestTypeStep.hidden = true;
+      Object.values(bookingFlows).forEach(function (otherFlow) {
+        otherFlow.container.hidden = otherFlow !== flow;
+        setFlowDisabled(otherFlow, otherFlow !== flow);
+      });
+      const activeBookingStep = Math.max(0, Math.min(stepIndex, flow.steps.length - 1));
+      flow.steps.forEach(function (step, index) {
         const isActive = index === activeBookingStep;
         step.hidden = !isActive;
         step.classList.toggle('is-active', isActive);
       });
-      progressItems.forEach(function (item, index) {
+      flow.progressItems.forEach(function (item, index) {
         item.classList.toggle('is-current', index === activeBookingStep);
         item.classList.toggle('is-complete', index < activeBookingStep);
         if (index === activeBookingStep) item.setAttribute('aria-current', 'step');
         else item.removeAttribute('aria-current');
       });
-      if (stepStatus) {
-        const heading = bookingSteps[activeBookingStep].querySelector('h3');
-        stepStatus.textContent = `Schritt ${activeBookingStep + 1} von ${bookingSteps.length} · ${heading.textContent.trim()}`;
+      if (flow.status) {
+        const heading = flow.steps[activeBookingStep].querySelector('h3');
+        flow.status.textContent = `Schritt ${activeBookingStep + 1} von ${flow.steps.length} · ${heading.textContent.trim()}`;
       }
-      const firstField = bookingSteps[activeBookingStep].querySelector('input:checked, input:not([type="hidden"]), textarea, select, button');
+      if (flowName === 'business') updateBusinessSummary();
+      const firstField = flow.steps[activeBookingStep].querySelector('input:checked, input:not([type="hidden"]), textarea, select, button');
       if (firstField) firstField.focus({ preventScroll: true });
     }
 
-    bookingSteps.forEach(function (step, index) {
-      const controls = document.createElement('div');
-      controls.className = 'booking-step-controls';
+    function updateBusinessConditionalFields() {
+      const vehicleType = bookingForm.querySelector('input[name="businessVehicleType"]:checked');
+      const otherVehicleGroup = document.getElementById('businessVehicleOtherGroup');
+      const otherVehicleInput = document.getElementById('businessVehicleOther');
+      const isOtherVehicle = vehicleType && vehicleType.value === 'Sonstiges';
+      otherVehicleGroup.hidden = !isOtherVehicle;
+      otherVehicleInput.required = Boolean(isOtherVehicle);
 
-      if (index > 0) {
+      const quantity = bookingForm.querySelector('input[name="businessQuantity"]:checked');
+      const isSingleVehicle = quantity && quantity.value === '1 Fahrzeug';
+      const singleVehicleFields = document.getElementById('businessSingleVehicle');
+      const fleetDetails = document.getElementById('businessFleetDetails');
+      const fleetDescription = document.getElementById('businessFleetDescription');
+      singleVehicleFields.hidden = !isSingleVehicle;
+      singleVehicleFields.querySelectorAll('input, textarea, select').forEach(function (field) {
+        field.disabled = !isSingleVehicle;
+        field.required = isSingleVehicle && (field.id === 'businessMake' || field.id === 'businessModel');
+      });
+      fleetDetails.hidden = Boolean(isSingleVehicle);
+      fleetDescription.disabled = Boolean(isSingleVehicle);
+      fleetDescription.required = Boolean(quantity && !isSingleVehicle);
+
+      const otherService = document.getElementById('businessServiceOther');
+      const otherServiceGroup = document.getElementById('businessServiceOtherGroup');
+      const serviceNotes = document.getElementById('businessServiceNotes');
+      const isOtherService = otherService.checked;
+      otherServiceGroup.hidden = !isOtherService;
+      serviceNotes.disabled = !isOtherService;
+      serviceNotes.required = isOtherService;
+    }
+
+    function getBusinessValue(name) {
+      const checkedField = bookingForm.querySelector(`[name="${name}"]:checked`);
+      if (checkedField) return checkedField.value;
+      const field = bookingForm.elements.namedItem(name);
+      return field && !field.disabled ? field.value.trim() : '';
+    }
+
+    function updateBusinessSummary() {
+      const vehicleType = getBusinessValue('businessVehicleType');
+      const vehicleOther = getBusinessValue('businessVehicleOther');
+      const quantity = getBusinessValue('businessQuantity');
+      const serviceNotes = getBusinessValue('businessServiceNotes');
+      const services = Array.from(bookingForm.querySelectorAll('input[name="businessService"]:checked')).map(function (field) {
+        return field.value === 'Sonstiges' && serviceNotes ? `Sonstiges: ${serviceNotes}` : field.value;
+      });
+      const vehicleDetails = quantity === '1 Fahrzeug'
+        ? [getBusinessValue('businessMake'), getBusinessValue('businessModel'), getBusinessValue('businessYear'), getBusinessValue('businessSize'), getBusinessValue('businessVehicleNotes')].filter(Boolean).join(' · ')
+        : getBusinessValue('businessFleetDescription');
+      const timeframe = [getBusinessValue('businessTimeframe'), getBusinessValue('businessDate')].filter(Boolean).join(' · ');
+      const summaryValues = {
+        businessSummaryVehicle: vehicleType === 'Sonstiges' ? vehicleOther || vehicleType : vehicleType,
+        businessSummaryQuantity: quantity,
+        businessSummaryServices: services.join(', '),
+        businessSummaryDetails: vehicleDetails,
+        businessSummaryTime: timeframe,
+        businessSummaryCompany: getBusinessValue('businessCompany'),
+        businessSummaryContact: getBusinessValue('businessContact'),
+        businessSummaryEmail: getBusinessValue('businessEmail'),
+        businessSummaryPhone: getBusinessValue('businessPhone')
+      };
+      Object.keys(summaryValues).forEach(function (id) {
+        const summary = document.getElementById(id);
+        if (summary) summary.textContent = summaryValues[id] || 'Noch nicht angegeben';
+      });
+    }
+
+    if (startBookingFlow) {
+      startBookingFlow.addEventListener('click', function () {
+        const selectedType = bookingForm.querySelector('input[name="requestType"]:checked');
+        if (!selectedType) {
+          requestTypeRadios[0].reportValidity();
+          return;
+        }
+        updateBusinessConditionalFields();
+        showBookingStep(selectedType.value, 0);
+      });
+    }
+
+    bookingForm.querySelectorAll('input[name="businessVehicleType"], input[name="businessQuantity"], #businessServiceOther').forEach(function (field) {
+      field.addEventListener('change', updateBusinessConditionalFields);
+    });
+    bookingForm.querySelectorAll('[data-booking-flow="business"] input, [data-booking-flow="business"] textarea, [data-booking-flow="business"] select').forEach(function (field) {
+      field.addEventListener('input', updateBusinessSummary);
+      field.addEventListener('change', updateBusinessSummary);
+    });
+
+    Object.keys(bookingFlows).forEach(function (flowName) {
+      const flow = bookingFlows[flowName];
+      flow.steps.forEach(function (step, index) {
+        const controls = document.createElement('div');
+        controls.className = 'booking-step-controls';
+
         const backButton = document.createElement('button');
         backButton.type = 'button';
         backButton.className = 'btn btn-outline';
-        backButton.textContent = 'Zurück';
+        backButton.textContent = index > 0 ? 'Zurück' : 'Anfrageart ändern';
         backButton.addEventListener('click', function () {
-          showBookingStep(index - 1);
+          if (index > 0) showBookingStep(flowName, index - 1);
+          else showRequestTypeStep();
         });
         controls.appendChild(backButton);
-      }
 
-      if (index < bookingSteps.length - 1) {
-        const nextButton = document.createElement('button');
-        nextButton.type = 'button';
-        nextButton.className = 'btn btn-primary';
-        nextButton.textContent = 'Weiter';
-        nextButton.addEventListener('click', function () {
-          const requiredFields = Array.from(step.querySelectorAll('input, textarea, select')).filter(function (field) {
-            return field.required;
+        if (index < flow.steps.length - 1) {
+          const nextButton = document.createElement('button');
+          nextButton.type = 'button';
+          nextButton.className = 'btn btn-primary';
+          nextButton.textContent = 'Weiter';
+          nextButton.addEventListener('click', function () {
+            if (flowName === 'business' && index === 2 && !bookingForm.querySelector('input[name="businessService"]:checked')) {
+              const firstService = bookingForm.querySelector('input[name="businessService"]');
+              firstService.setCustomValidity('Bitte wähle mindestens eine gewünschte Leistung aus.');
+              firstService.reportValidity();
+              firstService.setCustomValidity('');
+              return;
+            }
+            const requiredFields = Array.from(step.querySelectorAll('input, textarea, select')).filter(function (field) {
+              return field.required && !field.disabled;
+            });
+            if (!requiredFields.every(function (field) { return field.reportValidity(); })) return;
+            showBookingStep(flowName, index + 1);
           });
-          if (!requiredFields.every(function (field) { return field.reportValidity(); })) return;
-          showBookingStep(index + 1);
-        });
-        controls.appendChild(nextButton);
-      }
+          controls.appendChild(nextButton);
+        }
 
-      const submitButton = step.querySelector('button[type="submit"]');
-      if (submitButton) step.insertBefore(controls, submitButton);
-      else step.appendChild(controls);
+        const submitButton = step.querySelector('button[type="submit"]');
+        if (submitButton) step.insertBefore(controls, submitButton);
+        else step.appendChild(controls);
+      });
     });
 
     resetBookingFlow = function () {
-      showBookingStep(0);
+      requestTypeRadios.forEach(function (radio) { radio.checked = false; });
+      showRequestTypeStep();
     };
     bookingForm.addEventListener('reset', function () {
-      showBookingStep(0);
+      showRequestTypeStep();
     });
 
     function updatePrice() {
@@ -492,16 +666,69 @@ function initializeApp() {
 
     // Booking Form Submit
     bookingForm.addEventListener('submit', function (e) {
-      const agbCheckbox = document.getElementById('accept-agb');
-      const privacyCheckbox = document.getElementById('accept-datenschutz');
+      const requestType = bookingForm.querySelector('input[name="requestType"]:checked');
+      const isBusinessRequest = requestType && requestType.value === 'business';
+      const agbCheckbox = document.getElementById(isBusinessRequest ? 'businessAcceptAgb' : 'accept-agb');
+      const privacyCheckbox = document.getElementById(isBusinessRequest ? 'businessAcceptDatenschutz' : 'accept-datenschutz');
 
-      if (!bookingForm.checkValidity() || !agbCheckbox.checked || !privacyCheckbox.checked) {
+      if (!bookingForm.checkValidity()) {
         e.preventDefault();
-        alert('Bitte bestätige beide Einwilligungen (AGB und Datenschutz), bevor du deine Anfrage absenden kannst.');
+        const invalidField = bookingForm.querySelector(':invalid:not(:disabled)');
+        if (invalidField) invalidField.reportValidity();
         return;
       }
 
       e.preventDefault();
+
+      if (!agbCheckbox.checked || !privacyCheckbox.checked) {
+        alert('Bitte bestätige AGB und Datenschutzerklärung, bevor du die Anfrage fortsetzt.');
+        return;
+      }
+
+      if (isBusinessRequest) {
+        const formData = new FormData(bookingForm);
+        const getValue = function (name) { return String(formData.get(name) || '').trim(); };
+        const quantity = getValue('businessQuantity');
+        const vehicleDetails = quantity === '1 Fahrzeug'
+          ? [getValue('businessMake'), getValue('businessModel'), getValue('businessYear'), getValue('businessSize'), getValue('businessVehicleNotes')].filter(Boolean).join(' · ')
+          : getValue('businessFleetDescription');
+        const services = formData.getAll('businessService').map(function (service) {
+          return service === 'Sonstiges' && getValue('businessServiceNotes')
+            ? `Sonstiges: ${getValue('businessServiceNotes')}`
+            : service;
+        });
+        const vehicleType = getValue('businessVehicleType') === 'Sonstiges'
+          ? getValue('businessVehicleOther')
+          : getValue('businessVehicleType');
+        const address = [getValue('businessStreet'), getValue('businessPostalCode'), getValue('businessCity')].filter(Boolean).join(', ');
+        const message = [
+          'GEWERBE-ANFRAGE',
+          'request_type: business',
+          '',
+          `Fahrzeugart: ${vehicleType}`,
+          `Anzahl: ${quantity}`,
+          `Gewünschte Leistungen: ${services.join(', ')}`,
+          `Fahrzeugdaten: ${vehicleDetails}`,
+          `Wunschzeitraum: ${getValue('businessTimeframe')}`,
+          `Wunschdatum: ${getValue('businessDate') || 'Kein festes Datum'}`,
+          `Unternehmen: ${getValue('businessCompany')}`,
+          `Ansprechpartner: ${getValue('businessContact')}`,
+          `E-Mail: ${getValue('businessEmail')}`,
+          `Telefon: ${getValue('businessPhone')}`,
+          `Bevorzugter Kontakt: ${getValue('businessPreferredContact')}`,
+          address ? `Anschrift: ${address}` : '',
+          'Preis: Individuelles Angebot',
+          'AGB und Datenschutzerklärung akzeptiert.'
+        ].filter(Boolean).join('\n');
+
+        if (openWhatsApp(message)) {
+          bookingForm.hidden = true;
+          businessConfirmation.hidden = false;
+        } else {
+          alert('WhatsApp konnte nicht automatisch geöffnet werden. Bitte prüfe deine Browser-Einstellungen und versuche es erneut.');
+        }
+        return;
+      }
 
       const name = document.getElementById('booking-name').value;
       const email = document.getElementById('booking-email').value;
@@ -526,7 +753,7 @@ function initializeApp() {
       const totalPrice = totalPriceEl.textContent;
 
       // Nachricht zusammenstellen
-      let message = `Buchungsanfrage:\n\n`;
+      let message = `Buchungsanfrage:\nrequest_type: private\n\n`;
       message += `Name: ${name}\n`;
       message += `Email: ${email}\n`;
       message += `Telefon: ${phone}\n`;
@@ -542,10 +769,7 @@ function initializeApp() {
         message += `Notizen: ${notes}\n`;
       }
 
-      // Fallback: Alert mit Info
-      alert('Vielen Dank für deine Buchungsanfrage! Wir öffnen WhatsApp, damit wir deinen Termin bestätigen können.');
-
-      // WhatsApp öffnen
+      alert('Deine Anfrage wird in WhatsApp vorbereitet. Bitte sende die Nachricht dort ab, damit sie bei uns eingeht.');
       openWhatsApp(message);
 
       // Form zurücksetzen
@@ -592,19 +816,6 @@ function initializeApp() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Smooth Scroll für Anker-Links ---------- */
-  document.querySelectorAll('[data-business-inquiry]').forEach(function (link) {
-    link.addEventListener('click', function () {
-      const messageField = document.getElementById('message');
-      if (!messageField) return;
-      messageField.value = [
-        'Gewerbe-Anfrage:',
-        'Ich interessiere mich für die Aufbereitung von Firmen- oder Nutzfahrzeugen.',
-        'Fahrzeugtyp und Anzahl:',
-        'Wunschzeitraum:'
-      ].join('\n');
-    });
-  });
-
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
