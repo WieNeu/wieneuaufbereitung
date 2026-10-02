@@ -1110,89 +1110,6 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(212, 175, 55, 0.24);
 }
 
-.instagram-reels-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.instagram-reel-card {
-  overflow: hidden;
-  background: #111111;
-  border: 1px solid var(--surface-border);
-  border-radius: 8px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.instagram-reel-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary);
-}
-
-.instagram-reel-link {
-  display: block;
-  color: #ffffff;
-}
-
-.instagram-reel-link:hover {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.instagram-reel-media {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 9 / 16;
-  background: #202020;
-}
-
-.instagram-reel-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.instagram-reel-placeholder {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  place-items: center;
-  color: var(--primary-light);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.instagram-reel-watch {
-  position: absolute;
-  right: 0.65rem;
-  bottom: 0.65rem;
-  left: 0.65rem;
-  padding: 0.45rem 0.6rem;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 4px;
-  font-size: 0.82rem;
-  text-align: center;
-}
-
-.instagram-reel-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-}
-
-.instagram-reels-status {
-  min-height: 1.6rem;
-  margin-top: 1.25rem;
-  color: var(--text-secondary);
-  text-align: center;
-}
-
 .instagram-reels-action {
   display: flex;
   justify-content: center;
@@ -1529,11 +1446,6 @@ img { max-width: 100%; display: block; }
 
   .instagram-reels-section {
     padding: 2.5rem 0;
-  }
-
-  .instagram-reels-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
   }
 
   .car-showcase-grid {
