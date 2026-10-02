@@ -1,998 +1,3028 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Autoaufbereitung Elbe-Parey & Güsen | Wie Neu</title>
-  <meta name="description" content="Fahrzeugaufbereitung in Elbe-Parey OT Güsen: Innen- und Außenpflege für Pkw sowie individuelle Aufbereitung von Firmenfahrzeugen, Transportern und Nutzfahrzeugen." />
-  <link rel="icon" type="image/png" sizes="1024x1024" href="/assets/logo.png" />
-  <link rel="canonical" href="https://www.wieneu-aufbereitung.de/" />
-  <meta property="og:title" content="Wie Neu Autoaufbereitung | Dein Fahrzeug. Wie neu." />
-  <meta property="og:description" content="Premium-Fahrzeugaufbereitung in Elbe-Parey OT Güsen. Entdecke Pakete, echte Ergebnisse und vereinbare deinen Termin." />
-  <meta property="og:url" content="https://www.wieneu-aufbereitung.de/" />
-  <meta property="og:image" content="https://www.wieneu-aufbereitung.de/assets/hero-bg.jpg" />
-  <meta name="theme-color" content="#111210" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Wie Neu Autoaufbereitung",
-      "url": "https://www.wieneu-aufbereitung.de/",
-      "image": "https://www.wieneu-aufbereitung.de/assets/hero-bg.jpg",
-      "email": "benniweber2003@gmail.com",
-      "telephone": "+49 1523 3938332",
-      "sameAs": ["https://www.instagram.com/autoaufbereitung_wie_neu/"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Meisterstraße 10",
-        "postalCode": "39317",
-        "addressLocality": "Elbe-Parey OT Güsen",
-        "addressCountry": "DE"
-      },
-      "areaServed": ["Elbe-Parey", "Güsen", "Jerichower Land"]
-    }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/hero-bg.jpg" fetchpriority="high">
-  <link rel="stylesheet" href="css/styles.css?v=2026100207">
-</head>
-<body>
-  <header class="site-header" id="header">
-    <div class="container header-inner">
-      <a class="brand" href="#">
-        <img src="assets/logo.png" alt="Wie Neu Autoaufbereitung" class="logo">
-        <span class="brand-text"><strong>WIE NEU</strong><small>FAHRZEUGAUFBEREITUNG</small></span>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
-      <nav class="site-nav" id="siteNav">
-        <ul>
-          <li><a href="#services">Leistungen</a></li>
-          <li><a href="#gallery">Vorher/Nachher</a></li>
-          <li><a href="#packages">Pakete & Preise</a></li>
-          <li><a href="#team">Über uns</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-          <li><button class="btn btn-primary nav-cta" data-modal="bookingModal">Termin anfragen</button></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+/* ========================================
+   WIE NEU AUTOAUFBEREITUNG
+   Modern Design System – Blue / Green / Orange
+   ======================================== */
 
-  <main>
-    <section class="hero" id="hero">
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="container hero-container">
-        <div class="hero-content">
-          <p class="hero-kicker"><span></span> Fahrzeugaufbereitung in Elbe-Parey / Güsen</p>
-          <h1 class="hero-title">Dein Fahrzeug.<br><em>Wie neu.</em></h1>
-          <p class="hero-subtitle">Vom privaten Pkw bis zum Firmenfahrzeug: professionelle Aufbereitung mit Liebe zum Detail.</p>
-          <div class="hero-ctas">
-            <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin anfragen <span aria-hidden="true">↗</span></button>
-            <a class="btn btn-outline btn-large" href="#services">Leistungen ansehen</a>
-          </div>
-          <p class="hero-offer"><strong>20 % Neukundenrabatt</strong> Nur für deinen ersten Termin. Gilt für Pakete; Zusatzleistungen sind ausgenommen.</p>
-          <a class="hero-location" href="https://maps.google.com/?q=Meisterstra%C3%9Fe+10%2C+39317+Elbe-Parey+OT+G%C3%BCsen" target="_blank" rel="noopener noreferrer">Meisterstraße 10, Elbe-Parey OT Güsen</a>
-        </div>
-      </div>
-    </section>
+:root {
+  --primary: #d4af37;         /* Gold */
+  --primary-light: #e5c158;   /* Light Gold */
+  --secondary: #d4af37;       /* Gold */
+  --accent: #d4af37;          /* Gold */
+  --ink: #ffffff;             /* White */
+  --ink-soft: #f0f0f0;        /* Light Gray */
 
-    <section class="why-section" id="why">
-      <div class="container trust-strip">
-        <p class="trust-intro">Sorgfalt, die man sieht.</p>
-        <div class="trust-item"><span>01</span><strong>Premium-Qualität</strong></div>
-        <div class="trust-item"><span>02</span><strong>Persönliche Beratung</strong></div>
-        <div class="trust-item"><span>03</span><strong>Transparente Preise</strong></div>
-        <div class="trust-item"><span>04</span><strong>Sorgfältige Handarbeit</strong></div>
-      </div>
-    </section>
+  --bg: #1a1a1a;              /* Dark */
+  --bg-light: #2a2a2a;        /* Light Dark */
+  --bg-dark: #0a0a0a;
 
-    <section class="services-section" id="services">
-      <div class="container">
-        <div class="section-heading-row">
-          <div class="section-header">
-            <p class="eyebrow">Was wir für dein Fahrzeug tun</p>
-            <h2>Pflege mit Plan.<br>Ergebnis mit Wirkung.</h2>
-          </div>
-          <p class="section-intro">Vom gründlichen Innenraum bis zur Lackveredelung: Wir stimmen die Aufbereitung auf Zustand und Wunsch deines Fahrzeugs ab.</p>
-        </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-copy">
-              <span class="service-index">01</span>
-              <h3>Außenaufbereitung</h3>
-              <p>Lack und Exterieur gründlich reinigen, aufbereiten und schützen.</p>
-              <ul class="service-list">
-                <li>Tiefenreinigung & Vorwäsche</li>
-                <li>Lackaufbereitung & Politur</li>
-                <li>Kratzer- & Swirl-Mark Entfernung</li>
-                <li>Nano-Versiegelung</li>
-                <li>Reifen- & Felgenaufbereitung</li>
-              </ul>
-              <a class="text-link" href="#packages">Pakete ansehen <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-copy">
-              <span class="service-index">02</span>
-              <h3>Innenraumaufbereitung</h3>
-              <p>Oberflächen, Textilien und Details im Innenraum sorgfältig auffrischen.</p>
-              <ul class="service-list">
-                <li>Tiefenreinigung Innenraum</li>
-                <li>Leder- & Kunstlederpflege</li>
-                <li>Textilreinigung & Imprägnierung</li>
-                <li>Geruchsneutralisierung</li>
-                <li>Fenster- & Chrom-Detailing</li>
-              </ul>
-              <a class="text-link" href="#packages">Pakete ansehen <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-copy">
-              <span class="service-index">03</span>
-              <h3>Spezialaufbereitung</h3>
-              <p>Gezielte Lösungen für besondere Anforderungen und den Fahrzeugverkauf.</p>
-              <ul class="service-list">
-                <li>Verkaufsaufbereitung</li>
-                <li>Ozonbehandlung</li>
-                <li>Keramikversiegelung</li>
-              </ul>
-              <button class="text-link text-button" type="button" data-modal="bookingModal">Persönlich beraten lassen <span aria-hidden="true">↗</span></button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+  --text: #ffffff;
+  --text-secondary: #d0d0d0;
+  --text-tertiary: #999999;
+  --border: #404040;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-border: rgba(255, 255, 255, 0.08);
 
-    <section class="team-section" id="team">
-      <div class="container">
-        <div class="owner-portrait">
-          <img src="assets/Benni.webp" alt="Benjamin Weber, Inhaber von Wie Neu Autoaufbereitung" loading="lazy" width="720" height="960">
-          <span>Benjamin Weber · Inhaber</span>
-        </div>
-        <div class="owner-copy">
-          <p class="eyebrow">Persönlich. Sorgfältig. Vor Ort.</p>
-          <h2>Dein Fahrzeug ist bei mir in guten Händen.</h2>
-          <p>Ich bin Benjamin Weber, Inhaber von Wie Neu Autoaufbereitung in Güsen. Mit Erfahrung in der Fahrzeugaufbereitung und dem Anspruch, hochwertige Arbeit zu fairen Preisen anzubieten, bringe ich Genauigkeit und Sorgfalt in jeden Auftrag.</p>
-          <p>Vor dem Start sprechen wir über den Zustand deines Autos und deine Wünsche. So finden wir gemeinsam die passende Aufbereitung.</p>
-          <a class="text-link" href="tel:+4915233938332">Direkt mit Benjamin sprechen <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
 
-    <!-- PACKAGES SECTION -->
-    <section class="packages-section" id="packages">
-      <div class="container">
-        <div class="section-header">
-          <h2>Transparente Pakete</h2>
-          <p>Wähle das Paket, das zu deinen Bedürfnissen passt. Alle Pakete können mit Zusatzleistungen erweitert werden.</p>
-        </div>
-        <div class="packages-grid">
-          <div class="package-card" data-package="fresh">
-            <div class="package-label">Einstieg</div>
-            <h3>Frisch gemacht</h3>
-            <div class="package-price">
-              <div class="price-original">Regulär <span data-original-package-price="fresh"></span></div>
-              <span class="price" data-package-price="fresh"></span>
-            </div>
-            <ul class="package-features">
-              <li>✓ Handwäsche</li>
-              <li>✓ Felgenreinigung</li>
-              <li>✓ Scheiben behandeln</li>
-              <li>✓ Türflächen reinigen</li>
-              <li>✓ Reifenpflege</li>
-            </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="fresh">Termin anfragen</button>
-            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="fresh">Per WhatsApp anfragen</a>
-          </div>
-          <div class="package-card" data-package="care">
-            <div class="package-label">Komplettpflege</div>
-            <h3>Wieder gepflegt</h3>
-            <div class="package-price">
-              <div class="price-original">Regulär <span data-original-package-price="care"></span></div>
-              <span class="price" data-package-price="care"></span>
-            </div>
-            <ul class="package-features">
-              <li>✓ Alle Leistungen aus Frisch gemacht</li>
-              <li>✓ Innenraum gründlich saugen</li>
-              <li>✓ Armatur- & Kunststoffpflege</li>
-              <li>✓ Sitze innen & außen reinigen</li>
-              <li>✓ Kofferraum aussaugen</li>
-              <li>✓ Duftfinish</li>
-            </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="care">Termin anfragen</button>
-            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="care">Per WhatsApp anfragen</a>
-          </div>
-          <div class="package-card featured" data-package="wikeneu">
-            <div class="package-label">Premium</div>
-            <h3>Wie Neu</h3>
-            <div class="package-price">
-              <div class="price-original">Regulär <span data-original-package-price="wikeneu"></span></div>
-              <span class="price" data-package-price="wikeneu"></span>
-            </div>
-            <ul class="package-features">
-              <li>✓ Alle Leistungen aus Wieder gepflegt</li>
-              <li>✓ Lackreinigung</li>
-              <li>✓ 1-stufige Maschinenpolitur</li>
-              <li>✓ Wachsversiegelung</li>
-              <li>✓ Reinigung von Sitze und Teppiche</li>
-              <li>✓ Lederpflege (falls vorhanden)</li>
-            </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="wikeneu">Termin anfragen</button>
-            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="wikeneu">Per WhatsApp anfragen</a>
-          </div>
-          <div class="package-card" data-package="showroom">
-            <div class="package-label">Showroom</div>
-            <h3>Showroom Edition</h3>
-            <div class="package-price">
-              <div class="price-original">Regulär <span data-original-package-price="showroom"></span></div>
-              <span class="price" data-package-price="showroom"></span>
-            </div>
-            <ul class="package-features">
-              <li>✓ Komplette Innen- & Außenaufbereitung</li>
-              <li>✓ Mehrschichtige Premium-Lackversiegelung</li>
-              <li>✓ Hochglanzpolitur</li>
-              <li>✓ Tiefenreinigung aller Sitze</li>
-              <li>✓ Ozonbehandlung</li>
-              <li>✓ Exklusives Finish</li>
-            </ul>
-            <button class="btn btn-primary" data-modal="bookingModal" data-select-package="showroom">Termin anfragen</button>
-            <a class="btn btn-whatsapp" href="#" data-whatsapp-package="showroom">Per WhatsApp anfragen</a>
-          </div>
-        </div>
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
 
-        <!-- ADDITIONAL SERVICES -->
-        <div class="additional-services">
-          <button class="review-toggle services-toggle" type="button" aria-expanded="false" aria-controls="servicesPanel">
-            <span>Zusatzleistungen</span>
-            <span class="review-toggle-icon">＋</span>
-          </button>
-          <div class="review-form-panel services-panel" id="servicesPanel">
-            <p class="additional-services-note">Diese Leistungen können zu jedem Paket hinzugefügt werden:</p>
-            <div class="services-table-wrapper">
-              <table class="services-table">
-                <thead>
-                  <tr>
-                    <th>Zusatzleistung</th>
-                    <th>Preis</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Tierhaarentfernung</td>
-                    <td>ab <span data-extra-price="tierhaar"></span></td>
-                  </tr>
-                    <tr>
-                      <td>Ozonbehandlung</td>
-                      <td>ab <span data-extra-price="ozon"></span></td>
-                  </tr>
-                  <tr>
-                    <td>Scheibenversiegelung</td>
-                    <td>ab <span data-extra-price="scheibe"></span></td>
-                  </tr>
-                  <tr>
-                    <td>Felgenversiegelung</td>
-                    <td>ab <span data-extra-price="felge"></span></td>
-                  </tr>
-                  <tr>
-                    <td>Insekten- & Baumharzentfernung</td>
-                    <td>ab <span data-extra-price="insekt"></span></td>
-                  </tr>
-                  <tr>
-                    <td>Keramikversiegelung</td>
-                    <td>ab <span data-extra-price="keramik"></span></td>
-                  </tr>
-                  <tr>
-                    <td>Lederreinigung & Lederpflege</td>
-                    <td>ab <span data-extra-price="leder"></span></td>
-                  </tr>
-                  <tr>
-                    <td>Kunststoff-Außenpflege</td>
-                    <td>ab <span data-extra-price="kunststoff"></span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background:
+    radial-gradient(1200px 550px at 85% -10%, rgba(212, 175, 55, 0.18), transparent 55%),
+    radial-gradient(900px 500px at -10% 15%, rgba(255, 255, 255, 0.08), transparent 50%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
 
-    <section class="commercial-section" id="commercial">
-      <div class="container">
-        <div class="commercial-copy">
-          <p class="eyebrow">Nutzfahrzeug-Aufbereitung</p>
-          <h2>Auch für Gewerbe.</h2>
-          <p class="commercial-lede">Vom Firmenwagen bis zum Nutzfahrzeug.</p>
-          <p>Nicht nur Privatfahrzeuge verdienen eine professionelle Aufbereitung. Auf Anfrage kümmern wir uns auch um Firmenfahrzeuge, Betriebsfahrzeuge, Transporter und größere Nutzfahrzeuge.</p>
-          <p>Ob einzelnes Betriebsfahrzeug oder mehrere Fahrzeuge: Wir besprechen den Umfang persönlich. Größere Fahrzeuge prüfen wir individuell.</p>
-        </div>
-        <figure class="commercial-video-frame">
-          <video class="commercial-video" id="businessVideo" playsinline muted preload="metadata" width="720" height="1280" disablepictureinpicture disableremoteplayback>
-            <source src="assets/Betrieb.mp4" type="video/mp4">
-            Dein Browser unterstützt dieses Video nicht.
-          </video>
-          <button class="commercial-video-toggle" id="businessVideoToggle" type="button" aria-controls="businessVideo" aria-label="Video abspielen">Video abspielen</button>
-          <figcaption>Nutzfahrzeug-Aufbereitung · Einblicke in die Arbeit</figcaption>
-        </figure>
-        <p class="commercial-price">Auch größere Fahrzeuge sind möglich. Umfang und Preis stimmen wir individuell ab.</p>
-        <div class="commercial-services" aria-label="Angebot für Firmen- und Betriebsfahrzeuge">
-          <article>
-            <p class="eyebrow">01</p>
-            <h3>Firmenfahrzeuge</h3>
-            <p>Für Dienstwagen und Fahrzeuge im täglichen Einsatz.</p>
-          </article>
-          <article>
-            <p class="eyebrow">02</p>
-            <h3>Betriebsfahrzeuge</h3>
-            <p>Für Fahrzeuge von Handwerks-, Dienstleistungs- und Gewerbebetrieben.</p>
-          </article>
-          <article>
-            <p class="eyebrow">03</p>
-            <h3>Transporter & Nutzfahrzeuge</h3>
-            <p>Aufbereitung nach Fahrzeuggröße, Zustand und gewünschtem Umfang.</p>
-          </article>
-          <article>
-            <p class="eyebrow">04</p>
-            <h3>Fuhrpark</h3>
-            <p>Mehrere Fahrzeuge? Wir stimmen eine individuelle Anfrage persönlich ab.</p>
-          </article>
-        </div>
-        <div class="commercial-contact">
-          <div>
-            <h3>Sie haben ein Firmen- oder Betriebsfahrzeug?</h3>
-            <p>Schicken Sie uns kurz die Fahrzeugdaten und den gewünschten Umfang. Wir melden uns persönlich mit den nächsten Schritten.</p>
-          </div>
-          <button class="btn btn-primary" type="button" data-modal="bookingModal" data-request-type="business">Gewerbe-Anfrage stellen</button>
-        </div>
-      </div>
-    </section>
+section {
+  scroll-margin-top: 100px;
+}
 
-    <!-- PROCESS SECTION -->
-    <section class="process-section">
-      <div class="container">
-        <div class="section-header">
-          <p class="eyebrow">Ein klarer Ablauf</p>
-          <h2>Von der Anfrage bis zur Abholung.</h2>
-        </div>
-        <div class="process-steps">
-          <div class="step">
-            <div class="step-number">01</div>
-            <h3>Termin anfragen</h3>
-            <p>Wähle ein Paket und sende deine unverbindliche Anfrage.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">02</div>
-            <h3>Fahrzeug besprechen</h3>
-            <p>Wir klären Zustand, Wünsche und die passende Aufbereitung.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">03</div>
-            <h3>Sorgfältig aufbereiten</h3>
-            <p>Dein Fahrzeug wird mit Ruhe und Blick fürs Detail behandelt.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">04</div>
-            <h3>Abholen</h3>
-            <p>Wir gehen das Ergebnis gemeinsam mit dir durch.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', -apple-system, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+}
 
-    <!-- TESTIMONIALS SECTION -->
-    <section class="testimonials-section">
-      <div class="container">
-        <div class="section-header">
-          <p class="eyebrow">Kundenstimme</p>
-          <h2>Erfahrungen aus erster Hand.</h2>
-        </div>
-        <div class="testimonials-grid" id="testimonials-grid">
-          <article class="testimonial-card">
-            <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-            <blockquote>„Ich lasse mein Auto immer bei ihm aufbereiten.“</blockquote>
-            <p class="review-attribution"><strong>Oli</strong><span>Kundenstimme · 27. Juli 2026</span></p>
-          </article>
-        </div>
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.3rem; }
+h4 { font-size: 1.1rem; }
 
-        <!-- GOOGLE REVIEWS CTA -->
-        <div class="google-reviews-cta">
-          <div class="cta-content">
-            <h3>Weitere Bewertungen auf Google</h3>
-            <p>Lies weitere Erfahrungen oder teile deine eigene Bewertung.</p>
-            <a href="https://www.google.com/maps/place/Wie+Neu+Autoaufbereitung/@52.3532918,11.9786676,17z/data=!4m8!3m7!1s0x47af4940effb05d1:0xa813f18ba90a04b7!8m2!3d52.3532886!4d11.9812425!9m1!3m5!1s0x47af4940effb05d1:0xa813f18ba90a04b7!8m2!3d52.3532886!4d11.9812425!16s%2Fg%2F11st_8l1pm" target="_blank" rel="noopener noreferrer">
-              Google-Bewertungen ansehen <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+p { color: var(--text); }
 
-    <!-- GALLERY SECTION -->
-    <section class="gallery-section" id="gallery">
-      <div class="container">
-        <div class="section-header">
-          <h2>Vorher & Nachher</h2>
-          <p>Echte Aufbereitungsprojekte. Nach Fahrzeug geordnet.</p>
-        </div>
-        <div class="car-showcase-list" aria-label="Fahrzeug Referenzen">
-          <article class="car-showcase" data-car="video-showcase">
-            <button class="car-showcase-toggle" type="button" aria-expanded="false" aria-controls="carPanelVideo">
-              <span class="car-showcase-toggle-text">
-                <strong>Vorher & Nachher Video</strong>
-                <small>Erlebe die Verwandlung und das Finish direkt in Bewegung.</small>
-              </span>
-              <span class="car-showcase-toggle-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="car-showcase-panel" id="carPanelVideo">
-              <div class="car-showcase-grid car-showcase-grid-video">
-                <figure class="car-shot">
-                  <div class="gallery-visual">
-                    <video class="gallery-photo gallery-video" controls playsinline preload="metadata" poster="assets/hero-bg.jpg">
-                      <source src="assets/Video1.mp4" type="video/mp4">
-                      Dein Browser unterstützt dieses Video nicht.
-                    </video>
-                  </div>
-                  <figcaption class="gallery-caption">
-                    <h3>Ergebnis im Video</h3>
-                    <p>Direkter Vorher- und Nachher-Effekt der professionellen Aufbereitung.</p>
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-          </article>
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-          <article class="car-showcase open" data-car="mercedes">
-            <button class="car-showcase-toggle" type="button" aria-expanded="true" aria-controls="carPanelMercedes">
-              <span class="car-showcase-toggle-text">
-                <strong>Mercedes GLE</strong>
-                <small>Alle verfügbaren Vorher-Nachher-Collagen dieses Fahrzeugs auf einen Blick.</small>
-              </span>
-              <span class="car-showcase-toggle-icon" aria-hidden="true">−</span>
-            </button>
-            <div class="car-showcase-panel" id="carPanelMercedes">
-            <div class="car-showcase-grid">
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/Mercedes%20(1).jpg" alt="Mercedes Vorher und Nachher Collage 1" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Hinten</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+img { max-width: 100%; display: block; }
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/Mercedes%20(2).jpg" alt="Mercedes Vorher und Nachher Collage 2" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Vorne</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/Mercedes%20(3).jpg" alt="Mercedes Vorher und Nachher Collage 3" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Textil</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/Mercedes%20(4).jpg" alt="Mercedes Vorher und Nachher Collage 4" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Rückbank</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+/* ========================================
+   BUTTONS
+   ======================================== */
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/Mercedes%20(5).jpg" alt="Mercedes Vorher und Nachher Collage 5" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Fahrerseite</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/Mercedes%20(6).jpg" alt="Mercedes Vorher und Nachher Collage 6" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Kofferraum</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
-            </div>
-            </div>
-          </article>
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
 
-          <article class="car-showcase" data-car="kia-ceed">
-            <button class="car-showcase-toggle" type="button" aria-expanded="false" aria-controls="carPanelKiaCeed">
-              <span class="car-showcase-toggle-text">
-                <strong>KIA Ceed - 12 Jahre</strong>
-                <small>Alle verfügbaren Vorher-Nachher-Collagen dieses Fahrzeugs auf einen Blick.</small>
-              </span>
-              <span class="car-showcase-toggle-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="car-showcase-panel" id="carPanelKiaCeed">
-            <div class="car-showcase-grid">
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/FOTO%201.webp" alt="KIA Ceed Vorher und Nachher Collage 1" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Kofferraum</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #000000;
+  border-color: var(--primary);
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/FOTO%202.webp" alt="KIA Ceed Vorher und Nachher Collage 2" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Textil</h3>
-                <p>Sichtbarer Glanz und deutlich aufgefrischte Oberflächen.</p>
-              </figcaption>
-              </figure>
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/FOTO%203.webp" alt="KIA Ceed Vorher und Nachher Collage 3" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Front</h3>
-                <p>Vorher-Nachher in einer Aufnahme für den klaren Effektvergleich.</p>
-              </figcaption>
-              </figure>
+.btn-secondary {
+  background-color: var(--secondary);
+  color: #000000;
+  border-color: var(--secondary);
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/FOTO%204.webp" alt="KIA Ceed Vorher und Nachher Collage 4" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Fahrerseite</h3>
-                <p>Ein weiteres Beispiel für professionelle Aufbereitung mit Premium-Finish.</p>
-              </figcaption>
-              </figure>
-            </div>
-            </div>
-          </article>
+.btn-secondary:hover {
+  background-color: var(--primary-light);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
 
-          <article class="car-showcase" data-car="mini">
-            <button class="car-showcase-toggle" type="button" aria-expanded="false" aria-controls="carPanelMini">
-              <span class="car-showcase-toggle-text">
-                <strong>MINI</strong>
-                <small>Alle verfügbaren Vorher-Nachher-Collagen dieses Fahrzeugs auf einen Blick.</small>
-              </span>
-              <span class="car-showcase-toggle-icon" aria-hidden="true">+</span>
-            </button>
-            <div class="car-showcase-panel" id="carPanelMini">
-            <div class="car-showcase-grid">
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(1).png" alt="MINI Vorher und Nachher Collage 1" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Front</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(2).png" alt="MINI Vorher und Nachher Collage 2" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Seite</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.btn-outline:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(3).png" alt="MINI Vorher und Nachher Collage 3" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Heck</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(4).png" alt="MINI Vorher und Nachher Collage 4" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Innenraum</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+/* ========================================
+   PROMO BANNER
+   ======================================== */
+.promo-banner {
+  background: linear-gradient(90deg, #b8860b, #d4af37);
+  color: #ffffff;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 101;
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(5).png" alt="MINI Vorher und Nachher Collage 5" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Innenraum</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.promo-banner-track {
+  display: inline-block;
+  padding-left: 100%;
+  animation: promo-scroll 12s linear infinite;
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(6).png" alt="MINI Vorher und Nachher Collage 6" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Rückfahrerseite</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+.promo-banner-track span {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(7).png" alt="MINI Vorher und Nachher Collage 7" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Detailing</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
+@keyframes promo-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
-              <figure class="car-shot">
-              <div class="gallery-visual">
-                <img class="gallery-photo" src="assets/MINI%20(8).png" alt="MINI Vorher und Nachher Collage 8" loading="lazy">
-              </div>
-              <figcaption class="gallery-caption">
-                <h3>Kofferraum</h3>
-                <p>Direkter Vergleich vor und nach der Aufbereitung.</p>
-              </figcaption>
-              </figure>
-            </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+/* ========================================
+   HEADER / NAVIGATION
+   ======================================== */
 
-    <section class="instagram-reels-section" id="instagram-reels">
-      <div class="container">
-        <div class="section-header">
-          <h2>Mehr Einblicke auf Instagram</h2>
-          <p>Einblicke in unsere Arbeit direkt von Instagram.</p>
-        </div>
-        <div class="instagram-reels-action">
-          <a class="btn btn-outline" href="https://www.instagram.com/autoaufbereitung_wie_neu/reels/" target="_blank" rel="noopener noreferrer">Instagram Reels ansehen</a>
-        </div>
-      </div>
-    </section>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(14, 14, 14, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: var(--shadow-sm);
+}
 
-    <!-- CTA SECTION -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-content">
-          <h2>Bereit für die Transformation?</h2>
-          <p>Dein Auto verdient Premium-Behandlung. Reserviere deinen Termin noch heute!</p>
-          <button class="btn btn-primary btn-large" data-modal="bookingModal">Termin anfragen</button>
-        </div>
-      </div>
-    </section>
+.site-header.scrolled {
+  background: rgba(10, 10, 10, 0.96);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
+}
 
-    <!-- CONTACT SECTION -->
-     <section id="einzugsgebiet" class="coverage-section">
-    <div class="coverage-inner">
-        <p class="eyebrow">Vor Ort in Sachsen-Anhalt</p>
-        <h2>Fahrzeugaufbereitung im Jerichower Land.</h2>
-        <p>
-            Unser Standort befindet sich in <strong>Güsen (Elbe-Parey)</strong>. Wir betreuen Fahrzeughalter aus Elbe-Parey, Güsen und dem Jerichower Land persönlich vor Ort.
-        </p>
-    </div>
-</section>
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
 
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="section-header">
-          <h2>Kontakt & Buchung</h2>
-          <p>Schreib uns eine Nachricht oder ruf uns direkt an – wir freuen uns!</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-form-wrapper">
-            <form id="contactForm" class="contact-form">
-              <div class="form-group">
-                <label for="name">Dein Name *</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">E-Mail *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="phone">Telefon *</label>
-                <input type="tel" id="phone" name="phone" required>
-              </div>
-              <div class="form-group">
-                <label for="message">Nachricht / Wünsche</label>
-                <textarea id="message" name="message" rows="4" placeholder="Sag uns, wie wir dir helfen können..."></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Anfrage absenden</button>
-            </form>
-          </div>
-          <div class="contact-info">
-            <div class="contact-block">
-              <h3>Adresse</h3>
-              <p>Meisterstraße 10<br>39317 Elbe-Parey OT Güsen<br>Deutschland</p>
-              <a class="text-link" href="https://maps.google.com/?q=Meisterstra%C3%9Fe+10%2C+39317+Elbe-Parey+OT+G%C3%BCsen" target="_blank" rel="noopener noreferrer">Route planen <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="contact-block">
-              <h3>Telefon</h3>
-              <p><a href="tel:+4915233938332">Mobil: +49 1523 3938332</a></p>
-            </div>
-            <div class="contact-block">
-              <h3>E-Mail</h3>
-              <p><a href="mailto:benniweber2003@gmail.com">benniweber2003@gmail.com</a></p>
-            </div>
-            <div class="contact-block">
-              <h3>Öffnungszeiten</h3>
-              <p>Mo–Fr: Terminvergabe<br>Sa: Terminvergabe<br>So: Geschlossen</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
 
-  <div class="mobile-action-bar" aria-label="Schnellkontakt">
-    <button class="btn btn-primary" type="button" data-modal="bookingModal">Termin anfragen</button>
-    <a class="btn btn-outline" href="tel:+4915233938332">Anrufen</a>
-  </div>
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  <!-- BOOKING MODAL -->
-  <div class="modal" id="bookingModal">
-    <div class="modal-overlay" data-close-modal="bookingModal"></div>
-    <div class="modal-content">
-      <button class="modal-close" data-close-modal="bookingModal">✕</button>
-      <p class="eyebrow">Unverbindliche Anfrage</p>
-      <h2>Deine Anfrage vorbereiten.</h2>
-      <form class="booking-form" id="bookingForm">
-        <section class="booking-section request-type-step" id="bookingTypeStep">
-          <h3>Wofür möchtest du eine Anfrage stellen?</h3>
-          <div class="request-type-options">
-            <label class="request-type-option">
-              <input type="radio" name="requestType" value="private" required>
-              <span><strong>Privat</strong><small>Ich möchte mein eigenes Fahrzeug aufbereiten lassen.</small></span>
-            </label>
-            <label class="request-type-option">
-              <input type="radio" name="requestType" value="business" required>
-              <span><strong>Gewerbe</strong><small>Ich möchte ein Firmen-, Betriebs- oder Nutzfahrzeug aufbereiten lassen.</small></span>
-            </label>
-          </div>
-          <div class="booking-step-controls">
-            <button class="btn btn-primary" id="startBookingFlow" type="button">Weiter</button>
-          </div>
-        </section>
+.brand-text {
+  color: var(--primary);
+  letter-spacing: 0.03em;
+}
 
-        <div class="booking-flow" data-booking-flow="private" hidden>
-        <ol class="booking-progress" aria-label="Buchungsschritte">
-          <li class="is-current" data-progress-step="1"><span>01</span><small>Paket</small></li>
-          <li data-progress-step="2"><span>02</span><small>Extras</small></li>
-          <li data-progress-step="3"><span>03</span><small>Fahrzeug</small></li>
-          <li data-progress-step="4"><span>04</span><small>Datum</small></li>
-          <li data-progress-step="5"><span>05</span><small>Kontakt</small></li>
-          <li data-progress-step="6"><span>06</span><small>Prüfen</small></li>
-        </ol>
-        <p class="booking-step-status" id="bookingStepStatus" aria-live="polite">Schritt 1 von 6 · Paket auswählen</p>
-        <div class="booking-section booking-step is-active" data-booking-step="1">
-          <h3>Paket auswählen</h3>
-          <div class="package-selection">
-            <label class="package-option">
-              <input type="radio" name="package" value="fresh">
-              <span class="option-label">
-                <strong>Frisch gemacht - <span data-package-price="fresh"></span></strong>
-                <small>Handwäsche, Felgenreinigung, Scheiben behandeln</small>
-              </span>
-            </label>
-            <label class="package-option">
-              <input type="radio" name="package" value="care" checked>
-              <span class="option-label">
-                <strong>Wieder gepflegt - <span data-package-price="care"></span></strong>
-                <small>Innenraum gründlich gesäubert, Armatur- & Kunststoffpflege</small>
-              </span>
-            </label>
-            <label class="package-option">
-              <input type="radio" name="package" value="wikeneu">
-              <span class="option-label">
-                <strong>Wie Neu - <span data-package-price="wikeneu"></span></strong>
-                <small>Lackversiegelung, Maschinenpolitur</small>
-              </span>
-            </label>
-            <label class="package-option">
-              <input type="radio" name="package" value="showroom">
-              <span class="option-label">
-                <strong>Showroom Edition - <span data-package-price="showroom"></span></strong>
-                <small>Komplette Premium-Aufbereitung mit Ozonbehandlung</small>
-              </span>
-            </label>
-          </div>
-        </div>
+.nav-cta {
+  border: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12), 0 10px 25px rgba(212, 175, 55, 0.4);
+  animation: cta-pulse 3s ease-in-out infinite;
+}
 
-        <div class="booking-section booking-step" data-booking-step="2" hidden>
-          <h3>Zusatzleistungen <span>(optional)</span></h3>
-          <div class="extras-selection">
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="tierhaar">
-              <span>Tierhaarentfernung</span>
-              <span class="extra-price">ab <span data-extra-price="tierhaar"></span></span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="ozon">
-              <span>Ozonbehandlung</span>
-              <span class="extra-price">ab <span data-extra-price="ozon"></span></span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="scheibe">
-              <span>Scheibenversiegelung</span>
-              <span class="extra-price">ab <span data-extra-price="scheibe"></span></span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="felge">
-              <span>Felgenversiegelung</span>
-              <span class="extra-price">ab <span data-extra-price="felge"></span></span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="insekt">
-              <span>Insekten- & Baumharzentfernung</span>
-              <span class="extra-price">ab <span data-extra-price="insekt"></span></span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="keramik">
-              <span>Keramikversiegelung</span>
-              <span class="extra-price">ab <span data-extra-price="keramik"></span></span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="leder">
-              <span>Lederreinigung & Lederpflege</span>
-              <span class="extra-price">ab <span data-extra-price="leder"></span></span>
-            </label>
-            <label class="extra-option">
-              <input type="checkbox" name="extra" value="kunststoff">
-              <span>Kunststoff-Außenpflege</span>
-              <span class="extra-price">ab <span data-extra-price="kunststoff"></span></span>
-            </label>
-          </div>
-        </div>
+@keyframes cta-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12), 0 10px 25px rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2), 0 14px 30px rgba(212, 175, 55, 0.52);
+  }
+}
 
-        <div class="booking-section booking-step" data-booking-step="3" hidden>
-          <h3>Fahrzeugdaten</h3>
-          <div class="form-group">
-            <label for="booking-vehicle">Fahrzeug</label>
-            <input type="text" id="booking-vehicle" name="vehicle" placeholder="z. B. Mercedes GLE">
-          </div>
-          <div class="form-group">
-            <label for="booking-notes">Wünsche oder Zustand</label>
-            <textarea id="booking-notes" name="notes" rows="3" placeholder="Was sollen wir beachten?"></textarea>
-          </div>
-        </div>
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
-        <div class="booking-section booking-step" data-booking-step="4" hidden>
-          <h3>Wunschdatum</h3>
-          <div class="form-group">
-            <label for="booking-date">Gewünschtes Datum *</label>
-            <input type="date" id="booking-date" name="date" required>
-          </div>
-          <p class="booking-note">Wir stimmen den Termin nach deiner Anfrage persönlich mit dir ab.</p>
-        </div>
+.site-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
 
-        <div class="booking-section booking-step" data-booking-step="5" hidden>
-          <h3>Deine Kontaktdaten</h3>
-          <div class="form-group">
-            <label for="booking-name">Name *</label>
-            <input type="text" id="booking-name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="booking-email">E-Mail *</label>
-            <input type="email" id="booking-email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="booking-phone">Telefon *</label>
-            <input type="tel" id="booking-phone" name="phone" required>
-          </div>
-        </div>
+.site-nav a {
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
 
-        <div class="booking-section booking-step" data-booking-step="6" hidden>
-          <h3>Zusammenfassung & Einwilligungen</h3>
-          <div class="consent-group">
-            <label class="consent-option">
-              <input type="checkbox" id="accept-agb" name="acceptAgb" required>
-              <span>Ich akzeptiere die <a href="agb.html" target="_blank" rel="noopener noreferrer">AGB</a>.</span>
-            </label>
-            <label class="consent-option">
-              <input type="checkbox" id="accept-datenschutz" name="acceptDatenschutz" required>
-              <span>Ich akzeptiere die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.</span>
-            </label>
-          </div>
-          <p class="consent-hint">Beide Zustimmungen sind erforderlich, bevor deine Anfrage gesendet werden kann.</p>
-        <div class="booking-summary">
-          <div class="summary-row">
-            <span>Ausgewähltes Paket:</span>
-            <span id="bookingPackageSummary">Wieder gepflegt</span>
-          </div>
-          <div class="summary-row">
-            <span>Fahrzeug:</span>
-            <span id="bookingVehicleSummary">Noch nicht angegeben</span>
-          </div>
-          <div class="summary-row">
-            <span>Zusatzleistungen:</span>
-            <span id="bookingExtrasSummary">Keine</span>
-          </div>
-          <div class="summary-row">
-            <span>Wunschdatum:</span>
-            <span id="bookingDateSummary">Noch nicht ausgewählt</span>
-          </div>
-          <div class="summary-row">
-            <span>Name:</span>
-            <span id="bookingNameSummary">Noch nicht angegeben</span>
-          </div>
-          <div class="summary-row">
-            <span>E-Mail:</span>
-            <span id="bookingEmailSummary">Noch nicht angegeben</span>
-          </div>
-          <div class="summary-row">
-            <span>Telefon:</span>
-            <span id="bookingPhoneSummary">Noch nicht angegeben</span>
-          </div>
-          <div class="summary-row">
-            <span>Paketpreis regulär:</span>
-            <span id="originalPrice"></span>
-          </div>
-          <div class="summary-row discount">
-            <span>20% Neukundenrabatt:</span>
-            <span id="discountPrice"></span>
-          </div>
-          <div class="summary-row">
-            <span>Paketpreis:</span>
-            <span id="packagePrice"></span>
-          </div>
-          <div class="summary-row" id="extrasRow" style="display: none;">
-            <span>Zusatzleistungen:</span>
-            <span id="extrasPrice"></span>
-          </div>
-          <div class="summary-row total">
-            <span>Voraussichtlicher Gesamtpreis:</span>
-            <span id="totalPrice"></span>
-          </div>
-        </div>
-        <p class="booking-price-note">Zusatzleistungen sind ab-Preise. Den endgültigen Umfang und Preis stimmen wir nach der Fahrzeugbesichtigung mit dir ab.</p>
+.site-nav a:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
 
-        <button type="submit" class="btn btn-primary btn-large">Termin anfragen</button>
-        </div>
-        </div>
+.site-nav button {
+  color: var(--text);
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
 
-        <div class="booking-flow" data-booking-flow="business" hidden>
-          <ol class="booking-progress" aria-label="Gewerbe-Anfrageschritte">
-            <li class="is-current" data-progress-step="1"><span>01</span><small>Fahrzeug</small></li>
-            <li data-progress-step="2"><span>02</span><small>Anzahl</small></li>
-            <li data-progress-step="3"><span>03</span><small>Leistung</small></li>
-            <li data-progress-step="4"><span>04</span><small>Daten</small></li>
-            <li data-progress-step="5"><span>05</span><small>Zeitraum</small></li>
-            <li data-progress-step="6"><span>06</span><small>Kontakt</small></li>
-            <li data-progress-step="7"><span>07</span><small>Prüfen</small></li>
-          </ol>
-          <p class="booking-step-status" id="businessStepStatus" aria-live="polite">Schritt 1 von 7 · Fahrzeugart</p>
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
 
-        </div>
-      </form>
-    </div>
-  </div>
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem;
+    box-shadow: var(--shadow);
+  }
 
-  <script src="js/main.js?v=2026100201"></script>
-</body>
-</html>
+  .site-nav.open {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .site-nav a,
+  .site-nav button {
+    color: var(--text);
+  }
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+  background-image: url('../assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.hero-background {
+  display: none;
+}
+
+.hero-car {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.5) 48%, rgba(0, 0, 0, 0.08) 78%);
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  border-radius: 50%;
+  display: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f7f1df;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-title {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-note {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 1.8rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.hero-stat {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 10px;
+  padding: 0.85rem 0.9rem;
+  backdrop-filter: blur(4px);
+}
+
+.hero-stat strong {
+  display: block;
+  color: #f5deb0;
+  font-size: 1.15rem;
+}
+
+.hero-stat span {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.8rem;
+}
+
+.hero-trust {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 0;
+    min-height: auto;
+    background-attachment: scroll;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-trust {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* ========================================
+   FEATURES SECTION
+   ======================================== */
+
+.features-section {
+  padding: 4rem 0;
+  background: var(--bg-light);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-border);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.feature-card:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   SERVICES SECTION
+   ======================================== */
+
+.services-section {
+  padding: 4rem 0;
+  background: var(--bg);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.service-card:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.service-card ul {
+  list-style: none;
+}
+
+.service-card li {
+  padding: 0.4rem 0;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+/* ========================================
+   WHY SECTION
+   ======================================== */
+
+.why-section {
+  position: relative;
+  padding: 6.5rem 0 6rem;
+  background: #080808;
+  overflow: hidden;
+}
+
+.why-video-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.why-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.02);
+  filter: contrast(1.1) saturate(1.2) brightness(1.02);
+}
+
+.why-video-overlay {
+  position: absolute;
+  inset: 0;
+  /* Sehr dezent, um maximale Sichtbarkeit und Brillanz des Videos zu gewährleisten */
+  background:
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, rgba(5, 5, 5, 0.4) 60%, rgba(8, 8, 8, 0.75) 100%),
+    linear-gradient(180deg, rgba(8, 8, 8, 0.55) 0%, rgba(8, 8, 8, 0.08) 25%, rgba(8, 8, 8, 0.08) 75%, rgba(8, 8, 8, 0.65) 100%);
+}
+
+.why-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.why-section .section-header h2 {
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.why-section .section-header p {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
+  font-weight: 500;
+}
+
+.why-section .features-grid {
+  margin-top: 3.5rem;
+}
+
+.why-section .feature-card {
+  /* Sehr transparente, leichte Glassmorphism-Karten für optimalen Durchblick auf das Video */
+  background: rgba(8, 8, 8, 0.32);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.35s ease;
+}
+
+.why-section .feature-card:hover {
+  background: rgba(14, 14, 14, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(212, 175, 55, 0.9);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 24px rgba(212, 175, 55, 0.4);
+  transform: translateY(-6px);
+}
+
+.why-section .feature-card h3 {
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.why-section .feature-card p {
+  color: #f3f3f3;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.why-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--primary);
+}
+
+.why-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.why-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   TEAM SECTION
+   ======================================== */
+
+.team-section {
+  padding: 4rem 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.team-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.team-card:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+  transform: translateY(-4px);
+}
+
+.team-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-light);
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.team-role {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.team-bio {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.team-contact {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.team-contact a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.team-contact a:hover {
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .team-card {
+    padding: 1.5rem;
+  }
+
+  .team-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* ========================================
+   SECTION HEADER
+   ======================================== */
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+}
+
+.section-header p {
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   PACKAGES SECTION
+   ======================================== */
+
+.packages-section {
+  padding: 4rem 0;
+  background: var(--bg-light);
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.package-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.package-card:hover {
+  border-color: rgba(212, 175, 55, 0.58);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+}
+
+.package-card .btn {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1fbe5e, #118a7d);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 0.65rem;
+}
+
+.btn-whatsapp:hover {
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(31, 190, 94, 0.45);
+}
+
+.package-card.featured {
+  border-color: var(--primary-light);
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
+}
+
+.package-label {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.package-price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 1.5rem 0;
+}
+
+.price-original {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.duration {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.package-features {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.package-features li {
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Zusatzleistungen / Additional Services */
+.additional-services {
+  margin-top: 3rem;
+  background: var(--bg-light);
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--primary);
+}
+
+.additional-services .review-toggle {
+  color: white;
+  font-size: 1.05rem;
+  padding: 0.25rem 0;
+}
+
+.additional-services .services-panel {
+  padding-top: 1rem;
+}
+
+.additional-services-note {
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.services-table-wrapper {
+  overflow-x: auto;
+}
+
+.services-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.services-table thead tr {
+  background: var(--bg);
+  border-bottom: 2px solid var(--primary);
+}
+
+.services-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: rgb(253, 252, 252);
+}
+
+.services-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.services-table tr:hover {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* ========================================
+   PROCESS SECTION
+   ======================================== */
+
+.process-section {
+  padding: 4rem 0;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: var(--border);
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.step:first-child::after {
+  display: none;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.step h3 {
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .step::after {
+    display: none;
+  }
+}
+
+/* ========================================
+   TESTIMONIALS SECTION
+   ======================================== */
+
+.testimonials-section {
+  padding: 4rem 0;
+  background: var(--bg);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.testimonial-card {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(6px);
+}
+
+.stars {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2rem;
+  color: var(--primary);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.testimonial-card strong {
+  color: white;
+  display: block;
+  font-size: 0.95rem;
+}
+
+.location {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   GALLERY SECTION
+   ======================================== */
+
+.gallery-section {
+  padding: 4rem 0;
+  background: var(--bg);
+}
+
+.instagram-reels-section {
+  padding: 4rem 0;
+  background: var(--bg-dark);
+  border-top: 1px solid rgba(212, 175, 55, 0.24);
+}
+
+.instagram-reels-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.car-showcase-list {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.car-showcase {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.car-showcase-toggle {
+  width: 100%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.car-showcase-toggle:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.car-showcase-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.car-showcase-toggle-text strong {
+  color: var(--primary);
+  font-size: 1.08rem;
+}
+
+.car-showcase-toggle-text small {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.car-showcase-toggle-icon {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--primary);
+  background: rgba(0, 0, 0, 0.34);
+}
+
+.car-showcase-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.car-showcase.open .car-showcase-panel {
+  max-height: 5000px;
+  opacity: 1;
+}
+
+.car-showcase-header {
+  padding: 0.45rem 0.4rem 1rem;
+}
+
+.car-showcase-header h3 {
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.car-showcase-header p {
+  color: var(--text-secondary);
+}
+
+.car-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.car-shot {
+  margin: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+}
+
+.gallery-slider {
+  position: relative;
+  margin-top: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.gallery-track {
+  position: relative;
+  min-height: 0;
+}
+
+.gallery-slide {
+  display: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gallery-slide.active {
+  display: block;
+  animation: fadeInSlide 0.5s ease;
+}
+
+.gallery-visual {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  padding: 0.7rem;
+  border: 1px solid rgba(212, 175, 55, 0.26);
+  background:
+    radial-gradient(120% 90% at 50% -5%, rgba(212, 175, 55, 0.2), transparent 58%),
+    linear-gradient(145deg, #141414 0%, #1d1d1d 45%, #101010 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 30px rgba(0, 0, 0, 0.28);
+}
+
+.gallery-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.018) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.018) 50%, rgba(255, 255, 255, 0.018) 75%, transparent 75%, transparent);
+  background-size: 20px 20px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.gallery-photo,
+.gallery-video {
+  width: 100%;
+  height: auto;
+  max-height: 72vh;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-video {
+  background: #000;
+}
+
+.car-showcase-grid-video {
+  grid-template-columns: 1fr;
+  max-width: 860px;
+  margin: 1rem auto 0;
+}
+
+.gallery-caption {
+  padding: 1rem 1rem 0.5rem;
+}
+
+.gallery-caption h3 {
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+}
+
+.gallery-caption p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 44%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.52);
+  color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.gallery-nav.prev {
+  left: 18px;
+}
+
+.gallery-nav.next {
+  right: 18px;
+}
+
+.gallery-nav:hover {
+  background: rgba(212, 175, 55, 0.9);
+  color: #141414;
+}
+
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.gallery-dots .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.gallery-dots .dot.active {
+  background: var(--primary);
+  transform: scale(1.12);
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 12px 24px rgba(212, 175, 55, 0.18);
+}
+
+.gallery-image {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(255, 255, 255, 0.05));
+}
+
+.gallery-placeholder {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0.05));
+}
+
+.gallery-placeholder.alt {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(212, 175, 55, 0.2));
+}
+
+.gallery-image span {
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.gallery-content {
+  padding: 1.25rem;
+}
+
+.gallery-content h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.gallery-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 2.5rem 0;
+  }
+
+  .instagram-reels-section {
+    padding: 2.5rem 0;
+  }
+
+  .car-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.cta-section {
+  padding: 4rem 0;
+  background: linear-gradient(130deg, #b68b1d 0%, #d4af37 45%, #e8cc77 100%);
+  color: white;
+  text-align: center;
+}
+
+.cta-section .btn-primary {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.coverage-section {
+  padding: 60px 20px;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.04)),
+    #161616;
+  color: #fff;
+}
+
+.coverage-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coverage-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #cccccc;
+  margin-top: 20px;
+}
+
+.cta-content h2 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* ========================================
+   CONTACT SECTION
+   ======================================== */
+
+.contact-section {
+  padding: 4rem 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.contact-form .form-group label {
+  color: #ffffff;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 2px solid #d0d0d0;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.contact-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-block h3 {
+  margin-bottom: 0.5rem;
+}
+
+.contact-block p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.contact-block a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   LEGAL PAGES
+   ======================================== */
+
+.legal-section {
+  padding: 4rem 0;
+  min-height: 80vh;
+}
+
+.legal-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--primary);
+}
+
+.legal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid #e0e0e0;
+  line-height: 1.8;
+  color: #333333;
+}
+
+.legal-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.legal-content h3 {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #b8860b;
+}
+
+.legal-content p {
+  margin-bottom: 1rem;
+  color: #333333;
+}
+
+.legal-content ul {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.legal-content li {
+  margin-bottom: 0.5rem;
+  color: #444444;
+}
+
+.legal-content a {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.legal-content a:hover {
+  text-decoration: none;
+}
+
+.legal-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.legal-footer a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--primary);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.legal-footer a:hover {
+  text-decoration: none;
+  transform: translateX(-5px);
+}
+
+@media (max-width: 768px) {
+  .legal-section {
+    padding: 2rem 0;
+  }
+
+  .legal-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .legal-content {
+    padding: 1.5rem;
+  }
+
+  .legal-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .legal-content h3 {
+    font-size: 1rem;
+  }
+}
+
+/* ========================================
+   MODAL STYLES
+   ======================================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  color: #1a1a1a;
+}
+
+.modal-content h2 {
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333333;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #000000;
+}
+
+/* Booking Form */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.booking-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-section h3 {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.package-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.package-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid #d0d0d0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.package-option input[type="radio"] {
+  margin-top: 0.25rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 20px;
+  height: 20px;
+}
+
+.package-option:hover {
+  border-color: var(--primary);
+  background: #f9f5e7;
+}
+
+.package-option input[type="radio"]:checked + .option-label {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ========== REVIEW FORM ========== */
+.review-form-wrapper {
+  margin-top: 3rem;
+  padding: 1.25rem;
+  background: var(--bg-light);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-lg);
+}
+
+.review-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  text-align: left;
+}
+
+.review-toggle-icon {
+  font-size: 1.2rem;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+.review-form-panel {
+  display: none;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.review-form-wrapper.open .review-form-panel,
+.additional-services.open .services-panel {
+  display: block;
+}
+
+.review-form-wrapper.open .review-toggle-icon,
+.additional-services.open .review-toggle-icon {
+  transform: rotate(45deg);
+}
+
+.review-form-wrapper > .review-form-panel > p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-form label {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.review-form input[type="text"],
+.review-form input[type="email"],
+.review-form textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.review-form input[type="text"]:focus,
+.review-form input[type="email"]:focus,
+.review-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.review-form input::placeholder,
+.review-form textarea::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ========== STAR RATING ========== */
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating .star {
+  cursor: pointer;
+  color: var(--text-tertiary);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.star-rating input:checked ~ .star,
+.star-rating .star:hover,
+.star-rating input:checked ~ .star:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.star-rating input:hover ~ .star {
+  color: var(--primary);
+}
+
+/* ========== REVIEW NOTE ========== */
+.review-note {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: -0.5rem;
+}
+
+/* ========== RESPONSIVE REVIEW FORM ========== */
+@media (max-width: 768px) {
+  .review-form-wrapper {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .star-rating {
+    font-size: 1.5rem;
+    gap: 0.3rem;
+  }
+}
+
+.option-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.option-label strong {
+  color: #1a1a1a;
+}
+
+.option-label small {
+  color: #555555;
+  font-weight: normal;
+}
+
+.extras-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.extra-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.extra-option input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 18px;
+  height: 18px;
+}
+
+.extra-option:hover {
+  background: #f9f5e7;
+  border-color: var(--primary);
+}
+
+.extra-option input[type="checkbox"]:checked + span {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.extra-option span {
+  flex: 1;
+  color: #1a1a1a;
+}
+
+.extra-price {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.consent-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.consent-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #d0d0d0;
+  border-radius: var(--radius);
+  background: #fafafa;
+}
+
+.consent-option input[type="checkbox"] {
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 18px;
+  height: 18px;
+}
+
+.consent-option span {
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.consent-option a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.consent-hint {
+  margin-top: -0.25rem;
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.booking-summary {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 2px solid #d0d0d0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #d0d0d0;
+  color: #333333;
+}
+
+.summary-row.discount {
+  color: var(--secondary);
+  font-weight: 600;
+  background: rgba(5, 150, 105, 0.05);
+  padding: 0.75rem;
+  margin: 0 -1.5rem 0 -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.summary-row.total {
+  border-bottom: none;
+  border-top: 2px solid var(--primary);
+  padding-top: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-top: 0.5rem;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.site-footer {
+  background: var(--bg-dark);
+  color: white;
+  padding: 3rem 0 1rem;
+}
+
+.cookie-consent[hidden] {
+  display: none;
+}
+
+.cookie-consent {
+  position: fixed;
+  z-index: 1200;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  color: #202020;
+  background: #ffffff;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+.cookie-consent h2 {
+  margin-bottom: 0.4rem;
+  color: #202020;
+  font-size: 1.1rem;
+}
+
+.cookie-consent p {
+  margin-bottom: 0.35rem;
+  color: #333333;
+  font-size: 0.9rem;
+}
+
+.cookie-consent-copy > a {
+  color: #725700;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.6rem;
+}
+
+.cookie-consent-button {
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px solid #725700;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cookie-consent-reject {
+  color: #202020;
+  background: #ffffff;
+}
+
+.cookie-consent-accept {
+  color: #161616;
+  background: #d4af37;
+}
+
+.cookie-consent-button:focus-visible,
+.cookie-settings-trigger:focus-visible {
+  outline: 3px solid #1b65a7;
+  outline-offset: 3px;
+}
+
+.cookie-settings-trigger {
+  margin-top: 0.75rem;
+  color: #f5deb0;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .cookie-consent {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .cookie-consent-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  z-index: 110;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background: linear-gradient(140deg, #1bc85b, #128c7e);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.whatsapp-float:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer-section p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-section a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.1rem; }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .packages-grid,
+  .services-grid,
+  .features-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .package-card.featured {
+    transform: scale(1);
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .gallery-track {
+    min-height: 0;
+  }
+
+  .gallery-visual {
+    height: auto;
+    padding: 0.55rem;
+  }
+
+  .gallery-photo,
+  .gallery-video {
+    max-height: 60vh;
+  }
+
+  .gallery-nav {
+    width: 38px;
+    height: 38px;
+  }
+
+  .whatsapp-float {
+    right: 12px;
+    bottom: 14px;
+    padding: 0.72rem 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .why-section {
+    padding: 4.5rem 0 4rem;
+  }
+
+  .why-section .features-grid {
+    margin-top: 2rem;
+    gap: 1.25rem;
+  }
+
+  .why-section .feature-card {
+    padding: 1.4rem 1.2rem;
+    background: rgba(10, 10, 10, 0.45);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+  .booking-section h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.3rem; }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-large {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-trust {
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .hero-note {
+    margin-bottom: 1rem;
+  }
+
+  .gallery-visual {
+    height: auto;
+    padding: 0.45rem;
+  }
+
+  .gallery-photo,
+  .gallery-video {
+    max-height: 52vh;
+  }
+
+  .gallery-caption h3 {
+    font-size: 1rem;
+  }
+
+  .car-showcase {
+    padding: 0.75rem;
+  }
+
+  .car-showcase-toggle {
+    padding: 0.75rem 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .car-showcase-toggle-text strong {
+    font-size: 1rem;
+  }
+
+  .car-showcase-toggle-text small {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .car-showcase-toggle-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 1.05rem;
+  }
+
+  .services-section,
+  .packages-section,
+  .features-section {
+    padding: 2rem 0;
+  }
+
+  .why-section {
+    padding: 3.5rem 0 3rem;
+  }
+
+  .why-section .feature-card {
+    padding: 1.2rem 1rem;
+    background: rgba(10, 10, 10, 0.52);
+  }
+
+  .why-section .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .contact-grid {
+    gap: 2rem;
+  }
+
+  .modal-content {
+    padding: 1.25rem;
+  }
+
+  .booking-section {
+    gap: 0.75rem;
+  }
+
+  .package-option,
+  .extra-option {
+    padding: 0.5rem;
+  }
+}
+
+/* Premium editorial layout */
+:root {
+  --primary: #c3c5c0;
+  --primary-light: #e4e5e1;
+  --secondary: #a4a7a2;
+  --accent: #c3c5c0;
+  --ink: #f4f4f1;
+  --ink-soft: #d8d9d4;
+  --bg: #111210;
+  --bg-light: #191a18;
+  --bg-dark: #090a09;
+  --text: #f4f4f1;
+  --text-secondary: #b7bab4;
+  --text-tertiary: #858982;
+  --border: #343632;
+  --surface: #171815;
+  --surface-border: #343632;
+  --radius: 4px;
+  --radius-lg: 6px;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.18);
+  --shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: #111210;
+  color: #f4f4f1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+body, p, a, button, input, textarea, select { letter-spacing: 0; }
+h1, h2, h3, h4, h5, h6 {
+  color: #f4f4f1;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0;
+}
+h1 { font-size: 3.8rem; }
+h2 { font-size: 2.55rem; }
+h3 { font-size: 1.35rem; }
+p { color: #c3c5c0; }
+a { color: #d9dad6; }
+.container { max-width: 1260px; padding-right: 2rem; padding-left: 2rem; }
+section { scroll-margin-top: 90px; }
+
+.btn {
+  min-height: 48px;
+  border-radius: 3px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.btn:hover { transform: none; box-shadow: none; }
+.btn-primary,
+.btn-primary:hover {
+  color: #141512;
+  background: #e1e2de;
+  border-color: #e1e2de;
+}
+.btn-outline,
+.btn-outline:hover {
+  color: #f0f1ed;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: none;
+}
+.btn-large { min-height: 54px; padding: 0.9rem 1.4rem; }
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #f2f3ef;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.text-link:hover { color: #c3c5c0; text-decoration: none; }
+.text-button { padding: 0; border: 0; background: none; font: inherit; cursor: pointer; }
+.eyebrow {
+  margin-bottom: 0.8rem;
+  color: #9da19a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.section-heading-row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+.section-heading-row .section-header { max-width: 660px; margin: 0; text-align: left; }
+.section-heading-row .section-header h2 { margin: 0; color: #f4f4f1; }
+.section-intro { max-width: 410px; margin-bottom: 0.35rem; color: #aeb1ab; }
+.section-header { margin-bottom: 2rem; text-align: left; }
+.section-header h2 { margin-bottom: 0.75rem; color: #f4f4f1; }
+.section-header p:not(.eyebrow) { max-width: 620px; margin-left: 0; color: #aeb1ab; }
+
+.site-header {
+  position: sticky;
+  z-index: 200;
+  background: rgba(12, 13, 12, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+}
+.site-header.scrolled { background: rgba(9, 10, 9, 0.98); box-shadow: none; }
+.header-inner { min-height: 76px; padding-top: 0.7rem; padding-bottom: 0.7rem; }
+.brand { gap: 0.7rem; font-size: 1rem; }
+.brand .logo { width: 42px; height: 42px; object-fit: cover; background: transparent; border-radius: 50%; }
+.brand-text { display: grid; gap: 0.08rem; color: #f3f4f0; }
+.brand-text strong { font-family: 'Manrope', sans-serif; font-size: 0.94rem; font-weight: 800; line-height: 1.1; }
+.brand-text small { color: #9da19a; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.12em; }
+.site-nav ul { gap: 1.8rem; }
+.site-nav a { color: #d4d6d0; font-size: 0.87rem; }
+.site-nav a:hover { color: #ffffff; }
+.site-nav .nav-cta,
+.site-nav .nav-cta:hover {
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  color: #111210;
+  background: #e1e2de;
+  border: 1px solid #e1e2de;
+}
+.site-nav .nav-cta:hover { background: #ffffff; border-color: #ffffff; }
+.nav-toggle { padding: 0.5rem; }
+.nav-toggle span { display: block; width: 22px; height: 1px; margin: 5px; background: #f3f4f0; }
+
+main { display: flex; flex-direction: column; }
+main > section { width: 100%; }
+.hero { order: 1; position: relative; display: flex; align-items: center; min-height: 680px; padding: 6rem 0 5rem; background: #151614 url('../assets/hero-bg.jpg') center 55% / cover no-repeat; }
+.hero::before, .hero::after { display: none; }
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7, 8, 7, 0.93) 0%, rgba(7, 8, 7, 0.8) 36%, rgba(7, 8, 7, 0.36) 72%, rgba(7, 8, 7, 0.16) 100%), linear-gradient(0deg, rgba(7, 8, 7, 0.5), transparent 55%); }
+.hero-container { position: relative; z-index: 1; }
+.hero-content { max-width: 690px; }
+.hero-kicker { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; color: #d1d3ce; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.hero-kicker span { width: 28px; height: 1px; background: #d4d6d1; }
+.hero-title { margin-bottom: 1.2rem; color: #ffffff; font-size: 5rem; font-weight: 600; line-height: 1.02; }
+.hero-title em { color: #d0d2cd; font-style: normal; }
+.hero-subtitle { max-width: 590px; margin-bottom: 1.8rem; color: #d5d6d2; font-size: 1.1rem; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.6rem; }
+.hero-ctas .btn-primary span { margin-left: 0.45rem; }
+.hero-offer { margin-bottom: 1rem; color: #d2d4ce; font-size: 0.9rem; }
+.hero-offer strong { margin-right: 0.35rem; color: #ffffff; font-family: 'Manrope', sans-serif; font-size: 1.15rem; }
+.hero-location { color: #c4c6c0; font-size: 0.82rem; }
+.hero-location span { margin-left: 0.3rem; }
+
+.why-section { order: 2; padding: 0; background: #e7e8e4; }
+.trust-strip { display: grid; grid-template-columns: 1.15fr repeat(4, 1fr); align-items: center; min-height: 108px; gap: 1.5rem; }
+.trust-intro { color: #262824; font-family: 'Manrope', sans-serif; font-size: 1.05rem; font-weight: 700; }
+.trust-item { display: flex; align-items: center; gap: 0.7rem; color: #333631; font-size: 0.84rem; }
+.trust-item span { color: #777b74; font-size: 0.7rem; font-weight: 700; }
+.trust-item strong { color: #333631; font-weight: 600; }
+
+.services-section { order: 3; padding: 6rem 0; background: #111210; }
+.services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 1.25rem; margin-top: 0; }
+.service-card { overflow: hidden; padding: 0; background: #171815; border: 1px solid #2e302c; border-radius: 4px; box-shadow: none; }
+.service-card:hover { transform: none; border-color: #545750; box-shadow: none; }
+.service-image { position: relative; display: block; overflow: hidden; aspect-ratio: 1.5 / 1; background: #20211f; }
+.service-image::after { position: absolute; inset: 40% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, 0.58)); content: ''; }
+.service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; }
+.service-card:hover .service-image img { transform: scale(1.025); }
+.service-image span { position: absolute; z-index: 1; right: 1rem; bottom: 0.85rem; left: 1rem; color: #f0f1ed; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; }
+.service-copy { padding: 1.5rem; }
+.service-copy h3 { margin-bottom: 0.6rem; font-size: 1.35rem; }
+.service-copy > p { min-height: 3.4rem; color: #aeb1ab; font-size: 0.92rem; }
+.service-list { display: grid; gap: 0.5rem; margin: 1.2rem 0 1.3rem; list-style: none; }
+.service-list li { padding-bottom: 0.48rem; color: #d0d2cc; border-bottom: 1px solid #2c2e2a; font-size: 0.86rem; }
+
+.packages-section { order: 4; padding: 6rem 0; background: #191a18; }
+.packages-section .section-header { max-width: 700px; }
+.packages-section .section-header h2 { color: #f4f4f1; }
+.packages-section .section-header p { color: #aeb1ab; }
+.packages-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; gap: 0.8rem; margin-top: 2rem; }
+.package-card { display: flex; flex-direction: column; min-width: 0; padding: 1.45rem; background: #111210; border: 1px solid #343632; border-radius: 4px; box-shadow: none; }
+.package-card:hover { transform: none; box-shadow: none; border-color: #777b74; }
+.package-card.featured { transform: none; background: #20211e; border-color: #c3c5c0; box-shadow: none; }
+.package-card.featured:hover { transform: none; }
+.package-label { align-self: flex-start; margin-bottom: 1rem; padding: 0; color: #aeb1ab; background: transparent; border: 0; border-radius: 0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.package-card h3 { min-height: 3.3rem; margin-bottom: 0.8rem; font-size: 1.25rem; }
+.package-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.65rem; margin-bottom: 1rem; }
+.price-original { color: #92968f; font-size: 0.78rem; text-decoration: line-through; }
+.package-price .price { color: #f4f4f1; font-family: 'Manrope', sans-serif; font-size: 1.8rem; font-weight: 700; }
+.package-price .duration { flex-basis: 100%; color: #aeb1ab; font-size: 0.75rem; }
+.package-features { flex: 1; margin: 0.5rem 0 1.3rem; }
+.package-features li { padding: 0.45rem 0; color: #d0d2cc; border-bottom: 1px solid #2c2e2a; font-size: 0.83rem; }
+.package-features li::first-letter { color: #bfc1bb; }
+.package-card > .btn { width: 100%; margin-top: 0.45rem; }
+.package-card .btn-whatsapp { color: #c8cac4; background: transparent; border: 1px solid #42443f; }
+.additional-services { margin-top: 1.25rem; padding: 0; background: transparent; border: 0; border-radius: 0; }
+.services-toggle { border-color: #41433e; border-radius: 3px; }
+.services-panel { background: #111210; border-color: #41433e; }
+.services-table th, .services-table td { border-color: #383a36; }
+.services-table th { color: #f2f3ef; }
+
+.gallery-section { order: 5; padding: 6rem 0; background: #0c0d0c; }
+.car-showcase-list { gap: 0.75rem; margin-top: 2rem; }
+.car-showcase { padding: 0; background: transparent; border: 0; border-bottom: 1px solid #353733; border-radius: 0; }
+.car-showcase-toggle { padding: 1.25rem 0; background: transparent; border: 0; border-radius: 0; }
+.car-showcase-toggle:hover { background: transparent; border-color: #686b65; }
+.car-showcase-toggle-text strong { color: #f4f4f1; font-family: 'Manrope', sans-serif; font-size: 1.35rem; }
+.car-showcase-toggle-text small { color: #999d96; }
+.car-showcase-toggle-icon { width: 34px; height: 34px; color: #f4f4f1; background: transparent; border-color: #666962; }
+.car-showcase-panel { padding: 0 0 1.5rem; }
+.car-showcase-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; }
+.car-shot { overflow: hidden; background: #171815; border: 1px solid #30322e; border-radius: 3px; }
+.gallery-visual { height: auto; padding: 0; background: #111210; }
+.gallery-photo, .gallery-video { width: 100%; height: auto; max-height: 640px; object-fit: contain; border-radius: 0; }
+.gallery-caption { padding: 0.8rem 0.9rem; background: #171815; }
+.gallery-caption h3 { margin-bottom: 0.15rem; color: #eff0ec; font-size: 0.95rem; }
+.gallery-caption p { color: #999d96; font-size: 0.8rem; }
+
+.instagram-reels-section { order: 6; padding: 3rem 0; background: #151614; border: 0; }
+.instagram-reels-section .section-header { margin: 0; }
+.instagram-reels-section .section-header h2 { font-size: 1.7rem; }
+.instagram-reels-section .section-header p { margin-bottom: 0; }
+.instagram-reels-action { justify-content: flex-start; margin-top: 1rem; }
+
+.team-section { order: 7; padding: 6rem 0; background: #191a18; }
+.team-section .container { display: grid; grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr); align-items: center; gap: 5rem; max-width: 1050px; }
+.owner-portrait { position: relative; max-width: 390px; }
+.owner-portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(0.72); }
+.owner-portrait span { display: block; padding-top: 0.75rem; color: #aeb1ab; font-size: 0.8rem; }
+.owner-copy h2 { max-width: 600px; margin-bottom: 1.3rem; font-size: 2.6rem; }
+.owner-copy > p:not(.eyebrow) { max-width: 590px; margin-bottom: 1rem; color: #b9bcb5; }
+.owner-copy .text-link { margin-top: 0.5rem; }
+
+.process-section { order: 8; padding: 6rem 0; background: #111210; }
+.process-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 2.5rem; }
+.step { padding: 1.3rem 1.4rem 0.5rem 0; background: transparent; border: 0; border-top: 1px solid #4b4e48; border-radius: 0; box-shadow: none; }
+.step-number { width: auto; height: auto; margin-bottom: 1.3rem; color: #aeb1ab; background: transparent; border: 0; border-radius: 0; font-family: 'Manrope', sans-serif; font-size: 0.8rem; }
+.step h3 { font-size: 1.05rem; }
+.step p { color: #aeb1ab; font-size: 0.86rem; }
+
+.testimonials-section { order: 9; padding: 5rem 0; background: #191a18; }
+.testimonials-grid { grid-template-columns: minmax(0, 640px); margin-top: 1.5rem; }
+.testimonial-card { padding: 1.8rem; background: #111210; border: 1px solid #343632; border-radius: 4px; box-shadow: none; }
+.testimonial-card blockquote { margin: 1rem 0 1.35rem; color: #f1f2ee; font-family: 'Manrope', sans-serif; font-size: 1.25rem; line-height: 1.5; }
+.review-stars { color: #d2d4cf; font-size: 0.95rem; letter-spacing: 0.08em; }
+.review-attribution { display: flex; justify-content: space-between; gap: 1rem; padding-top: 0.8rem; border-top: 1px solid #353733; font-size: 0.82rem; }
+.review-attribution strong { color: #f1f2ee; }
+.review-attribution span { color: #999d96; }
+.google-reviews-cta { margin-top: 1.5rem; padding: 1.5rem 0 0; background: transparent; border: 0; text-align: left; }
+.google-reviews-cta .cta-content { max-width: none; }
+.google-reviews-cta h3 { font-size: 1.2rem; }
+.google-reviews-cta p { margin-bottom: 1rem; color: #aeb1ab; }
+
+.cta-section { order: 10; padding: 4.5rem 0; background: #e1e2de; }
+.cta-section .cta-content { max-width: 760px; }
+.cta-section h2, .cta-section p { color: #171815; }
+.cta-section h2 { font-size: 2.5rem; }
+.cta-section p { margin: 0.8rem auto 1.5rem; }
+.cta-section .btn-primary { color: #f0f1ed; background: #151614; border-color: #151614; }
+.coverage-section { order: 11; padding: 3.5rem 2rem; background: #151614; }
+.coverage-inner { max-width: 850px; margin: 0 auto; text-align: center; }
+.coverage-inner h2 { margin-bottom: 0.8rem; font-size: 1.7rem; }
+.coverage-inner p:not(.eyebrow) { color: #aeb1ab; }
+.contact-section { order: 12; padding: 6rem 0; background: #111210; }
+.contact-section .section-header { margin-bottom: 2.5rem; }
+.contact-grid { grid-template-columns: minmax(0, 1fr) minmax(310px, 0.85fr); gap: 3rem; }
+.contact-form-wrapper { padding: 1.6rem; background: #191a18; border: 1px solid #343632; border-radius: 4px; }
+.contact-form input, .contact-form textarea, .booking-form input:not([type="checkbox"]):not([type="radio"]), .booking-form textarea { min-height: 48px; color: #f4f4f1; background: #111210; border: 1px solid #41433e; border-radius: 3px; }
+.contact-form input:focus, .contact-form textarea:focus, .booking-form input:focus, .booking-form textarea:focus { border-color: #c3c5c0; box-shadow: none; outline: 2px solid rgba(195, 197, 192, 0.28); }
+.contact-info { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+.contact-block { padding: 1.2rem; background: #191a18; border: 1px solid #343632; border-radius: 4px; }
+.contact-block h3 { margin-bottom: 0.55rem; font-size: 1rem; }
+.contact-block p { color: #b8bbb5; font-size: 0.88rem; }
+.contact-block a:not(.text-link) { color: #e0e1dd; overflow-wrap: anywhere; }
+.contact-block .text-link { margin-top: 0.3rem; font-size: 0.83rem; }
+
+.site-footer { padding: 3rem 0 1.2rem; background: #080908; border-top: 1px solid #30322e; }
+.footer-content { grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.footer-logo { width: 42px; height: 42px; margin-bottom: 0.7rem; object-fit: contain; border-radius: 50%; }
+.footer-claim { margin-bottom: 0.7rem; color: #d4d6d0; font-size: 0.9rem; }
+.footer-section h4 { color: #f0f1ed; font-size: 0.95rem; }
+.footer-section p, .footer-section a { color: #aeb1ab; }
+.footer-section li { margin-bottom: 0.5rem; }
+.footer-bottom { color: #999d96; }
+.cookie-settings-trigger { color: #bfc1bb; }
+.whatsapp-float { right: 1.4rem; bottom: 1.4rem; z-index: 100; padding: 0.7rem 0.9rem; background: #202b25; border: 1px solid #62746a; border-radius: 4px; font-size: 0.84rem; box-shadow: none; }
+
+.modal { z-index: 1000; padding: 1rem; background: rgba(0, 0, 0, 0.74); backdrop-filter: blur(5px); }
+.modal-content { position: relative; width: min(720px, 100%); max-height: calc(100dvh - 2rem); padding: 2rem; overflow-y: auto; background: #151614; border: 1px solid #444741; border-radius: 5px; box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55); }
+.modal-content > h2 { margin-bottom: 1.4rem; font-size: 1.9rem; }
+.modal-close { top: 1rem; right: 1rem; color: #d3d5cf; background: transparent; font-size: 1.2rem; }
+#bookingModal .booking-step h3,
+#bookingModal .form-group label,
+#bookingModal .option-label strong { color: #f0f1ed; }
+#bookingModal .option-label small,
+#bookingModal .consent-hint { color: #bfc1bb; }
+#bookingModal .extra-option span { color: #e3e4e0; }
+#bookingModal .extra-option .extra-price { color: #c3c5c0; }
+#bookingModal .consent-option a { color: #334238; }
+
+.commercial-section { order: 5; padding: 6rem 0; background: #111210; }
+.commercial-copy { max-width: 760px; margin-bottom: 1.7rem; }
+.commercial-copy h2 { margin-bottom: 1rem; color: #f2f3ef; font-size: 2.8rem; }
+.commercial-copy .commercial-lede { color: #f0f1ed; font-size: 1.1rem; font-weight: 600; }
+.commercial-copy > p:not(.eyebrow) { margin-bottom: 1rem; color: #b8bbb5; }
+.commercial-price { display: block; max-width: 520px; margin: 1rem auto 0; color: #f0f1ed; font-size: 0.9rem; font-weight: 600; text-align: center; }
+.commercial-video-frame { position: relative; width: min(100%, 520px); min-width: 0; margin: 0 auto; overflow: hidden; background: #080908; border: 1px solid #30322e; border-radius: 4px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28); }
+.commercial-video { display: block; width: 100%; height: auto; max-height: min(78dvh, 780px); aspect-ratio: 9 / 16; object-fit: contain; background: #080908; }
+.commercial-video-toggle { position: absolute; top: 50%; left: 50%; z-index: 1; min-height: 48px; padding: 0.75rem 1.1rem; color: #111210; background: #e1e2de; border: 1px solid #e1e2de; border-radius: 3px; font: inherit; font-weight: 700; transform: translate(-50%, -50%); cursor: pointer; }
+.commercial-video-toggle:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
+.commercial-video-frame figcaption { padding: 0.8rem 1rem; color: #aeb1ab; border-top: 1px solid #30322e; font-size: 0.78rem; }
+.commercial-services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+.commercial-services article { min-width: 0; padding: 1.1rem 1rem 0 0; border-top: 1px solid #555851; }
+.commercial-services h3 { margin-bottom: 0.45rem; color: #f0f1ed; font-size: 1.15rem; }
+.commercial-services article > p:last-child { color: #aeb1ab; font-size: 0.88rem; }
+.commercial-contact { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2rem; padding-top: 1.5rem; border-top: 1px solid #353733; }
+.commercial-contact h3 { margin-bottom: 0.5rem; color: #f0f1ed; font-size: 1.2rem; }
+.commercial-contact p { max-width: 760px; color: #aeb1ab; font-size: 0.9rem; }
+
+.booking-flow[hidden] { display: none !important; }
+.booking-form select { min-height: 48px; padding: 0.75rem; color: #f4f4f1; background: #111210; border: 1px solid #41433e; border-radius: 3px; font: inherit; }
+.booking-form select option { color: #f0f1ed; background: #151614; }
+.request-type-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+.request-type-option { display: flex; align-items: flex-start; gap: 0.85rem; min-height: 120px; padding: 1.2rem; color: #e3e4e0; background: #1b1c19; border: 1px solid #454741; border-radius: 3px; cursor: pointer; }
+.request-type-option:has(input:checked) { background: #222320; border-color: #e1e2de; }
+.request-type-option input,
+.business-choice input { flex: 0 0 auto; width: 20px; height: 20px; margin: 0.1rem 0 0; accent-color: #e1e2de; }
+.request-type-option > span { display: grid; gap: 0.45rem; }
+.request-type-option strong { color: #f0f1ed; font-family: 'Manrope', sans-serif; font-size: 1.05rem; text-transform: uppercase; }
+.request-type-option small { color: #aeb1ab; font-size: 0.86rem; line-height: 1.5; }
+.request-type-option:focus-within,
+.business-choice:focus-within { outline: 2px solid #c3c5c0; outline-offset: 2px; }
+.business-choice-grid,
+.business-services-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.55rem; }
+.business-choice { display: flex; align-items: center; gap: 0.7rem; min-height: 48px; padding: 0.7rem 0.8rem; color: #e3e4e0; background: #1b1c19; border: 1px solid #393b36; border-radius: 3px; cursor: pointer; }
+.business-choice:has(input:checked) { background: #252622; border-color: #c3c5c0; }
+.business-choice span { min-width: 0; color: inherit; font-size: 0.9rem; line-height: 1.4; }
+.business-choice-grid-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.booking-flow[data-booking-flow="business"] .booking-progress { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.booking-flow[data-booking-flow="business"] .booking-section fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.booking-flow[data-booking-flow="business"] legend { margin-bottom: 0.65rem; color: #f0f1ed; font-size: 0.95rem; font-weight: 600; }
+.business-summary .summary-row span:last-child { max-width: 65%; }
+.booking-confirmation { display: grid; justify-items: start; gap: 0.8rem; }
+.booking-confirmation h3 { color: #f0f1ed; font-size: 1.35rem; }
+.booking-confirmation > p:not(.eyebrow) { color: #bfc1bb; }
+.booking-confirmation .btn { min-width: 150px; }
+
+.gallery-section { order: 6; }
+.instagram-reels-section { order: 7; }
+.team-section { order: 8; }
+.process-section { order: 9; }
+.testimonials-section { order: 10; }
+.cta-section { order: 11; }
+.coverage-section { order: 12; }
+.contact-section { order: 13; }
+
+@media (max-width: 768px) {
+  .commercial-section { padding: 4rem 0; }
+  .commercial-copy h2 { font-size: 2.2rem; }
+  .commercial-video { max-height: 78svh; }
+  .commercial-services { grid-template-columns: 1fr; gap: 0; margin: 2.5rem 0 2rem; }
+  .commercial-services article { padding: 1rem 0; }
+  .commercial-contact { grid-template-columns: 1fr; gap: 1rem; }
+  .commercial-contact .btn { justify-self: start; }
+  .request-type-option { min-height: 110px; padding: 1rem; }
+}
+
+@media (max-width: 520px) {
+  .commercial-copy h2 { font-size: 1.9rem; }
+  .commercial-contact .btn { width: 100%; justify-self: stretch; }
+  .request-type-options { grid-template-columns: 1fr; }
+  .request-type-option { min-height: 80px; }
+  .business-choice-grid,
+  .business-services-grid,
+  .business-choice-grid-compact { grid-template-columns: 1fr; }
+  .booking-flow[data-booking-flow="business"] .booking-progress li small { display: none; }
+  .business-summary .summary-row { align-items: flex-start; }
+  .business-summary .summary-row span:last-child { max-width: 58%; overflow-wrap: anywhere; }
+  .booking-confirmation .btn { width: 100%; }
+}
+.booking-progress { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.3rem; margin: 0 0 0.75rem; list-style: none; }
+.booking-progress li { display: grid; gap: 0.22rem; padding: 0.45rem 0.2rem; color: #777b74; border-top: 2px solid #3a3c37; }
+.booking-progress li span { font-size: 0.7rem; font-weight: 700; }
+.booking-progress li small { font-size: 0.64rem; }
+.booking-progress li.is-current { color: #f0f1ed; border-color: #e1e2de; }
+.booking-progress li.is-complete { color: #bfc1bb; border-color: #858982; }
+.booking-step-status { margin-bottom: 1rem; color: #aeb1ab; font-size: 0.8rem; }
+.booking-step[hidden] { display: none !important; }
+.booking-step h3 { margin: 0 0 1.1rem; font-size: 1.15rem; }
+.booking-step h3 span { color: #999d96; font-size: 0.82rem; font-weight: 500; }
+.booking-section { margin: 0 0 1rem; padding: 0; border: 0; }
+.booking-step-controls { display: flex; justify-content: space-between; gap: 0.75rem; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid #353733; }
+.booking-step-controls .btn { min-width: 112px; }
+.booking-note { color: #aeb1ab; font-size: 0.85rem; }
+.package-option, .extra-option { min-height: 58px; padding: 0.75rem; color: #e3e4e0; background: #1b1c19; border: 1px solid #393b36; border-radius: 3px; }
+.package-option:has(input:checked), .extra-option:has(input:checked) { border-color: #c3c5c0; background: #222320; }
+.option-label small { color: #aeb1ab; }
+#bookingModal .booking-summary {
+  margin: 1.4rem 0 1rem;
+  padding: 1rem 1.1rem;
+  color: #171815;
+  background: #f0f1ed;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+}
+#bookingModal .booking-summary .summary-row {
+  gap: 1rem;
+  padding: 0.55rem 0;
+  color: #292b27;
+  border-color: #c8cbc4;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+#bookingModal .booking-summary .summary-row span {
+  min-width: 0;
+  color: #292b27;
+}
+#bookingModal .booking-summary .summary-row span:last-child {
+  max-width: 56%;
+  color: #171815;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+#bookingModal .booking-summary .summary-row.discount {
+  padding-right: 0.55rem;
+  padding-left: 0.55rem;
+  color: #334238;
+  background: #e0e7df;
+}
+#bookingModal .booking-summary .summary-row.discount span,
+#bookingModal .booking-summary .summary-row.discount span:last-child { color: #283b2c; }
+#bookingModal .booking-summary .summary-row.total {
+  margin-top: 0.45rem;
+  padding-top: 0.8rem;
+  color: #111210;
+  border-top: 2px solid #53574f;
+  font-size: 1rem;
+  font-weight: 700;
+}
+#bookingModal .booking-summary .summary-row.total span { color: #111210; font-weight: 700; }
+.booking-price-note { margin: 0.75rem 0; color: #aeb1ab; font-size: 0.78rem; }
+.booking-step > button[type="submit"] { width: 100%; }
+
+.mobile-action-bar { display: none; }
+
+@media (max-width: 1000px) {
+  .packages-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-grid .service-card:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+  .services-grid .service-card:last-child .service-image { min-height: 100%; aspect-ratio: auto; }
+  .trust-strip { grid-template-columns: repeat(4, 1fr); gap: 0.8rem; padding-top: 1.3rem; padding-bottom: 1.3rem; }
+  .trust-intro { grid-column: 1 / -1; }
+  .team-section .container { gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2rem; }
+  .container { padding-right: 1.15rem; padding-left: 1.15rem; }
+  .header-inner { min-height: 66px; }
+  .site-nav { background: #111210; border-color: #343632; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35); }
+  .site-nav ul { gap: 0.3rem; }
+  .site-nav li { padding: 0.35rem 0; }
+  .site-nav a { display: block; padding: 0.55rem 0; }
+  .hero { min-height: 620px; padding: 5.5rem 0 6rem; background-position: 58% center; }
+  .hero { background-image: url('../assets/hero-bg.jpg'); }
+  .hero-shade { background: linear-gradient(90deg, rgba(7, 8, 7, 0.9), rgba(7, 8, 7, 0.53)), linear-gradient(0deg, rgba(7, 8, 7, 0.35), transparent 65%); }
+  .hero-title { font-size: 3.8rem; }
+  .hero-subtitle { max-width: 500px; font-size: 1rem; }
+  .hero-ctas { align-items: stretch; }
+  .hero-ctas .btn { flex: 0 0 auto; }
+  .hero-ctas .btn-large { min-height: 44px; padding: 0.65rem 0.85rem; font-size: 0.86rem; }
+  .trust-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem 1.15rem; }
+  .trust-intro { grid-column: 1 / -1; margin-bottom: 0.2rem; }
+  .trust-item { font-size: 0.78rem; }
+  .services-section, .packages-section, .gallery-section, .team-section, .process-section, .contact-section { padding: 4rem 0; }
+  .section-heading-row { display: block; margin-bottom: 1.8rem; }
+  .section-intro { margin-top: 1rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .services-grid .service-card:last-child { display: block; grid-column: auto; }
+  .services-grid .service-card:last-child .service-image { aspect-ratio: 1.5 / 1; }
+  .service-copy { padding: 1.2rem; }
+  .service-copy > p { min-height: 0; }
+  .packages-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; }
+  .package-card { padding: 1rem; }
+  .package-card h3 { min-height: 0; font-size: 1.08rem; }
+  .package-price .price { font-size: 1.5rem; }
+  .package-features li { font-size: 0.76rem; }
+  .car-showcase-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-section .container { grid-template-columns: 0.8fr 1.2fr; gap: 1.6rem; }
+  .owner-copy h2 { font-size: 2rem; }
+  .process-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.3rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .mobile-action-bar { position: fixed; z-index: 150; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: 1.4fr 1fr; gap: 0.55rem; padding: 0.6rem max(1rem, env(safe-area-inset-right)) calc(0.6rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); background: rgba(9, 10, 9, 0.97); border-top: 1px solid #444741; }
+  .mobile-action-bar .btn { min-height: 46px; }
+  .whatsapp-float { display: none; }
+  .site-footer { padding-bottom: 6rem; }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 15px; }
+  h1 { font-size: 2.65rem; }
+  h2 { font-size: 1.85rem; }
+  .brand .logo { width: 36px; height: 36px; }
+  .brand-text strong { font-size: 0.82rem; }
+  .brand-text small { font-size: 0.5rem; }
+  .nav-cta { padding: 0.55rem 0.75rem !important; font-size: 0.8rem; }
+  .hero { min-height: 600px; padding: 4.4rem 0 5rem; background-position: 57% center; }
+  .hero-title { font-size: 3.15rem; }
+  .hero-kicker { font-size: 0.67rem; }
+  .hero-subtitle { font-size: 0.96rem; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+  .hero-ctas .btn { width: auto; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .package-card { padding: 1.2rem; }
+  .package-features li { font-size: 0.84rem; }
+  .car-showcase-grid { grid-template-columns: 1fr; }
+  .team-section .container { grid-template-columns: 1fr; gap: 1.6rem; }
+  .owner-portrait { max-width: 100%; }
+  .owner-portrait img { max-height: 430px; object-position: center 32%; }
+  .owner-copy h2 { font-size: 1.9rem; }
+  .process-steps { gap: 1rem; }
+  .step { padding-right: 0.55rem; }
+  .step h3 { font-size: 0.96rem; }
+  .step p { font-size: 0.8rem; }
+  .contact-info { grid-template-columns: 1fr; }
+  .footer-content { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .footer-section:first-child { grid-column: 1 / -1; }
+  .review-attribution { flex-direction: column; gap: 0.15rem; }
+  .modal { padding: 0.5rem; }
+  .modal-content { max-height: calc(100dvh - 1rem); padding: 1.3rem 1rem; }
+  .modal-content > h2 { padding-right: 2rem; font-size: 1.55rem; }
+  .booking-progress { gap: 0.18rem; }
+  .booking-progress li small { font-size: 0.66rem; }
+  .booking-step-controls .btn { min-width: 100px; }
+  #bookingModal .booking-summary { padding: 0.75rem; }
+  #bookingModal .booking-summary .summary-row { gap: 0.6rem; font-size: 0.82rem; }
+  #bookingModal .booking-summary .summary-row span:last-child { max-width: 54%; }
+  .whatsapp-float { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+#bookingModal .modal-content { color: #e3e4e0; }
+#bookingModal .modal-content > h2,
+#bookingModal .booking-section h3,
+#bookingModal .option-label strong,
+#bookingModal .form-group label { color: #f0f1ed; }
+#bookingModal .booking-progress li { color: #aeb1ab; }
+#bookingModal .booking-progress li.is-current { color: #f0f1ed; }
+#bookingModal .option-label small,
+#bookingModal .consent-hint { color: #bfc1bb; }
+#bookingModal .extra-option span { color: #e3e4e0; }
+#bookingModal .extra-option .extra-price { color: #c3c5c0; }
+#bookingModal .consent-option a { color: #334238; }
