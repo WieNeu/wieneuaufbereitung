@@ -20,7 +20,7 @@
       "url": "https://www.wieneu-aufbereitung.de/",
       "image": "https://www.wieneu-aufbereitung.de/assets/hero-bg.jpg",
       "email": "benniweber2003@gmail.com",
-      "telephone": "+49 39344 993858",
+      "telephone": "+49 1523 3938332",
       "sameAs": ["https://www.instagram.com/autoaufbereitung_wie_neu/"],
       "address": {
         "@type": "PostalAddress",
@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-bg.jpg" fetchpriority="high">
-  <link rel="stylesheet" href="css/styles.css?v=2026100207">
+  <link rel="stylesheet" href="css/styles.css?v=2026100210">
 </head>
 <body>
   <header class="site-header" id="header">
@@ -91,18 +91,15 @@
       <div class="container">
         <div class="section-heading-row">
           <div class="section-header">
-            <p class="eyebrow">Was wir für dein Fahrzeug tun</p>
+            <p class="eyebrow">Leistungen im Überblick</p>
             <h2>Pflege mit Plan.<br>Ergebnis mit Wirkung.</h2>
           </div>
           <p class="section-intro">Vom gründlichen Innenraum bis zur Lackveredelung: Wir stimmen die Aufbereitung auf Zustand und Wunsch deines Fahrzeugs ab.</p>
         </div>
         <div class="services-grid">
           <article class="service-card">
-            <a class="service-image" href="#gallery" aria-label="Beispiele der Außenaufbereitung ansehen">
-              <img src="assets/Mercedes%20(1).jpg" alt="Mercedes GLE nach der Außenaufbereitung" loading="lazy" width="720" height="960">
-              <span>01 / Außen</span>
-            </a>
             <div class="service-copy">
+              <span class="service-index">01</span>
               <h3>Außenaufbereitung</h3>
               <p>Lack und Exterieur gründlich reinigen, aufbereiten und schützen.</p>
               <ul class="service-list">
@@ -116,11 +113,8 @@
             </div>
           </article>
           <article class="service-card">
-            <a class="service-image" href="#gallery" aria-label="Beispiele der Innenraumaufbereitung ansehen">
-              <img src="assets/MINI%20(4).png" alt="Aufbereiteter Innenraum eines MINI" loading="lazy" width="720" height="960">
-              <span>02 / Innen</span>
-            </a>
             <div class="service-copy">
+              <span class="service-index">02</span>
               <h3>Innenraumaufbereitung</h3>
               <p>Oberflächen, Textilien und Details im Innenraum sorgfältig auffrischen.</p>
               <ul class="service-list">
@@ -134,11 +128,8 @@
             </div>
           </article>
           <article class="service-card">
-            <a class="service-image" href="#packages" aria-label="Spezialaufbereitung anfragen">
-              <img src="assets/FOTO%203.webp" alt="Aufbereitungsergebnis am KIA Ceed" loading="lazy" width="720" height="960">
-              <span>03 / Spezial</span>
-            </a>
             <div class="service-copy">
+              <span class="service-index">03</span>
               <h3>Spezialaufbereitung</h3>
               <p>Gezielte Lösungen für besondere Anforderungen und den Fahrzeugverkauf.</p>
               <ul class="service-list">
@@ -309,22 +300,24 @@
 
     <section class="commercial-section" id="commercial">
       <div class="container">
-        <div class="commercial-copy">
-          <p class="eyebrow">Nutzfahrzeug-Aufbereitung</p>
-          <h2>Auch für Gewerbe.</h2>
-          <p class="commercial-lede">Vom Firmenwagen bis zum Nutzfahrzeug.</p>
-          <p>Nicht nur Privatfahrzeuge verdienen eine professionelle Aufbereitung. Auf Anfrage kümmern wir uns auch um Firmenfahrzeuge, Betriebsfahrzeuge, Transporter und größere Nutzfahrzeuge.</p>
-          <p>Ob einzelnes Betriebsfahrzeug oder mehrere Fahrzeuge: Wir besprechen den Umfang persönlich. Größere Fahrzeuge prüfen wir individuell.</p>
+        <div class="commercial-feature">
+          <div class="commercial-copy">
+            <p class="eyebrow">Nutzfahrzeug-Aufbereitung</p>
+            <h2>Auch für Gewerbe.</h2>
+            <p class="commercial-lede">Vom Firmenwagen bis zum Nutzfahrzeug.</p>
+            <p>Nicht nur Privatfahrzeuge verdienen eine professionelle Aufbereitung. Auf Anfrage kümmern wir uns auch um Firmenfahrzeuge, Betriebsfahrzeuge, Transporter und größere Nutzfahrzeuge.</p>
+            <p>Ob einzelnes Betriebsfahrzeug oder mehrere Fahrzeuge: Wir besprechen den Umfang persönlich. Größere Fahrzeuge prüfen wir individuell.</p>
+          </div>
+          <figure class="commercial-video-frame">
+            <video class="commercial-video" id="businessVideo" playsinline muted preload="metadata" width="720" height="1280" disablepictureinpicture disableremoteplayback>
+              <source src="assets/Betrieb.mp4" type="video/mp4">
+              Dein Browser unterstützt dieses Video nicht.
+            </video>
+            <button class="commercial-video-toggle" id="businessVideoToggle" type="button" aria-controls="businessVideo" aria-label="Video abspielen">Video abspielen</button>
+            <figcaption>Nutzfahrzeug-Aufbereitung · Einblicke in die Arbeit</figcaption>
+          </figure>
+          <p class="commercial-price">Auch größere Fahrzeuge sind möglich. Umfang und Preis stimmen wir individuell ab.</p>
         </div>
-        <figure class="commercial-video-frame">
-          <video class="commercial-video" id="businessVideo" playsinline muted preload="metadata" width="720" height="1280" disablepictureinpicture disableremoteplayback>
-            <source src="assets/Betrieb.mp4" type="video/mp4">
-            Dein Browser unterstützt dieses Video nicht.
-          </video>
-          <button class="commercial-video-toggle" id="businessVideoToggle" type="button" aria-controls="businessVideo" aria-label="Video abspielen">Video abspielen</button>
-          <figcaption>Nutzfahrzeug-Aufbereitung · Einblicke in die Arbeit</figcaption>
-        </figure>
-        <p class="commercial-price">Auch größere Fahrzeuge sind möglich. Umfang und Preis stimmen wir individuell ab.</p>
         <div class="commercial-services" aria-label="Angebot für Firmen- und Betriebsfahrzeuge">
           <article>
             <p class="eyebrow">01</p>
@@ -451,13 +444,13 @@
             </div>
           </article>
 
-          <article class="car-showcase open" data-car="mercedes">
-            <button class="car-showcase-toggle" type="button" aria-expanded="true" aria-controls="carPanelMercedes">
+          <article class="car-showcase" data-car="mercedes">
+            <button class="car-showcase-toggle" type="button" aria-expanded="false" aria-controls="carPanelMercedes">
               <span class="car-showcase-toggle-text">
                 <strong>Mercedes GLE</strong>
                 <small>Alle verfügbaren Vorher-Nachher-Collagen dieses Fahrzeugs auf einen Blick.</small>
               </span>
-              <span class="car-showcase-toggle-icon" aria-hidden="true">−</span>
+              <span class="car-showcase-toggle-icon" aria-hidden="true">+</span>
             </button>
             <div class="car-showcase-panel" id="carPanelMercedes">
             <div class="car-showcase-grid">
@@ -743,8 +736,7 @@
             </div>
             <div class="contact-block">
               <h3>Telefon</h3>
-              <p><a href="tel:+4939344993858">Festnetz: +49 39344 993858</a></p>
-              <p><a href="tel:+4915233938332">Mobil: +49 1523 3938332</a></p>
+              <p><a href="tel:+4915233938332">Anrufen: +49 1523 3938332</a></p>
             </div>
             <div class="contact-block">
               <h3>E-Mail</h3>
