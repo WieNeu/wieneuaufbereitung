@@ -2591,7 +2591,15 @@ section { scroll-margin-top: 90px; }
 .site-nav ul { gap: 1.8rem; }
 .site-nav a { color: #d4d6d0; font-size: 0.87rem; }
 .site-nav a:hover { color: #ffffff; }
-.site-nav .nav-cta { min-height: 42px; padding: 0.65rem 1rem; color: #111210; }
+.site-nav .nav-cta,
+.site-nav .nav-cta:hover {
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  color: #111210;
+  background: #e1e2de;
+  border: 1px solid #e1e2de;
+}
+.site-nav .nav-cta:hover { background: #ffffff; border-color: #ffffff; }
 .nav-toggle { padding: 0.5rem; }
 .nav-toggle span { display: block; width: 22px; height: 1px; margin: 5px; background: #f3f4f0; }
 
