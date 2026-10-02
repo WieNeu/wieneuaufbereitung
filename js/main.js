@@ -592,6 +592,19 @@ function initializeApp() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Smooth Scroll für Anker-Links ---------- */
+  document.querySelectorAll('[data-business-inquiry]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      const messageField = document.getElementById('message');
+      if (!messageField) return;
+      messageField.value = [
+        'Gewerbe-Anfrage:',
+        'Ich interessiere mich für die Aufbereitung von Firmen- oder Nutzfahrzeugen.',
+        'Fahrzeugtyp und Anzahl:',
+        'Wunschzeitraum:'
+      ].join('\n');
+    });
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
