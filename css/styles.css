@@ -2777,11 +2777,49 @@ main > section { width: 100%; }
 .package-option, .extra-option { min-height: 58px; padding: 0.75rem; color: #e3e4e0; background: #1b1c19; border: 1px solid #393b36; border-radius: 3px; }
 .package-option:has(input:checked), .extra-option:has(input:checked) { border-color: #c3c5c0; background: #222320; }
 .option-label small { color: #aeb1ab; }
-.booking-summary { margin: 1.4rem 0 1rem; padding: 1rem; background: #1b1c19; border: 1px solid #3a3c37; border-radius: 3px; }
-.summary-row { padding: 0.4rem 0; color: #b8bbb5; border-color: #363833; }
-.summary-row span:last-child { color: #f0f1ed; }
-.summary-row.discount span:last-child { color: #bfc1bb; }
-.summary-row.total { border-top-color: #888b85; color: #f0f1ed; }
+#bookingModal .booking-summary {
+  margin: 1.4rem 0 1rem;
+  padding: 1rem 1.1rem;
+  color: #171815;
+  background: #f0f1ed;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+}
+#bookingModal .booking-summary .summary-row {
+  gap: 1rem;
+  padding: 0.55rem 0;
+  color: #292b27;
+  border-color: #c8cbc4;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+#bookingModal .booking-summary .summary-row span {
+  min-width: 0;
+  color: #292b27;
+}
+#bookingModal .booking-summary .summary-row span:last-child {
+  max-width: 56%;
+  color: #171815;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+#bookingModal .booking-summary .summary-row.discount {
+  padding-right: 0.55rem;
+  padding-left: 0.55rem;
+  color: #334238;
+  background: #e0e7df;
+}
+#bookingModal .booking-summary .summary-row.discount span,
+#bookingModal .booking-summary .summary-row.discount span:last-child { color: #283b2c; }
+#bookingModal .booking-summary .summary-row.total {
+  margin-top: 0.45rem;
+  padding-top: 0.8rem;
+  color: #111210;
+  border-top: 2px solid #53574f;
+  font-size: 1rem;
+  font-weight: 700;
+}
+#bookingModal .booking-summary .summary-row.total span { color: #111210; font-weight: 700; }
 .booking-price-note { margin: 0.75rem 0; color: #aeb1ab; font-size: 0.78rem; }
 .booking-step > button[type="submit"] { width: 100%; }
 
@@ -2876,6 +2914,9 @@ main > section { width: 100%; }
   .booking-progress { gap: 0.18rem; }
   .booking-progress li small { font-size: 0.58rem; }
   .booking-step-controls .btn { min-width: 100px; }
+  #bookingModal .booking-summary { padding: 0.75rem; }
+  #bookingModal .booking-summary .summary-row { gap: 0.6rem; font-size: 0.82rem; }
+  #bookingModal .booking-summary .summary-row span:last-child { max-width: 54%; }
   .whatsapp-float { display: none; }
 }
 
